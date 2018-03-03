@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         remote = new Remote(getApplicationContext());
         btn = (Button) findViewById(R.id.button);
         textView = (TextView) findViewById(R.id.textView);
-
+        Log.d("aaa", "aaa");
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
