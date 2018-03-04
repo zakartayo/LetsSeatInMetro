@@ -26,6 +26,7 @@
             <ImageView
                 android:id="@+id/lineColor"
                 android:layout_width="match_parent"
+                android:scaleType="fitXY"
                 android:layout_height="130dp"
                 android:layout_margin="8dp"/>
 
