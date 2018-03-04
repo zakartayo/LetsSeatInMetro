@@ -1,4 +1,4 @@
-package com.example.letsseatinmetro;
+package com.example.letsseatinmetro.CardItem;
 
 /**
  * Created by Yong on 2018-03-03.

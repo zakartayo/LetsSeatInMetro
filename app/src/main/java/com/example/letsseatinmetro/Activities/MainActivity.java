@@ -1,17 +1,15 @@
-package com.example.letsseatinmetro;
+package com.example.letsseatinmetro.Activities;
 
-import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.letsseatinmetro.CardItem.MainCardItem;
+import com.example.letsseatinmetro.Adapters.MainRecyclerAdapter;
+import com.example.letsseatinmetro.R;
+import com.example.letsseatinmetro.Network.Remote;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

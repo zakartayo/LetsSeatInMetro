@@ -1,4 +1,4 @@
-package com.example.letsseatinmetro;
+package com.example.letsseatinmetro.Network;
 
 import android.content.Context;
 import android.util.Log;
