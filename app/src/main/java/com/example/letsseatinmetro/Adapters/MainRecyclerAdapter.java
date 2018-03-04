@@ -41,7 +41,7 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
     public void onBindViewHolder(ViewHolder holder, int position) {
         final MainCardItem item = items.get(position);
 
-        holder.lineColor.setImageResource(item.getLineColor());
+        holder.lineColor.setImageResource((int)item.getLineColor());
         holder.lineName.setText(item.getLineName());
         holder.lineRange.setText(item.getLineRange());
         holder.cardview.setOnClickListener(new View.OnClickListener() {
@@ -49,6 +49,7 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
             public void onClick(View v) {
                 Intent intent = new Intent(context, LineActivity.class);
                 intent.putExtra("lineName", item.getLineName());
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }
         });

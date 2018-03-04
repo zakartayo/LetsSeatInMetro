@@ -1,5 +1,6 @@
 package com.example.letsseatinmetro.Activities;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<MainCardItem> items = new ArrayList<>();
         MainCardItem[] item = new MainCardItem[10];
-        item[0] = new MainCardItem("1호선", R.drawable.metro, "#1");
+        item[0] = new MainCardItem("1호선",R.drawable.metro, "#1");
         item[1] = new MainCardItem("2호선",R.drawable.metro, "#2");
         item[2] = new MainCardItem("3호선",R.drawable.metro, "#3");
         item[3] = new MainCardItem("4호선",R.drawable.metro, "#4");
