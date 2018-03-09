@@ -19,6 +19,7 @@ import org.json.JSONObject;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 public class MainActivity extends AppCompatActivity {
     //public static TextView textView;
@@ -47,56 +48,5 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView.setAdapter(new MainRecyclerAdapter(getApplicationContext(), items, R.layout.activity_main));
     }
-
-    public void getApi(){
-        new MyTask(this).execute();
-    }
-    private class MyTask extends AsyncTask<Void, Void, String>{
-        private WeakReference<MainActivity> activityReference;
-        MyTask(MainActivity context){
-            activityReference = new WeakReference<>(context);
-        }
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-            StringBuffer sb = new  StringBuffer();
-
-            try {
-                JSONObject json = new JSONObject(s);
-                JSONArray rows = json.getJSONArray("realtimeArrivalList");
-
-                int length = 0;
-                length = rows.length();
-
-                for(int i=0; i < length; i ++){
-                    JSONObject result = (JSONObject) rows.get(i);
-                    String trainName = result.getString("trainLineNm");
-                    sb.append(trainName + "\n");
-                }
-
-            }catch (Exception e ){}
-
-            //textView.setText(sb.toString());
-        }
-
-        @Override
-        protected String doInBackground(Void... params) {
-            String result = "";
-            try {
-                //서울시 오픈 API 제공(샘플 주소 json으로 작업)
-                result = Remote.getData("http://swopenapi.seoul.go.kr/api/subway/sample/json/realtimeStationArrival/0/5/%EC%84%9C%EC%9A%B8");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return result;
-        }
-    }
-
-
 }
 
