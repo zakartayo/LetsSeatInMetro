@@ -1,5 +1,7 @@
 package com.example.letsseatinmetro.CardItem;
 
+import com.example.letsseatinmetro.R;
+
 /**
  * Created by 이승헌 on 2018-03-06.
  */
@@ -28,10 +30,9 @@ public class LineCardItem {
         this.station = station;
         this.destination_bottom = null;
         this.destination_top = null;
-        this.top_img = 0;
-        this.bottom_img = 0;
+        this.top_img= R.drawable.blank_img;
+        this.bottom_img=R.drawable.blank_img;
     }
-
     public void setTop_img(int top_img){
         this.top_img = top_img;
     }

@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.letsseatinmetro.Adapters.LineRecyclerAdapter;
@@ -29,7 +30,7 @@ import java.util.StringTokenizer;
 public class LineActivity extends AppCompatActivity {
     private ImageView refresh;
     private int dataLength;
-    private RecyclerView recyclerView;
+    private ListView listview;
     private LineRecyclerAdapter lineRecyclerAdapter;
     private ArrayList<String> directionData = new ArrayList<>();
     private ArrayList<String> destinationData = new ArrayList<>();
@@ -45,7 +46,7 @@ public class LineActivity extends AppCompatActivity {
         String lineName = intent.getStringExtra("lineName");
 
         if(lineName.equals("1호선")){
-            recyclerView = (RecyclerView) findViewById(R.id.line_recyclerview);
+            /*recyclerView = (RecyclerView) findViewById(R.id.line_recyclerview);
             LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(layoutManager);
@@ -53,16 +54,13 @@ public class LineActivity extends AppCompatActivity {
             List<LineCardItem> items = new ArrayList<>();
             items = DataHouse.line1;
 
-            recyclerView.setAdapter(new LineRecyclerAdapter(getApplicationContext(), items, R.layout.activity_line));
+            recyclerView.setAdapter(new LineRecyclerAdapter(getApplicationContext(), items, R.layout.activity_line));*/
         }else if(lineName.equals("경의·중앙선")){
-            RecyclerView recyclerView = (RecyclerView) findViewById(R.id.line_recyclerview);
-            LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-            recyclerView.setHasFixedSize(true);
-            recyclerView.setLayoutManager(layoutManager);
-
+            listview = (ListView)findViewById(R.id.mList);
             items = DataHouse.kyungei;
-            lineRecyclerAdapter = new LineRecyclerAdapter(getApplicationContext(), items, R.layout.activity_line);
-            recyclerView.setAdapter(lineRecyclerAdapter);
+            lineRecyclerAdapter = new LineRecyclerAdapter(items);
+            listview.setAdapter(lineRecyclerAdapter);
+
         }
 
         refresh.setOnClickListener(new View.OnClickListener() {
@@ -120,7 +118,10 @@ public class LineActivity extends AppCompatActivity {
                     }
                 }
                 dataLength = destinationData.size();
+                Log.d("dataLength", Integer.toString(dataLength));
                 compareData();
+                directionData.clear();
+                destinationData.clear();
             }catch (Exception e ){}
         }
 
@@ -147,17 +148,20 @@ public class LineActivity extends AppCompatActivity {
             for(int j=0; j<dataLength; j++){
                 if(items.get(i).getStation().charAt(0)==trimmingDestination.get(j).charAt(0) && items.get(i).getStation().charAt(1)==trimmingDestination.get(j).charAt(1)){
                     if(updownData.get(j).equals("상행")){
-                        Log.d("abc",Integer.toString(i));
+                        Log.d("trains",items.get(i).getStation());
                         items.get(i).setTop_img(R.drawable.train);
-                        lineRecyclerAdapter.notifyItemChanged(i);
+                        items.get(i).setDestination_top(directionData.get(j));
+                        lineRecyclerAdapter.notifyDataSetChanged();;
+
                     }else if(updownData.get(j).equals("하행")){
-                        Log.d("abc",Integer.toString(i));
-                        /*items.get(i).setBottom_img(R.drawable.train);
-                        lineRecyclerAdapter.notifyItemChanged(i);*/
+                        Log.d("bottom_train",items.get(i).getStation());
+                        items.get(i).setBottom_img(R.drawable.train);
+                        items.get(i).setDestination_bottom(directionData.get(j));
+                        lineRecyclerAdapter.notifyDataSetChanged();
                     }
                 }
             }
         }
-        //recyclerView.setAdapter(new LineRecyclerAdapter(getApplicationContext(), items, R.layout.activity_line));
+
     }
 }
