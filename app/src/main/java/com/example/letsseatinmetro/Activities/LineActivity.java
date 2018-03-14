@@ -40,27 +40,25 @@ public class LineActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_line);
-        refresh = (ImageView)findViewById(R.id.refresh_btn);
         Intent intent = getIntent();
         String lineName = intent.getStringExtra("lineName");
 
         if(lineName.equals("1호선")){
-            /*recyclerView = (RecyclerView) findViewById(R.id.line_recyclerview);
-            LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-            recyclerView.setHasFixedSize(true);
-            recyclerView.setLayoutManager(layoutManager);
-
-            List<LineCardItem> items = new ArrayList<>();
+            setContentView(R.layout.activity_line_1);
+            refresh = (ImageView)findViewById(R.id.refresh_btn1);
+            listview = (ListView)findViewById(R.id.m1List);
             items = DataHouse.line1;
-
-            recyclerView.setAdapter(new LineRecyclerAdapter(getApplicationContext(), items, R.layout.activity_line));*/
+            lineRecyclerAdapter = new LineRecyclerAdapter(items);
+            listview.setAdapter(lineRecyclerAdapter);
+            getApi();
         }else if(lineName.equals("경의·중앙선")){
+            setContentView(R.layout.activity_line);
+            refresh = (ImageView)findViewById(R.id.refresh_btn);
             listview = (ListView)findViewById(R.id.mList);
             items = DataHouse.kyungei;
             lineRecyclerAdapter = new LineRecyclerAdapter(items);
             listview.setAdapter(lineRecyclerAdapter);
-
+            getApi();
         }
 
         refresh.setOnClickListener(new View.OnClickListener() {

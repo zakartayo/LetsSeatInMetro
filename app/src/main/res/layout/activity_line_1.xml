@@ -8,11 +8,9 @@
 
 
     <ListView
-        android:id="@+id/mList"
+        android:id="@+id/m1List"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:dividerHeight="0px"
-        android:divider="#ffffff"/>
+        android:layout_height="match_parent"/>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -39,7 +37,7 @@
 
                 <ImageView
                     android:layout_width="40dp"
-                    android:id="@+id/refresh_btn"
+                    android:id="@+id/refresh_btn1"
                     android:layout_height="match_parent"
                     android:layout_alignParentRight="true"
                     android:src="@drawable/refresh"/>
