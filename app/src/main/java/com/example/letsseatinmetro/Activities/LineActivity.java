@@ -2,18 +2,18 @@ package com.example.letsseatinmetro.Activities;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.letsseatinmetro.Adapters.LineRecyclerAdapter;
+import com.example.letsseatinmetro.Adapters.TabPagerAdapter;
 import com.example.letsseatinmetro.CardItem.LineCardItem;
 import com.example.letsseatinmetro.Datahouse.DataHouse;
 import com.example.letsseatinmetro.Network.Remote;
@@ -37,6 +37,8 @@ public class LineActivity extends AppCompatActivity {
     private ArrayList<String> trimmingDestination = new ArrayList<>();
     private ArrayList<String> updownData = new ArrayList<>();
     private List<LineCardItem> items = new ArrayList<>();
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,13 +46,50 @@ public class LineActivity extends AppCompatActivity {
         String lineName = intent.getStringExtra("lineName");
 
         if(lineName.equals("1호선")){
-            setContentView(R.layout.activity_line_1);
-            refresh = (ImageView)findViewById(R.id.refresh_btn1);
+            setContentView(R.layout.extream_activity_line);
+
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
+
+            // Initializing the TabLayout
+            tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+            tabLayout.addTab(tabLayout.newTab().setText("일반"));
+            tabLayout.addTab(tabLayout.newTab().setText("급행"));
+            tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
+            // Initializing ViewPager
+            viewPager = (ViewPager) findViewById(R.id.pager);
+
+            // Creating TabPagerAdapter adapter
+            TabPagerAdapter pagerAdapter = new TabPagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+            viewPager.setAdapter(pagerAdapter);
+            viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+            // Set TabSelectedListener
+            tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+                @Override
+                public void onTabSelected(TabLayout.Tab tab) {
+                    viewPager.setCurrentItem(tab.getPosition());
+                }
+
+                @Override
+                public void onTabUnselected(TabLayout.Tab tab) {
+
+                }
+
+                @Override
+                public void onTabReselected(TabLayout.Tab tab) {
+
+                }
+            });
+
+            /*refresh = (ImageView)findViewById(R.id.refresh_btn1);
             listview = (ListView)findViewById(R.id.m1List);
             items = DataHouse.line1;
             lineRecyclerAdapter = new LineRecyclerAdapter(items);
             listview.setAdapter(lineRecyclerAdapter);
-            getApi();
+            getApi();*/
+
         }else if(lineName.equals("경의·중앙선")){
             setContentView(R.layout.activity_line);
             refresh = (ImageView)findViewById(R.id.refresh_btn);
@@ -59,14 +98,14 @@ public class LineActivity extends AppCompatActivity {
             lineRecyclerAdapter = new LineRecyclerAdapter(items);
             listview.setAdapter(lineRecyclerAdapter);
             getApi();
-        }
 
-        refresh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getApi();
-            }
-        });
+            refresh.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getApi();
+                }
+            });
+        }
 
     }
     public void getApi(){
