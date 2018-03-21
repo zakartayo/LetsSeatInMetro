@@ -113,6 +113,334 @@ public class DataHouse {
         }
     };
 
+    public static List<LineCardItem> extreamLine1 = new ArrayList<LineCardItem>() {
+        {
+            add(new LineCardItem(R.drawable.line_img_1, "용산"));
+            add(new LineCardItem(R.drawable.line_img_1, "노량진"));
+            add(new LineCardItem(R.drawable.line_img_1, "대방"));
+            add(new LineCardItem(R.drawable.line_img_1, "신길"));
+            add(new LineCardItem(R.drawable.line_img_1, "영등포"));
+            add(new LineCardItem(R.drawable.line_img_1, "신도림"));
+            add(new LineCardItem(R.drawable.line_img_1, "구로"));
+            add(new LineCardItem(R.drawable.line_img_1, "가산디지털단지"));
+            add(new LineCardItem(R.drawable.line_img_1, "안양"));
+            add(new LineCardItem(R.drawable.line_img_1, "수원"));
+            add(new LineCardItem(R.drawable.line_img_1, "병점"));
+            add(new LineCardItem(R.drawable.line_img_1, "오산"));
+            add(new LineCardItem(R.drawable.line_img_1, "서정리"));
+            add(new LineCardItem(R.drawable.line_img_1, "평택"));
+            add(new LineCardItem(R.drawable.line_img_1, "성환"));
+            add(new LineCardItem(R.drawable.line_img_1, "두정"));
+            add(new LineCardItem(R.drawable.line_img_1, "천안"));
+            add(new LineCardItem(R.drawable.line_img_1, "봉명"));
+            add(new LineCardItem(R.drawable.line_img_1, "쌍용"));
+            add(new LineCardItem(R.drawable.line_img_1, "아산"));
+            add(new LineCardItem(R.drawable.line_img_1, "배방"));
+            add(new LineCardItem(R.drawable.line_img_1, "온양온천"));
+            add(new LineCardItem(R.drawable.line_img_1, "신창"));
+        }
+    };
+    public static List<LineCardItem> line2 = new ArrayList<LineCardItem>() {
+        {
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+        }
+    };
+
+    public static List<LineCardItem> line3 = new ArrayList<LineCardItem>() {
+        {
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+        }
+    };
+
+    public static List<LineCardItem> line4 = new ArrayList<LineCardItem>() {
+        {
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+        }
+    };
+
+    public static List<LineCardItem> line5 = new ArrayList<LineCardItem>() {
+        {
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+        }
+    };
+
+    public static List<LineCardItem> line6 = new ArrayList<LineCardItem>() {
+        {
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+        }
+    };
+
+    public static List<LineCardItem> line7 = new ArrayList<LineCardItem>() {
+        {
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+        }
+    };
+
+    public static List<LineCardItem> line8 = new ArrayList<LineCardItem>() {
+        {
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+        }
+    };
+
     public static List<LineCardItem> line9 = new ArrayList<LineCardItem>() {
         {
             add(new LineCardItem(R.drawable.line_img_1, "개화"));
@@ -145,6 +473,49 @@ public class DataHouse {
             add(new LineCardItem(R.drawable.line_img_1, "삼성중앙"));
             add(new LineCardItem(R.drawable.line_img_1, "봉은사"));
             add(new LineCardItem(R.drawable.line_img_1, "종합운동장"));
+        }
+    };
+
+    public static List<LineCardItem> extreamLine9 = new ArrayList<LineCardItem>() {
+        {
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
+            add(new LineCardItem(R.drawable.line_img_1, ""));
         }
     };
 
