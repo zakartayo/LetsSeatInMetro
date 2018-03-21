@@ -45,7 +45,7 @@ public class LineActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String lineName = intent.getStringExtra("lineName");
 
-        if(lineName.equals("1호선")){
+        if (lineName.equals("1호선")) {
             setContentView(R.layout.extream_activity_line);
 
             Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -61,7 +61,7 @@ public class LineActivity extends AppCompatActivity {
             viewPager = (ViewPager) findViewById(R.id.pager);
 
             // Creating TabPagerAdapter adapter
-            TabPagerAdapter pagerAdapter = new TabPagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+            TabPagerAdapter pagerAdapter = new TabPagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount(), 1);
             viewPager.setAdapter(pagerAdapter);
             viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
@@ -90,10 +90,10 @@ public class LineActivity extends AppCompatActivity {
             listview.setAdapter(lineRecyclerAdapter);
             getApi();*/
 
-        }else if(lineName.equals("경의·중앙선")){
+        } else if (lineName.equals("경의·중앙선")) {
             setContentView(R.layout.activity_line);
-            refresh = (ImageView)findViewById(R.id.refresh_btn);
-            listview = (ListView)findViewById(R.id.mList);
+            refresh = (ImageView) findViewById(R.id.refresh_btn);
+            listview = (ListView) findViewById(R.id.mList);
             items = DataHouse.kyungei;
             lineRecyclerAdapter = new LineRecyclerAdapter(items);
             listview.setAdapter(lineRecyclerAdapter);
@@ -105,8 +105,52 @@ public class LineActivity extends AppCompatActivity {
                     getApi();
                 }
             });
-        }
+        } else if (lineName.equals("9호선")) {
+            setContentView(R.layout.extream_activity_line);
 
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
+
+            // Initializing the TabLayout
+            tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+            tabLayout.addTab(tabLayout.newTab().setText("일반"));
+            tabLayout.addTab(tabLayout.newTab().setText("급행"));
+            tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
+            // Initializing ViewPager
+            viewPager = (ViewPager) findViewById(R.id.pager);
+
+            // Creating TabPagerAdapter adapter
+            TabPagerAdapter pagerAdapter = new TabPagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount(), 9);
+            viewPager.setAdapter(pagerAdapter);
+            viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+            // Set TabSelectedListener
+            tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+                @Override
+                public void onTabSelected(TabLayout.Tab tab) {
+                    viewPager.setCurrentItem(tab.getPosition());
+                }
+
+                @Override
+                public void onTabUnselected(TabLayout.Tab tab) {
+
+                }
+
+                @Override
+                public void onTabReselected(TabLayout.Tab tab) {
+
+                }
+            });
+
+            /*refresh = (ImageView)findViewById(R.id.refresh_btn1);
+            listview = (ListView)findViewById(R.id.m1List);
+            items = DataHouse.line1;
+            lineRecyclerAdapter = new LineRecyclerAdapter(items);
+            listview.setAdapter(lineRecyclerAdapter);
+            getApi();*/
+
+        }
     }
     public void getApi(){
         new MyTask(this).execute();
