@@ -628,4 +628,219 @@ public class DataHouse {
             add(new LineCardItem(R.drawable.line_img_kyungei, "지평"));
         }
     };
+
+    public static List<LineCardItem> extreamkyungei = new ArrayList<LineCardItem>() {
+        { // 경의 이상하게 나와있는데 확인 다시 해보고 정리 해봐야 될듯.
+            add(new LineCardItem(R.drawable.line_img_kyungei, "문산"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "파주"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "월롱"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "금촌"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "금릉"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "운정"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "야당"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "탄현"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "일산"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "풍산"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "백마"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "곡산"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "대곡"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "능공"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "행신"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "강매"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "화전"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "수색"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "디지털미디어시티"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "가좌"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "홍대입구"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "서강대"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "공덕"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "효창공원앞"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "용산"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "이촌"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "서빙고"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "한남"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "옥수"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "응봉"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "왕십리"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "청량리"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "회기"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "중랑"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "상봉"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "망우"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "양원"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "구리"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "도농"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "양정"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "덕소"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "도심"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "팔당"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "운길산"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "양수"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "신원"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "국수"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "아신"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "오빈"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "양평"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "원덕"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "용문"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "지평"));
+        }
+    };
+
+    public static List<LineCardItem> bundang = new ArrayList<LineCardItem>() {
+        {
+            add(new LineCardItem(R.drawable.line_img_kyungei, "왕십리"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "서울숲"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "압구정로데오"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "강남구청"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "선정릉"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "선릉"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "한티"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "도곡"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "구룡"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "개포동"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "대모산입구"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "수서"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "복정"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "가천대"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "태평"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "모란"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "야탑"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "이매"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "서현"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "수내"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "정자"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "미금"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "오리"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "죽전"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "보정"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "구성"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "신갈"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "기흥"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "상갈"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "청명"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "영통"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "망포"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "매탄권선"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "수원시청"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "매교"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "수원"));
+        }
+    };
+
+    public static List<LineCardItem> extreambundang = new ArrayList<LineCardItem>() {
+        {
+            add(new LineCardItem(R.drawable.line_img_kyungei, "왕십리"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "서울숲"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "압구정로데오"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "강남구청"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "선정릉"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "선릉"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "한티"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "도곡"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "구룡"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "개포동"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "대모산입구"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "수서"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "복정"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "가천대"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "태평"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "모란"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "야탑"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "이매"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "서현"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "수내"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "정자"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "미금"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "오리"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "죽전"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "기흥"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "망포"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "수원시청"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "수원"));
+        }
+    };
+
+    public static List<LineCardItem> newbundang = new ArrayList<LineCardItem>() {
+        {
+            add(new LineCardItem(R.drawable.line_img_kyungei, "강남"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "양재"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "양재시민의숲"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "청계산입구"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "판교"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "정자"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "동천"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "수지구청"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "성복"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "상현"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "광교중앙"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "광교"));
+        }
+    };
+
+    public static List<LineCardItem> kyungchun = new ArrayList<LineCardItem>() {
+        {
+            add(new LineCardItem(R.drawable.line_img_kyungei, "청량리"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "회기"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "중랑"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "상봉"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "망우"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "신내"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "갈매"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "별내"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "퇴계원"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "사릉"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "금곡"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "평내호평"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "천마산"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "마석"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "대성리"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "청평"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "상천"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "가평"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "굴봉산"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "백양리"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "강촌"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "김유정"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "남춘천"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "춘천"));
+        }
+    };
+
+    public static List<LineCardItem> extreamkyungchun = new ArrayList<LineCardItem>() {
+        {
+            add(new LineCardItem(R.drawable.line_img_kyungei, "청량리"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "회기"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "상봉"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "퇴계원"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "사릉"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "평내호평"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "마석"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "청평"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "가평"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "강촌"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "남춘천"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "춘천"));
+        }
+    };
+
+    public static List<LineCardItem> arirail = new ArrayList<LineCardItem>() {
+        {
+            add(new LineCardItem(R.drawable.line_img_kyungei, "인천공항2터미널"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "인천공항1터미널"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "공황화물청사"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "운서"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "영종"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "청라국제도시"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "검암"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "계양"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "김포공항"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "디지털미디어시티"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "홍대입구"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "공덕"));
+            add(new LineCardItem(R.drawable.line_img_kyungei, "서울"));
+        }
+    };
+
 }
+

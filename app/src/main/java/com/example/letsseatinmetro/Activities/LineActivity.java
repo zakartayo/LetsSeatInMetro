@@ -285,6 +285,66 @@ public class LineActivity extends AppCompatActivity {
                     getApi();
                 }
             });
+        } else if (lineName.equals("분당선")) {
+            setContentView(R.layout.activity_line);
+            refresh = (ImageView) findViewById(R.id.refresh_btn);
+            listview = (ListView) findViewById(R.id.mList);
+            items = DataHouse.bundang;
+            lineRecyclerAdapter = new LineRecyclerAdapter(items);
+            listview.setAdapter(lineRecyclerAdapter);
+            getApi();
+
+            refresh.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getApi();
+                }
+            });
+        } else if (lineName.equals("신분당선")) {
+            setContentView(R.layout.activity_line);
+            refresh = (ImageView) findViewById(R.id.refresh_btn);
+            listview = (ListView) findViewById(R.id.mList);
+            items = DataHouse.newbundang;
+            lineRecyclerAdapter = new LineRecyclerAdapter(items);
+            listview.setAdapter(lineRecyclerAdapter);
+            getApi();
+
+            refresh.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getApi();
+                }
+            });
+        } else if (lineName.equals("경춘선")) {
+            setContentView(R.layout.activity_line);
+            refresh = (ImageView) findViewById(R.id.refresh_btn);
+            listview = (ListView) findViewById(R.id.mList);
+            items = DataHouse.kyungchun;
+            lineRecyclerAdapter = new LineRecyclerAdapter(items);
+            listview.setAdapter(lineRecyclerAdapter);
+            getApi();
+
+            refresh.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getApi();
+                }
+            });
+        } else if (lineName.equals("공항철도")) {
+            setContentView(R.layout.activity_line);
+            refresh = (ImageView) findViewById(R.id.refresh_btn);
+            listview = (ListView) findViewById(R.id.mList);
+            items = DataHouse.arirail;
+            lineRecyclerAdapter = new LineRecyclerAdapter(items);
+            listview.setAdapter(lineRecyclerAdapter);
+            getApi();
+
+            refresh.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getApi();
+                }
+            });
         }
     }
     public void getApi(){
