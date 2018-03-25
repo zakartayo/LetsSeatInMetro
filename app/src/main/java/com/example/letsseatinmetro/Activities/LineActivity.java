@@ -120,7 +120,82 @@ public class LineActivity extends AppCompatActivity {
                     getApi();
                 }
             });
-        }else if (lineName.equals("9호선")) {
+        } else if (lineName.equals("4호선")) {
+            setContentView(R.layout.activity_line);
+            refresh = (ImageView) findViewById(R.id.refresh_btn);
+            listview = (ListView) findViewById(R.id.mList);
+            items = DataHouse.line4;
+            lineRecyclerAdapter = new LineRecyclerAdapter(items);
+            listview.setAdapter(lineRecyclerAdapter);
+            getApi();
+
+            refresh.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getApi();
+                }
+            });
+        } else if (lineName.equals("5호선")) {
+            setContentView(R.layout.activity_line);
+            refresh = (ImageView) findViewById(R.id.refresh_btn);
+            listview = (ListView) findViewById(R.id.mList);
+            items = DataHouse.line5;
+            lineRecyclerAdapter = new LineRecyclerAdapter(items);
+            listview.setAdapter(lineRecyclerAdapter);
+            getApi();
+
+            refresh.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getApi();
+                }
+            });
+        } else if (lineName.equals("6호선")) {
+            setContentView(R.layout.activity_line);
+            refresh = (ImageView) findViewById(R.id.refresh_btn);
+            listview = (ListView) findViewById(R.id.mList);
+            items = DataHouse.line6;
+            lineRecyclerAdapter = new LineRecyclerAdapter(items);
+            listview.setAdapter(lineRecyclerAdapter);
+            getApi();
+
+            refresh.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getApi();
+                }
+            });
+        } else if (lineName.equals("7호선")) {
+            setContentView(R.layout.activity_line);
+            refresh = (ImageView) findViewById(R.id.refresh_btn);
+            listview = (ListView) findViewById(R.id.mList);
+            items = DataHouse.line7;
+            lineRecyclerAdapter = new LineRecyclerAdapter(items);
+            listview.setAdapter(lineRecyclerAdapter);
+            getApi();
+
+            refresh.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getApi();
+                }
+            });
+        } else if (lineName.equals("8호선")) {
+            setContentView(R.layout.activity_line);
+            refresh = (ImageView) findViewById(R.id.refresh_btn);
+            listview = (ListView) findViewById(R.id.mList);
+            items = DataHouse.line8;
+            lineRecyclerAdapter = new LineRecyclerAdapter(items);
+            listview.setAdapter(lineRecyclerAdapter);
+            getApi();
+
+            refresh.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getApi();
+                }
+            });
+        } else if (lineName.equals("9호선")) {
             setContentView(R.layout.extream_activity_line);
 
             Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
