@@ -5,6 +5,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.example.letsseatinmetro.Fragment.ExtreamFragment;
+import com.example.letsseatinmetro.Fragment.FourExtreamFragment;
+import com.example.letsseatinmetro.Fragment.FourNormalFragment;
 import com.example.letsseatinmetro.Fragment.NineExtreamFragment;
 import com.example.letsseatinmetro.Fragment.NormalFragment;
 import com.example.letsseatinmetro.Fragment.NineNormalFragment;
@@ -38,6 +40,17 @@ public class TabPagerAdapter extends FragmentStatePagerAdapter {
                     case 1:
                         ExtreamFragment extreamFragment = new ExtreamFragment();
                         return extreamFragment;
+                    default:
+                        return null;
+                }
+            case 4:
+                switch (position) {
+                    case 0:
+                        FourNormalFragment fourNormalFragment = new FourNormalFragment();
+                        return fourNormalFragment;
+                    case 1:
+                        FourExtreamFragment fourExtreamFragment = new FourExtreamFragment();
+                        return fourExtreamFragment;
                     default:
                         return null;
                 }

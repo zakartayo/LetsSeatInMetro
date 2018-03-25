@@ -121,20 +121,50 @@ public class LineActivity extends AppCompatActivity {
                 }
             });
         } else if (lineName.equals("4호선")) {
-            setContentView(R.layout.activity_line);
-            refresh = (ImageView) findViewById(R.id.refresh_btn);
-            listview = (ListView) findViewById(R.id.mList);
-            items = DataHouse.line4;
-            lineRecyclerAdapter = new LineRecyclerAdapter(items);
-            listview.setAdapter(lineRecyclerAdapter);
-            getApi();
+            setContentView(R.layout.extream_activity_line);
 
-            refresh.setOnClickListener(new View.OnClickListener() {
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
+
+            // Initializing the TabLayout
+            tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+            tabLayout.addTab(tabLayout.newTab().setText("일반"));
+            tabLayout.addTab(tabLayout.newTab().setText("급행"));
+            tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
+            // Initializing ViewPager
+            viewPager = (ViewPager) findViewById(R.id.pager);
+
+            // Creating TabPagerAdapter adapter
+            TabPagerAdapter pagerAdapter = new TabPagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount(), 4);
+            viewPager.setAdapter(pagerAdapter);
+            viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+            // Set TabSelectedListener
+            tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
                 @Override
-                public void onClick(View view) {
-                    getApi();
+                public void onTabSelected(TabLayout.Tab tab) {
+                    viewPager.setCurrentItem(tab.getPosition());
+                }
+
+                @Override
+                public void onTabUnselected(TabLayout.Tab tab) {
+
+                }
+
+                @Override
+                public void onTabReselected(TabLayout.Tab tab) {
+
                 }
             });
+
+            /*refresh = (ImageView)findViewById(R.id.refresh_btn1);
+            listview = (ListView)findViewById(R.id.m1List);
+            items = DataHouse.line1;
+            lineRecyclerAdapter = new LineRecyclerAdapter(items);
+            listview.setAdapter(lineRecyclerAdapter);
+            getApi();*/
+
         } else if (lineName.equals("5호선")) {
             setContentView(R.layout.activity_line);
             refresh = (ImageView) findViewById(R.id.refresh_btn);

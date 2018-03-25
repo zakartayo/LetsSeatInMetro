@@ -299,6 +299,53 @@ public class DataHouse {
         }
     };
 
+    public static List<LineCardItem> extreamLine4 = new ArrayList<LineCardItem>() {
+        {
+            add(new LineCardItem(R.drawable.line_img_1, "당고개"));
+            add(new LineCardItem(R.drawable.line_img_1, "상계"));
+            add(new LineCardItem(R.drawable.line_img_1, "노원"));
+            add(new LineCardItem(R.drawable.line_img_1, "창동"));
+            add(new LineCardItem(R.drawable.line_img_1, "쌍문"));
+            add(new LineCardItem(R.drawable.line_img_1, "수유"));
+            add(new LineCardItem(R.drawable.line_img_1, "미아"));
+            add(new LineCardItem(R.drawable.line_img_1, "미아사거리"));
+            add(new LineCardItem(R.drawable.line_img_1, "길음"));
+            add(new LineCardItem(R.drawable.line_img_1, "성신여대입구"));
+            add(new LineCardItem(R.drawable.line_img_1, "한성대입구"));
+            add(new LineCardItem(R.drawable.line_img_1, "혜화"));
+            add(new LineCardItem(R.drawable.line_img_1, "동대문"));
+            add(new LineCardItem(R.drawable.line_img_1, "동대문역사문화공원"));
+            add(new LineCardItem(R.drawable.line_img_1, "충무로"));
+            add(new LineCardItem(R.drawable.line_img_1, "명동"));
+            add(new LineCardItem(R.drawable.line_img_1, "회현"));
+            add(new LineCardItem(R.drawable.line_img_1, "서울역"));
+            add(new LineCardItem(R.drawable.line_img_1, "숙대입구"));
+            add(new LineCardItem(R.drawable.line_img_1, "삼각지"));
+            add(new LineCardItem(R.drawable.line_img_1, "신용산"));
+            add(new LineCardItem(R.drawable.line_img_1, "이촌"));
+            add(new LineCardItem(R.drawable.line_img_1, "동작"));
+            add(new LineCardItem(R.drawable.line_img_1, "총신대입구(이수)"));
+            add(new LineCardItem(R.drawable.line_img_1, "사당"));
+            add(new LineCardItem(R.drawable.line_img_1, "남태령"));
+            add(new LineCardItem(R.drawable.line_img_1, "선바위"));
+            add(new LineCardItem(R.drawable.line_img_1, "경마공원"));
+            add(new LineCardItem(R.drawable.line_img_1, "대공원"));
+            add(new LineCardItem(R.drawable.line_img_1, "과천"));
+            add(new LineCardItem(R.drawable.line_img_1, "정부과천청사"));
+            add(new LineCardItem(R.drawable.line_img_1, "인덕원"));
+            add(new LineCardItem(R.drawable.line_img_1, "평촌"));
+            add(new LineCardItem(R.drawable.line_img_1, "범계"));
+            add(new LineCardItem(R.drawable.line_img_1, "금정"));
+            add(new LineCardItem(R.drawable.line_img_1, "산본"));
+            add(new LineCardItem(R.drawable.line_img_1, "상록수"));
+            add(new LineCardItem(R.drawable.line_img_1, "중앙"));
+            add(new LineCardItem(R.drawable.line_img_1, "안산"));
+            add(new LineCardItem(R.drawable.line_img_1, "신길온천"));
+            add(new LineCardItem(R.drawable.line_img_1, "정왕"));
+            add(new LineCardItem(R.drawable.line_img_1, "오이도"));
+        }
+    };
+
     public static List<LineCardItem> line5 = new ArrayList<LineCardItem>() {
         {
             add(new LineCardItem(R.drawable.line_img_1, "방화"));
