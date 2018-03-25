@@ -90,11 +90,11 @@ public class LineActivity extends AppCompatActivity {
             listview.setAdapter(lineRecyclerAdapter);
             getApi();*/
 
-        } else if (lineName.equals("경의·중앙선")) {
+        } else if (lineName.equals("2호선")) {
             setContentView(R.layout.activity_line);
             refresh = (ImageView) findViewById(R.id.refresh_btn);
             listview = (ListView) findViewById(R.id.mList);
-            items = DataHouse.kyungei;
+            items = DataHouse.line2;
             lineRecyclerAdapter = new LineRecyclerAdapter(items);
             listview.setAdapter(lineRecyclerAdapter);
             getApi();
@@ -105,7 +105,22 @@ public class LineActivity extends AppCompatActivity {
                     getApi();
                 }
             });
-        } else if (lineName.equals("9호선")) {
+        } else if (lineName.equals("3호선")) {
+            setContentView(R.layout.activity_line);
+            refresh = (ImageView) findViewById(R.id.refresh_btn);
+            listview = (ListView) findViewById(R.id.mList);
+            items = DataHouse.line3;
+            lineRecyclerAdapter = new LineRecyclerAdapter(items);
+            listview.setAdapter(lineRecyclerAdapter);
+            getApi();
+
+            refresh.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getApi();
+                }
+            });
+        }else if (lineName.equals("9호선")) {
             setContentView(R.layout.extream_activity_line);
 
             Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -150,6 +165,21 @@ public class LineActivity extends AppCompatActivity {
             listview.setAdapter(lineRecyclerAdapter);
             getApi();*/
 
+        } else if (lineName.equals("경의·중앙선")) {
+                setContentView(R.layout.activity_line);
+                refresh = (ImageView) findViewById(R.id.refresh_btn);
+                listview = (ListView) findViewById(R.id.mList);
+                items = DataHouse.kyungei;
+                lineRecyclerAdapter = new LineRecyclerAdapter(items);
+                listview.setAdapter(lineRecyclerAdapter);
+                getApi();
+
+                refresh.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getApi();
+                }
+            });
         }
     }
     public void getApi(){
