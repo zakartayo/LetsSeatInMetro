@@ -23,7 +23,7 @@ public class DataHouse {
             add(new MainCardItem("7호선", R.drawable.line7, "장암 - 부평구청"));
             add(new MainCardItem("8호선", R.drawable.line8, "암사 - 모란"));
             add(new MainCardItem("9호선", R.drawable.line9, "개화 - 종합운동장"));
-            add(new MainCardItem("경의·중앙선", R.drawable.linekyungei, "문산 - 서울역/지평"));
+            add(new MainCardItem("경의중앙선", R.drawable.linekyungei, "문산 - 서울역/지평"));
             add(new MainCardItem("분당선", R.drawable.lineboondang, "왕십리 - 수원"));
             add(new MainCardItem("신분당선", R.drawable.linenewboon, "강남 - 광교"));
             add(new MainCardItem("경춘선", R.drawable.linekyungchoon, "청량리 - 춘천"));
@@ -841,6 +841,5 @@ public class DataHouse {
             add(new LineCardItem(R.drawable.line_img_kyungei, "서울"));
         }
     };
-
 }
 

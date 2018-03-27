@@ -26,13 +26,21 @@ import java.util.List;
 public class LineRecyclerAdapter  extends BaseAdapter{
 
     private List<LineCardItem> listViewItemList = new ArrayList<LineCardItem>() ;
-    private ImageView direction_top;
+    private ImageView direction_top_1;
+    private ImageView direction_top_2;
+    private ImageView direction_top_3;
     private ImageView line1;
     private ImageView line2;
-    private ImageView direction_bottom;
+    private ImageView direction_bottom_1;
+    private ImageView direction_bottom_2;
+    private ImageView direction_bottom_3;
     private TextView station;
-    private TextView destination_top;
-    private TextView destination_bottom;
+    private TextView destination_top_1;
+    private TextView destination_top_2;
+    private TextView destination_top_3;
+    private TextView destination_bottom_1;
+    private TextView destination_bottom_2;
+    private TextView destination_bottom_3;
     // ListViewAdapter의 생성자
     public LineRecyclerAdapter(List<LineCardItem> listItem) {
         listViewItemList = listItem;
@@ -55,13 +63,21 @@ public class LineRecyclerAdapter  extends BaseAdapter{
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.line_item_cardview, parent, false);
         }
-        direction_top = (ImageView) convertView.findViewById(R.id.direction_top);
+        direction_top_1 = (ImageView) convertView.findViewById(R.id.direction_top_1);
+        direction_top_2 = (ImageView) convertView.findViewById(R.id.direction_top_2);
+        direction_top_3 = (ImageView) convertView.findViewById(R.id.direction_top_3);
         line1 = (ImageView) convertView.findViewById(R.id.line1);
         line2 = (ImageView) convertView.findViewById(R.id.line2);
-        direction_bottom = (ImageView) convertView.findViewById(R.id.direction_bottom);
+        direction_bottom_1 = (ImageView) convertView.findViewById(R.id.direction_bottom_1);
+        direction_bottom_2 = (ImageView) convertView.findViewById(R.id.direction_bottom_2);
+        direction_bottom_3 = (ImageView) convertView.findViewById(R.id.direction_bottom_3);
         station = (TextView) convertView.findViewById(R.id.station);
-        destination_top = (TextView) convertView.findViewById(R.id.top_destination);
-        destination_bottom = (TextView) convertView.findViewById(R.id.bottom_destination);
+        destination_top_1 = (TextView) convertView.findViewById(R.id.top_destination_1);
+        destination_top_2 = (TextView) convertView.findViewById(R.id.top_destination_2);
+        destination_top_3 = (TextView) convertView.findViewById(R.id.top_destination_3);
+        destination_bottom_1 = (TextView) convertView.findViewById(R.id.bottom_destination_1);
+        destination_bottom_2 = (TextView) convertView.findViewById(R.id.bottom_destination_2);
+        destination_bottom_3 = (TextView) convertView.findViewById(R.id.bottom_destination_3);
 
         // Data Set(listViewItemList)에서 position에 위치한 데이터 참조 획득
         LineCardItem listViewItem = listViewItemList.get(position);
@@ -70,10 +86,18 @@ public class LineRecyclerAdapter  extends BaseAdapter{
         line1.setImageResource(listViewItem.getLine1());
         line2.setImageResource(listViewItem.getLine2());
         station.setText(listViewItem.getStation());
-        direction_top.setImageResource(listViewItem.getTop_img());
-        direction_bottom.setImageResource(listViewItem.getBottom_img());
-        destination_bottom.setText(listViewItem.getDestination_bottom());
-        destination_top.setText(listViewItem.getDestination_top());
+        direction_top_1.setImageResource(listViewItem.getTop_img_1());
+        direction_top_2.setImageResource(listViewItem.getTop_img_2());
+        direction_top_3.setImageResource(listViewItem.getTop_img_3());
+        direction_bottom_1.setImageResource(listViewItem.getBottom_img_1());
+        direction_bottom_2.setImageResource(listViewItem.getBottom_img_2());
+        direction_bottom_3.setImageResource(listViewItem.getBottom_img_3());
+        destination_bottom_1.setText(listViewItem.getDestination_bottom_1());
+        destination_bottom_2.setText(listViewItem.getDestination_bottom_2());
+        destination_bottom_3.setText(listViewItem.getDestination_bottom_3());
+        destination_top_1.setText(listViewItem.getDestination_top_1());
+        destination_top_2.setText(listViewItem.getDestination_top_2());
+        destination_top_3.setText(listViewItem.getDestination_top_3());
 
 
         return convertView;
