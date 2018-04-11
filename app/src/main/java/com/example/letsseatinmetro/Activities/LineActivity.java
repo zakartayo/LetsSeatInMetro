@@ -66,6 +66,8 @@ public class LineActivity extends AppCompatActivity {
             // Creating TabPagerAdapter adapter
             TabPagerAdapter pagerAdapter = new TabPagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount(), 1);
             viewPager.setAdapter(pagerAdapter);
+            //getApi();
+
             viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
             // Set TabSelectedListener
