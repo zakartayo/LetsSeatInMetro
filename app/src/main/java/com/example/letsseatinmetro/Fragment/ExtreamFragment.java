@@ -109,7 +109,7 @@ public class ExtreamFragment extends Fragment{
                         Log.d("direction", destination);
                         Log.d("state", state);
                         System.out.println("=======================");
-                        dataTrim(currentPosition);
+                        trainPosition.add(currentPosition);
                         destinationData.add(destination);
                         updownData.add(updown);
                         trainState.add(state);
@@ -134,13 +134,13 @@ public class ExtreamFragment extends Fragment{
             return result;
         }
     }
-    public void dataTrim(String data){
+    /*public void dataTrim(String data){
         StringBuffer bf = new StringBuffer();
         bf.append(data.charAt(0));
         bf.append(data.charAt(1));
         Log.d("dataTrim", bf.toString());
         trainPosition.add(bf.toString());
-    }
+    }*/
     public void compareData(int extreamCount) {
         refreshData();
         for (int i = 0; i < items.size(); i++) {
@@ -148,10 +148,11 @@ public class ExtreamFragment extends Fragment{
             Log.d("itemSize", Integer.toString(items.size()));
             for (int j = 0; j < extreamCount; j++) {
                 Log.d("datalength", Integer.toString(dataLength));
+                Log.d("extreamCount", Integer.toString(extreamCount));
                 System.out.println(j);
                 //System.out.println(String.valueOf(items.get(i).getStation().charAt(0))+String.valueOf(trainPosition.get(j).charAt(0)));
                 //System.out.println(String.valueOf(items.get(i).getStation().charAt(1))+String.valueOf(trainPosition.get(j).charAt(1)));
-                if (items.get(i).getStation().charAt(0) == trainPosition.get(j).charAt(0) && items.get(i).getStation().charAt(1) == trainPosition.get(j).charAt(1)) {
+                if (items.get(i).getStation().equals(trainPosition.get(j))) {
                     System.out.println("일치");
                     if (updownData.get(j).equals("0")) {
                         Log.d("상행", items.get(i).getStation());

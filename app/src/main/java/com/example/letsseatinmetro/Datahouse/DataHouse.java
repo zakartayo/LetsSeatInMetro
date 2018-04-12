@@ -115,6 +115,15 @@ public class DataHouse {
 
     public static List<LineCardItem> extreamLine1 = new ArrayList<LineCardItem>() {
         {
+            add(new LineCardItem(R.drawable.line_img_1, "동두천"));
+            add(new LineCardItem(R.drawable.line_img_1, "동두천중앙"));
+            add(new LineCardItem(R.drawable.line_img_1, "덕정"));
+            add(new LineCardItem(R.drawable.line_img_1, "양주"));
+            add(new LineCardItem(R.drawable.line_img_1, "의정부"));
+            add(new LineCardItem(R.drawable.line_img_1, "회룡"));
+            add(new LineCardItem(R.drawable.line_img_1, "도봉산"));
+            add(new LineCardItem(R.drawable.line_img_1, "창동"));
+            add(new LineCardItem(R.drawable.line_img_1, "광운대"));
             add(new LineCardItem(R.drawable.line_img_1, "용산"));
             add(new LineCardItem(R.drawable.line_img_1, "노량진"));
             add(new LineCardItem(R.drawable.line_img_1, "대방"));
@@ -122,6 +131,13 @@ public class DataHouse {
             add(new LineCardItem(R.drawable.line_img_1, "영등포"));
             add(new LineCardItem(R.drawable.line_img_1, "신도림"));
             add(new LineCardItem(R.drawable.line_img_1, "구로"));
+            add(new LineCardItem(R.drawable.line_img_1, "역곡"));
+            add(new LineCardItem(R.drawable.line_img_1, "부천"));
+            add(new LineCardItem(R.drawable.line_img_1, "송내"));
+            add(new LineCardItem(R.drawable.line_img_1, "부평"));
+            add(new LineCardItem(R.drawable.line_img_1, "동암"));
+            add(new LineCardItem(R.drawable.line_img_1, "주안"));
+            add(new LineCardItem(R.drawable.line_img_1, "동인천"));
             add(new LineCardItem(R.drawable.line_img_1, "가산디지털단지"));
             add(new LineCardItem(R.drawable.line_img_1, "안양"));
             add(new LineCardItem(R.drawable.line_img_1, "수원"));
@@ -132,12 +148,6 @@ public class DataHouse {
             add(new LineCardItem(R.drawable.line_img_1, "성환"));
             add(new LineCardItem(R.drawable.line_img_1, "두정"));
             add(new LineCardItem(R.drawable.line_img_1, "천안"));
-            add(new LineCardItem(R.drawable.line_img_1, "봉명"));
-            add(new LineCardItem(R.drawable.line_img_1, "쌍용"));
-            add(new LineCardItem(R.drawable.line_img_1, "아산"));
-            add(new LineCardItem(R.drawable.line_img_1, "배방"));
-            add(new LineCardItem(R.drawable.line_img_1, "온양온천"));
-            add(new LineCardItem(R.drawable.line_img_1, "신창"));
         }
     };
     public static List<LineCardItem> line2 = new ArrayList<LineCardItem>() {
