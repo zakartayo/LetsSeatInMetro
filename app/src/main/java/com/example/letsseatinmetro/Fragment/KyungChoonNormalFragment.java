@@ -28,7 +28,7 @@ import java.util.List;
  * Created by 이승헌 on 2018-03-18.
  */
 
-public class FourNormalFragment extends Fragment {
+public class KyungChoonNormalFragment extends Fragment {
     private ListView listview;
     private LineRecyclerAdapter lineRecyclerAdapter;
     private List<LineCardItem> items = new ArrayList<>();
@@ -44,7 +44,7 @@ public class FourNormalFragment extends Fragment {
         View v = inflater.inflate(R.layout.normal_tab, container, false);
         listview = (ListView) v.findViewById(R.id.normalList);
         refresh = (ImageView)v.findViewById(R.id.refresh_normal_btn);
-        items = DataHouse.line4;
+        items = DataHouse.kyungchun;
         lineRecyclerAdapter = new LineRecyclerAdapter(items);
         listview.setAdapter(lineRecyclerAdapter);
         getApi();
@@ -56,7 +56,8 @@ public class FourNormalFragment extends Fragment {
             }
         });
         return v;
-    }public void getApi(){
+    }
+    public void getApi(){
         Log.d("normalFragment api", "api called normalFragment");
         new MyTask(getActivity()).execute();
     }
@@ -127,7 +128,7 @@ public class FourNormalFragment extends Fragment {
             String result = "";
             try {
                 //서울시 오픈 API 제공(샘플 주소 json으로 작업)
-                result = Remote.getData("http://swopenapi.seoul.go.kr/api/subway/574a706754646c673936684d555778/json/realtimePosition/1/1000/"+"4호선");
+                result = Remote.getData("http://swopenapi.seoul.go.kr/api/subway/574a706754646c673936684d555778/json/realtimePosition/1/1000/"+"경춘선");
             } catch (Exception e) {
                 e.printStackTrace();
             }

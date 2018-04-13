@@ -4,9 +4,15 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.example.letsseatinmetro.Fragment.BundangExtreamFragment;
+import com.example.letsseatinmetro.Fragment.BundangNormalFragment;
 import com.example.letsseatinmetro.Fragment.ExtreamFragment;
 import com.example.letsseatinmetro.Fragment.FourExtreamFragment;
 import com.example.letsseatinmetro.Fragment.FourNormalFragment;
+import com.example.letsseatinmetro.Fragment.KyungChoonExtreamFragment;
+import com.example.letsseatinmetro.Fragment.KyungChoonNormalFragment;
+import com.example.letsseatinmetro.Fragment.KyungeiExtreamFragment;
+import com.example.letsseatinmetro.Fragment.KyungeiNormalFragment;
 import com.example.letsseatinmetro.Fragment.NineExtreamFragment;
 import com.example.letsseatinmetro.Fragment.NormalFragment;
 import com.example.letsseatinmetro.Fragment.NineNormalFragment;
@@ -65,7 +71,40 @@ public class TabPagerAdapter extends FragmentStatePagerAdapter {
                     default:
                         return null;
                 }
-                default:
+            case 10:
+                switch (position) {
+                    case 0:
+                        KyungeiNormalFragment kyungeiNormalFragment = new KyungeiNormalFragment();
+                        return kyungeiNormalFragment;
+                    case 1:
+                        KyungeiExtreamFragment kyungeiExtreamFragment = new KyungeiExtreamFragment();
+                        return kyungeiExtreamFragment;
+                    default:
+                        return null;
+                }
+            case 11:
+                switch (position) {
+                    case 0:
+                        BundangNormalFragment bundangNormalFragment = new BundangNormalFragment();
+                        return bundangNormalFragment;
+                    case 1:
+                        BundangExtreamFragment bundangExtreamFragment = new BundangExtreamFragment();
+                        return bundangExtreamFragment;
+                    default:
+                        return null;
+                }
+            case 12:
+                switch (position) {
+                    case 0:
+                        KyungChoonNormalFragment kyungChoonNormalFragment = new KyungChoonNormalFragment();
+                        return kyungChoonNormalFragment;
+                    case 1:
+                        KyungChoonExtreamFragment kyungChoonExtreamFragment = new KyungChoonExtreamFragment();
+                        return kyungChoonExtreamFragment;
+                    default:
+                        return null;
+                }
+            default:
                     return null;
         }
 

@@ -44,7 +44,7 @@ public class ExtreamFragment extends Fragment{
         View v = inflater.inflate(R.layout.extream_tab, container, false);
         listview = (ListView) v.findViewById(R.id.extreamList);
         refresh = (ImageView)v.findViewById(R.id.refresh_extream_btn);
-        items = DataHouse.extreamLine1;
+        items = DataHouse.line1;
         lineRecyclerAdapter = new LineRecyclerAdapter(items);
         listview.setAdapter(lineRecyclerAdapter);
         getApi();

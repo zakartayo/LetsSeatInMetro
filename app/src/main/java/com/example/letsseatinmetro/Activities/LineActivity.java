@@ -1,5 +1,8 @@
 package com.example.letsseatinmetro.Activities;
 
+/**
+ * Created by 이승헌 on 2018-03-18.
+ */
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.design.widget.TabLayout;
@@ -46,7 +49,7 @@ public class LineActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         lineName = intent.getStringExtra("lineName");
-
+        Log.d("lineName", lineName);
 
         if (lineName.equals("1호선")) {
             setContentView(R.layout.extream_activity_line);
@@ -255,34 +258,81 @@ public class LineActivity extends AppCompatActivity {
                 }
             });
 
-        } else if (lineName.equals("경의·중앙선")) {
-                setContentView(R.layout.activity_line);
-                refresh = (ImageView) findViewById(R.id.refresh_btn);
-                listview = (ListView) findViewById(R.id.mList);
-                items = DataHouse.kyungei;
-                lineRecyclerAdapter = new LineRecyclerAdapter(items);
-                listview.setAdapter(lineRecyclerAdapter);
-                getApi();
+        } else if (lineName.equals("경의중앙선")) {
 
-                refresh.setOnClickListener(new View.OnClickListener() {
+            setContentView(R.layout.extream_activity_line);
+
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
+
+            // Initializing the TabLayout
+            tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+            tabLayout.addTab(tabLayout.newTab().setText("일반"));
+            tabLayout.addTab(tabLayout.newTab().setText("급행"));
+            tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
+            // Initializing ViewPager
+            viewPager = (ViewPager) findViewById(R.id.pager);
+
+            // Creating TabPagerAdapter adapter
+            TabPagerAdapter pagerAdapter = new TabPagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount(), 10);
+            viewPager.setAdapter(pagerAdapter);
+            viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+            // Set TabSelectedListener
+            tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
                 @Override
-                public void onClick(View view) {
-                    getApi();
+                public void onTabSelected(TabLayout.Tab tab) {
+                    viewPager.setCurrentItem(tab.getPosition());
+                }
+
+                @Override
+                public void onTabUnselected(TabLayout.Tab tab) {
+
+                }
+
+                @Override
+                public void onTabReselected(TabLayout.Tab tab) {
+
                 }
             });
         } else if (lineName.equals("분당선")) {
-            setContentView(R.layout.activity_line);
-            refresh = (ImageView) findViewById(R.id.refresh_btn);
-            listview = (ListView) findViewById(R.id.mList);
-            items = DataHouse.bundang;
-            lineRecyclerAdapter = new LineRecyclerAdapter(items);
-            listview.setAdapter(lineRecyclerAdapter);
-            getApi();
 
-            refresh.setOnClickListener(new View.OnClickListener() {
+            setContentView(R.layout.extream_activity_line);
+
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
+
+            // Initializing the TabLayout
+            tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+            tabLayout.addTab(tabLayout.newTab().setText("일반"));
+            tabLayout.addTab(tabLayout.newTab().setText("급행"));
+            tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
+            // Initializing ViewPager
+            viewPager = (ViewPager) findViewById(R.id.pager);
+
+            // Creating TabPagerAdapter adapter
+            TabPagerAdapter pagerAdapter = new TabPagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount(), 11);
+            viewPager.setAdapter(pagerAdapter);
+            viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+            // Set TabSelectedListener
+            tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+
                 @Override
-                public void onClick(View view) {
-                    getApi();
+                public void onTabSelected(TabLayout.Tab tab) {
+                    viewPager.setCurrentItem(tab.getPosition());
+                }
+
+                @Override
+                public void onTabUnselected(TabLayout.Tab tab) {
+
+                }
+
+                @Override
+                public void onTabReselected(TabLayout.Tab tab) {
+
                 }
             });
         } else if (lineName.equals("신분당선")) {
@@ -301,18 +351,42 @@ public class LineActivity extends AppCompatActivity {
                 }
             });
         } else if (lineName.equals("경춘선")) {
-            setContentView(R.layout.activity_line);
-            refresh = (ImageView) findViewById(R.id.refresh_btn);
-            listview = (ListView) findViewById(R.id.mList);
-            items = DataHouse.kyungchun;
-            lineRecyclerAdapter = new LineRecyclerAdapter(items);
-            listview.setAdapter(lineRecyclerAdapter);
-            getApi();
 
-            refresh.setOnClickListener(new View.OnClickListener() {
+            setContentView(R.layout.extream_activity_line);
+
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
+
+            // Initializing the TabLayout
+            tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+            tabLayout.addTab(tabLayout.newTab().setText("일반"));
+            tabLayout.addTab(tabLayout.newTab().setText("급행"));
+            tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
+            // Initializing ViewPager
+            viewPager = (ViewPager) findViewById(R.id.pager);
+
+            // Creating TabPagerAdapter adapter
+            TabPagerAdapter pagerAdapter = new TabPagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount(), 12);
+            viewPager.setAdapter(pagerAdapter);
+            viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+            // Set TabSelectedListener
+            tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+
                 @Override
-                public void onClick(View view) {
-                    getApi();
+                public void onTabSelected(TabLayout.Tab tab) {
+                    viewPager.setCurrentItem(tab.getPosition());
+                }
+
+                @Override
+                public void onTabUnselected(TabLayout.Tab tab) {
+
+                }
+
+                @Override
+                public void onTabReselected(TabLayout.Tab tab) {
+
                 }
             });
         } else if (lineName.equals("공항철도")) {
@@ -369,7 +443,7 @@ public class LineActivity extends AppCompatActivity {
                     //현재 지하철역명 저장
                     String currentPosition = result.getString("statnNm");
                     Log.d("currentPosition", currentPosition);
-                    dataTrim(currentPosition);
+                    trainPosition.add(currentPosition);
 
                     //종착역 저장
                     String destination = result.getString("statnTnm");
@@ -401,18 +475,22 @@ public class LineActivity extends AppCompatActivity {
             return result;
         }
     }
-    public void dataTrim(String data){
+    /*public void dataTrim(String data){
         StringBuffer bf = new StringBuffer();
         bf.append(data.charAt(0));
         bf.append(data.charAt(1));
         Log.d("dataTrim", bf.toString());
         trainPosition.add(bf.toString());
-    }
+    }*/
     public void compareData(){
         refreshData();
         for(int i=0; i<items.size(); i++){
+            Log.d("itemsize", Integer.toString(items.size()));
+            Log.d("i입니다", Integer.toString(i));
             for(int j=0; j<dataLength; j++){
-                if(items.get(i).getStation().charAt(0)==trainPosition.get(j).charAt(0) && items.get(i).getStation().charAt(1)==trainPosition.get(j).charAt(1)){
+                Log.d("j입니다", Integer.toString(j));
+                Log.d("datalength2", Integer.toString(dataLength));
+                if(items.get(i).getStation().equals(trainPosition.get(j))){
                     if(updownData.get(j).equals("0")){
                         Log.d("상행",items.get(i).getStation());
 

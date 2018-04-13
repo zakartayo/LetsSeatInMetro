@@ -28,7 +28,7 @@ import java.util.List;
  * Created by 이승헌 on 2018-03-18.
  */
 
-public class FourNormalFragment extends Fragment {
+public class KyungChoonExtreamFragment extends Fragment {
     private ListView listview;
     private LineRecyclerAdapter lineRecyclerAdapter;
     private List<LineCardItem> items = new ArrayList<>();
@@ -41,12 +41,13 @@ public class FourNormalFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.normal_tab, container, false);
-        listview = (ListView) v.findViewById(R.id.normalList);
-        refresh = (ImageView)v.findViewById(R.id.refresh_normal_btn);
-        items = DataHouse.line4;
+        View v = inflater.inflate(R.layout.extream_tab, container, false);
+        listview = (ListView) v.findViewById(R.id.extreamList);
+        refresh = (ImageView)v.findViewById(R.id.refresh_extream_btn);
+        items = DataHouse.kyungchun;
         lineRecyclerAdapter = new LineRecyclerAdapter(items);
         listview.setAdapter(lineRecyclerAdapter);
+
         getApi();
 
         refresh.setOnClickListener(new View.OnClickListener() {
@@ -57,7 +58,7 @@ public class FourNormalFragment extends Fragment {
         });
         return v;
     }public void getApi(){
-        Log.d("normalFragment api", "api called normalFragment");
+        Log.d("extreamFragment api", "api called extreamFragment");
         new MyTask(getActivity()).execute();
     }
     private class MyTask extends AsyncTask<Void, Void, String> {
@@ -87,7 +88,7 @@ public class FourNormalFragment extends Fragment {
                 trainState = new ArrayList<>();
 
                 Log.d("dataLength", Integer.toString(dataLength));
-                int normalCount=0;
+                int extreamCount=0;
                 for(int i=0; i < dataLength; i ++){
 
                     JSONObject result = (JSONObject) rows.get(i);
@@ -102,7 +103,7 @@ public class FourNormalFragment extends Fragment {
                     //열차 상태 저장
                     String state = result.getString("trainSttus");
 
-                    if(directAt.equals("0")) {
+                    if(directAt.equals("1")) {
                         Log.d("directAt", directAt);
                         Log.d("destination", destination);
                         Log.d("currentPosition", currentPosition);
@@ -113,12 +114,12 @@ public class FourNormalFragment extends Fragment {
                         destinationData.add(destination);
                         updownData.add(updown);
                         trainState.add(state);
-                        normalCount++;
+                        extreamCount++;
                     }else if(directAt.equals("1")){
-                        System.out.println("급행입니다");
+                        System.out.println("일반입니다");
                     }
                 }
-                compareData(normalCount);
+                compareData(extreamCount);
             }catch (Exception e ){}
         }
 
@@ -127,7 +128,7 @@ public class FourNormalFragment extends Fragment {
             String result = "";
             try {
                 //서울시 오픈 API 제공(샘플 주소 json으로 작업)
-                result = Remote.getData("http://swopenapi.seoul.go.kr/api/subway/574a706754646c673936684d555778/json/realtimePosition/1/1000/"+"4호선");
+                result = Remote.getData("http://swopenapi.seoul.go.kr/api/subway/574a706754646c673936684d555778/json/realtimePosition/1/1000/"+"경춘선");
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -141,15 +142,19 @@ public class FourNormalFragment extends Fragment {
         Log.d("dataTrim", bf.toString());
         trainPosition.add(bf.toString());
     }*/
-    public void compareData(int normalCount) {
-        refreshData();
+    public void compareData(int extreamCount) {
+
+        if(extreamCount==0){
+            refreshData();
+            listview.setAdapter(lineRecyclerAdapter);
+        }
+
         for (int i = 0; i < items.size(); i++) {
             System.out.println(i);
             Log.d("itemSize", Integer.toString(items.size()));
-            for (int j = 0; j < normalCount; j++) {
+            for (int j = 0; j < extreamCount; j++) {
                 Log.d("datalength", Integer.toString(dataLength));
-                Log.d("normalCount", Integer.toString(normalCount));
-
+                Log.d("extreamCount", Integer.toString(extreamCount));
                 System.out.println(j);
                 //System.out.println(String.valueOf(items.get(i).getStation().charAt(0))+String.valueOf(trainPosition.get(j).charAt(0)));
                 //System.out.println(String.valueOf(items.get(i).getStation().charAt(1))+String.valueOf(trainPosition.get(j).charAt(1)));

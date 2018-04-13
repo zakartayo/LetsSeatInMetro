@@ -113,7 +113,7 @@ public class DataHouse {
         }
     };
 
-    public static List<LineCardItem> extreamLine1 = new ArrayList<LineCardItem>() {
+    /*public static List<LineCardItem> extreamLine1 = new ArrayList<LineCardItem>() {
         {
             add(new LineCardItem(R.drawable.line_img_1, "동두천"));
             add(new LineCardItem(R.drawable.line_img_1, "동두천중앙"));
@@ -149,7 +149,7 @@ public class DataHouse {
             add(new LineCardItem(R.drawable.line_img_1, "두정"));
             add(new LineCardItem(R.drawable.line_img_1, "천안"));
         }
-    };
+    };*/
     public static List<LineCardItem> line2 = new ArrayList<LineCardItem>() {
         {
             add(new LineCardItem(R.drawable.line_img_1, "시청"));
@@ -309,42 +309,8 @@ public class DataHouse {
         }
     };
 
-    public static List<LineCardItem> extreamLine4 = new ArrayList<LineCardItem>() {
+    /*public static List<LineCardItem> extreamLine4 = new ArrayList<LineCardItem>() {
         {
-            add(new LineCardItem(R.drawable.line_img_1, "당고개"));
-            add(new LineCardItem(R.drawable.line_img_1, "상계"));
-            add(new LineCardItem(R.drawable.line_img_1, "노원"));
-            add(new LineCardItem(R.drawable.line_img_1, "창동"));
-            add(new LineCardItem(R.drawable.line_img_1, "쌍문"));
-            add(new LineCardItem(R.drawable.line_img_1, "수유"));
-            add(new LineCardItem(R.drawable.line_img_1, "미아"));
-            add(new LineCardItem(R.drawable.line_img_1, "미아사거리"));
-            add(new LineCardItem(R.drawable.line_img_1, "길음"));
-            add(new LineCardItem(R.drawable.line_img_1, "성신여대입구"));
-            add(new LineCardItem(R.drawable.line_img_1, "한성대입구"));
-            add(new LineCardItem(R.drawable.line_img_1, "혜화"));
-            add(new LineCardItem(R.drawable.line_img_1, "동대문"));
-            add(new LineCardItem(R.drawable.line_img_1, "동대문역사문화공원"));
-            add(new LineCardItem(R.drawable.line_img_1, "충무로"));
-            add(new LineCardItem(R.drawable.line_img_1, "명동"));
-            add(new LineCardItem(R.drawable.line_img_1, "회현"));
-            add(new LineCardItem(R.drawable.line_img_1, "서울역"));
-            add(new LineCardItem(R.drawable.line_img_1, "숙대입구"));
-            add(new LineCardItem(R.drawable.line_img_1, "삼각지"));
-            add(new LineCardItem(R.drawable.line_img_1, "신용산"));
-            add(new LineCardItem(R.drawable.line_img_1, "이촌"));
-            add(new LineCardItem(R.drawable.line_img_1, "동작"));
-            add(new LineCardItem(R.drawable.line_img_1, "총신대입구(이수)"));
-            add(new LineCardItem(R.drawable.line_img_1, "사당"));
-            add(new LineCardItem(R.drawable.line_img_1, "남태령"));
-            add(new LineCardItem(R.drawable.line_img_1, "선바위"));
-            add(new LineCardItem(R.drawable.line_img_1, "경마공원"));
-            add(new LineCardItem(R.drawable.line_img_1, "대공원"));
-            add(new LineCardItem(R.drawable.line_img_1, "과천"));
-            add(new LineCardItem(R.drawable.line_img_1, "정부과천청사"));
-            add(new LineCardItem(R.drawable.line_img_1, "인덕원"));
-            add(new LineCardItem(R.drawable.line_img_1, "평촌"));
-            add(new LineCardItem(R.drawable.line_img_1, "범계"));
             add(new LineCardItem(R.drawable.line_img_1, "금정"));
             add(new LineCardItem(R.drawable.line_img_1, "산본"));
             add(new LineCardItem(R.drawable.line_img_1, "상록수"));
@@ -354,7 +320,7 @@ public class DataHouse {
             add(new LineCardItem(R.drawable.line_img_1, "정왕"));
             add(new LineCardItem(R.drawable.line_img_1, "오이도"));
         }
-    };
+    };*/
 
     public static List<LineCardItem> line5 = new ArrayList<LineCardItem>() {
         {
@@ -564,8 +530,11 @@ public class DataHouse {
         }
     };
 
-    public static List<LineCardItem> extreamLine9 = new ArrayList<LineCardItem>() {
+   /* public static List<LineCardItem> extreamLine9 = new ArrayList<LineCardItem>() {
         {
+            add(new LineCardItem(R.drawable.line_img_1, "김포공항"));
+            add(new LineCardItem(R.drawable.line_img_1, "가양"));
+            add(new LineCardItem(R.drawable.line_img_1, "염창"));
             add(new LineCardItem(R.drawable.line_img_1, "당산"));
             add(new LineCardItem(R.drawable.line_img_1, "여의도"));
             add(new LineCardItem(R.drawable.line_img_1, "노량진"));
@@ -576,7 +545,7 @@ public class DataHouse {
             add(new LineCardItem(R.drawable.line_img_1, "봉은사"));
             add(new LineCardItem(R.drawable.line_img_1, "종합운동장"));
         }
-    };
+    };*/
 
     public static List<LineCardItem> kyungei = new ArrayList<LineCardItem>() {
         {
@@ -602,7 +571,6 @@ public class DataHouse {
             add(new LineCardItem(R.drawable.line_img_kyungei, "가좌"));
             add(new LineCardItem(R.drawable.line_img_kyungei, "신촌"));
             add(new LineCardItem(R.drawable.line_img_kyungei, "서울"));
-            add(new LineCardItem(R.drawable.line_img_kyungei, "가좌"));
             add(new LineCardItem(R.drawable.line_img_kyungei, "홍대입구"));
             add(new LineCardItem(R.drawable.line_img_kyungei, "서강대"));
             add(new LineCardItem(R.drawable.line_img_kyungei, "공덕"));
@@ -639,7 +607,7 @@ public class DataHouse {
         }
     };
 
-    public static List<LineCardItem> extreamkyungei = new ArrayList<LineCardItem>() {
+    /*public static List<LineCardItem> extreamkyungei = new ArrayList<LineCardItem>() {
         { // 경의 이상하게 나와있는데 확인 다시 해보고 정리 해봐야 될듯.
             add(new LineCardItem(R.drawable.line_img_kyungei, "문산"));
             add(new LineCardItem(R.drawable.line_img_kyungei, "파주"));
@@ -695,7 +663,7 @@ public class DataHouse {
             add(new LineCardItem(R.drawable.line_img_kyungei, "용문"));
             add(new LineCardItem(R.drawable.line_img_kyungei, "지평"));
         }
-    };
+    };*/
 
     public static List<LineCardItem> bundang = new ArrayList<LineCardItem>() {
         {
@@ -738,7 +706,7 @@ public class DataHouse {
         }
     };
 
-    public static List<LineCardItem> extreambundang = new ArrayList<LineCardItem>() {
+    /*public static List<LineCardItem> extreambundang = new ArrayList<LineCardItem>() {
         {
             add(new LineCardItem(R.drawable.line_img_kyungei, "왕십리"));
             add(new LineCardItem(R.drawable.line_img_kyungei, "서울숲"));
@@ -769,7 +737,7 @@ public class DataHouse {
             add(new LineCardItem(R.drawable.line_img_kyungei, "수원시청"));
             add(new LineCardItem(R.drawable.line_img_kyungei, "수원"));
         }
-    };
+    };*/
 
     public static List<LineCardItem> newbundang = new ArrayList<LineCardItem>() {
         {
@@ -817,7 +785,7 @@ public class DataHouse {
         }
     };
 
-    public static List<LineCardItem> extreamkyungchun = new ArrayList<LineCardItem>() {
+    /*public static List<LineCardItem> extreamkyungchun = new ArrayList<LineCardItem>() {
         {
             add(new LineCardItem(R.drawable.line_img_kyungei, "청량리"));
             add(new LineCardItem(R.drawable.line_img_kyungei, "회기"));
@@ -832,7 +800,7 @@ public class DataHouse {
             add(new LineCardItem(R.drawable.line_img_kyungei, "남춘천"));
             add(new LineCardItem(R.drawable.line_img_kyungei, "춘천"));
         }
-    };
+    };*/
 
     public static List<LineCardItem> arirail = new ArrayList<LineCardItem>() {
         {
