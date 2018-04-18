@@ -26,14 +26,8 @@ import java.util.List;
 public class LineRecyclerAdapter  extends BaseAdapter{
 
     private List<LineCardItem> listViewItemList = new ArrayList<LineCardItem>() ;
-    private ImageView direction_top_1;
-    private ImageView direction_top_2;
-    private ImageView direction_top_3;
     private ImageView line1;
     private ImageView line2;
-    private ImageView direction_bottom_1;
-    private ImageView direction_bottom_2;
-    private ImageView direction_bottom_3;
     private TextView station;
     private TextView destination_top_1;
     private TextView destination_top_2;
@@ -63,14 +57,8 @@ public class LineRecyclerAdapter  extends BaseAdapter{
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.line_item_cardview, parent, false);
         }
-        direction_top_1 = (ImageView) convertView.findViewById(R.id.direction_top_1);
-        direction_top_2 = (ImageView) convertView.findViewById(R.id.direction_top_2);
-        direction_top_3 = (ImageView) convertView.findViewById(R.id.direction_top_3);
         line1 = (ImageView) convertView.findViewById(R.id.line1);
         line2 = (ImageView) convertView.findViewById(R.id.line2);
-        direction_bottom_1 = (ImageView) convertView.findViewById(R.id.direction_bottom_1);
-        direction_bottom_2 = (ImageView) convertView.findViewById(R.id.direction_bottom_2);
-        direction_bottom_3 = (ImageView) convertView.findViewById(R.id.direction_bottom_3);
         station = (TextView) convertView.findViewById(R.id.station);
         destination_top_1 = (TextView) convertView.findViewById(R.id.top_destination_1);
         destination_top_2 = (TextView) convertView.findViewById(R.id.top_destination_2);
@@ -86,12 +74,6 @@ public class LineRecyclerAdapter  extends BaseAdapter{
         line1.setImageResource(listViewItem.getLine1());
         line2.setImageResource(listViewItem.getLine2());
         station.setText(listViewItem.getStation());
-        direction_top_1.setImageResource(listViewItem.getTop_img_1());
-        direction_top_2.setImageResource(listViewItem.getTop_img_2());
-        direction_top_3.setImageResource(listViewItem.getTop_img_3());
-        direction_bottom_1.setImageResource(listViewItem.getBottom_img_1());
-        direction_bottom_2.setImageResource(listViewItem.getBottom_img_2());
-        direction_bottom_3.setImageResource(listViewItem.getBottom_img_3());
         destination_bottom_1.setText(listViewItem.getDestination_bottom_1());
         destination_bottom_2.setText(listViewItem.getDestination_bottom_2());
         destination_bottom_3.setText(listViewItem.getDestination_bottom_3());

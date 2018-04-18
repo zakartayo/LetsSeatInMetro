@@ -10,7 +10,10 @@
     <ListView
         android:id="@+id/mList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:dividerHeight="0px"
+        android:divider="#ffffff"/>
 
     <FrameLayout
         android:layout_width="match_parent"

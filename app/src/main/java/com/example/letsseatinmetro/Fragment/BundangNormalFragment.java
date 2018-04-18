@@ -160,13 +160,13 @@ public class BundangNormalFragment extends Fragment {
                         Log.d("상행", items.get(i).getStation());
 
                         if (trainState.get(j).equals("0")) {
-                            items.get(i).setTop_img_1(R.drawable.train);
+                            items.get(i).setline1(R.drawable.line_bundang_1);
                             items.get(i).setDestination_top_1(destinationData.get(j));
                         } else if (trainState.get(j).equals("1")) {
-                            items.get(i).setTop_img_2(R.drawable.train);
+                            items.get(i).setline1(R.drawable.line_bundang_2);
                             items.get(i).setDestination_top_2(destinationData.get(j));
                         } else {
-                            items.get(i).setTop_img_3(R.drawable.train);
+                            items.get(i).setline1(R.drawable.line_bundang_3);
                             items.get(i).setDestination_top_3(destinationData.get(j));
                         }
                         lineRecyclerAdapter.notifyDataSetChanged();
@@ -176,13 +176,13 @@ public class BundangNormalFragment extends Fragment {
                         Log.d("하행", items.get(i).getStation());
 
                         if (trainState.get(j).equals("0")) {
-                            items.get(i).setBottom_img_1(R.drawable.train);
+                            items.get(i).setline2(R.drawable.line_bundang_1);
                             items.get(i).setDestination_bottom_1(destinationData.get(j));
                         } else if (trainState.get(j).equals("1")) {
-                            items.get(i).setBottom_img_2(R.drawable.train);
+                            items.get(i).setline2(R.drawable.line_bundang_1);
                             items.get(i).setDestination_bottom_2(destinationData.get(j));
                         } else {
-                            items.get(i).setBottom_img_3(R.drawable.train);
+                            items.get(i).setline2(R.drawable.line_bundang_1);
                             items.get(i).setDestination_bottom_3(destinationData.get(j));
                         }
                         lineRecyclerAdapter.notifyDataSetChanged();
@@ -196,12 +196,8 @@ public class BundangNormalFragment extends Fragment {
     }
     public void refreshData(){
         for(int i=0; i<items.size(); i++){
-            items.get(i).setTop_img_1(R.drawable.blank_img);
-            items.get(i).setTop_img_2(R.drawable.blank_img);
-            items.get(i).setTop_img_3(R.drawable.blank_img);
-            items.get(i).setBottom_img_1(R.drawable.blank_img);
-            items.get(i).setBottom_img_2(R.drawable.blank_img);
-            items.get(i).setBottom_img_3(R.drawable.blank_img);
+            items.get(i).setline1(R.drawable.line_img_bundang);
+            items.get(i).setline2(R.drawable.line_img_bundang);
             items.get(i).setDestination_top_1("");
             items.get(i).setDestination_top_2("");
             items.get(i).setDestination_top_3("");

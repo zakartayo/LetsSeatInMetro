@@ -4,6 +4,7 @@ package com.example.letsseatinmetro.Activities;
  * Created by 이승헌 on 2018-03-18.
  */
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -459,6 +460,7 @@ public class LineActivity extends AppCompatActivity {
                     trainState.add(state);
                     Log.d("state", state);
                 }
+                Log.d("trainpositionsize", Integer.toString(trainPosition.size()));
                 compareData();
             }catch (Exception e ){}
         }
@@ -483,63 +485,364 @@ public class LineActivity extends AppCompatActivity {
         trainPosition.add(bf.toString());
     }*/
     public void compareData(){
-        refreshData();
+        refreshData(lineName);
         for(int i=0; i<items.size(); i++){
             Log.d("itemsize", Integer.toString(items.size()));
             Log.d("i입니다", Integer.toString(i));
+
             for(int j=0; j<dataLength; j++){
-                Log.d("j입니다", Integer.toString(j));
                 Log.d("datalength2", Integer.toString(dataLength));
-                if(items.get(i).getStation().equals(trainPosition.get(j))){
-                    if(updownData.get(j).equals("0")){
-                        Log.d("상행",items.get(i).getStation());
+                Log.d("j입니다", Integer.toString(j));
+                        switch (lineName){
+                            case "2호선":
+                                Log.d("2호선입니다", "2호선입니다");
+                                if(items.get(i).getStation().equals(trainPosition.get(j))) {
+                                    if (updownData.get(j).equals("0")) {
+                                        Log.d("상행입니다", items.get(i).getStation());
+                                        if (trainState.get(j).equals("0")) {
+                                            items.get(i).setline1(R.drawable.line_two_1);
+                                            items.get(i).setDestination_top_1(destinationData.get(j));
+                                        } else if (trainState.get(j).equals("1")) {
+                                            items.get(i).setline1(R.drawable.line_two_2);
+                                            items.get(i).setDestination_top_2(destinationData.get(j));
+                                        } else {
+                                            items.get(i).setline1(R.drawable.line_two_3);
+                                            items.get(i).setDestination_top_3(destinationData.get(j));
+                                        }
+                                        lineRecyclerAdapter.notifyDataSetChanged();
 
-                        if(trainState.get(j).equals("0")){
-                            items.get(i).setTop_img_1(R.drawable.train);
-                            items.get(i).setDestination_top_1(destinationData.get(j));
-                        }else if(trainState.get(j).equals("1")){
-                            items.get(i).setTop_img_2(R.drawable.train);
-                            items.get(i).setDestination_top_2(destinationData.get(j));
-                        }else{
-                            items.get(i).setTop_img_3(R.drawable.train);
-                            items.get(i).setDestination_top_3(destinationData.get(j));
+                                    } else {
+                                        Log.d("하행", items.get(i).getStation());
+                                        if (trainState.get(j).equals("0")) {
+                                            items.get(i).setline2(R.drawable.line_two_1);
+                                            items.get(i).setDestination_bottom_1(destinationData.get(j));
+                                        } else if (trainState.get(j).equals("1")) {
+                                            items.get(i).setline2(R.drawable.line_two_2);
+                                            items.get(i).setDestination_bottom_2(destinationData.get(j));
+                                        } else {
+                                            items.get(i).setline2(R.drawable.line_two_3);
+                                            items.get(i).setDestination_bottom_3(destinationData.get(j));
+                                        }
+                                        lineRecyclerAdapter.notifyDataSetChanged();
+                                    }
+                                }
+                                break;
+                            case "3호선":
+                                if(items.get(i).getStation().equals(trainPosition.get(j))) {
+                                    if (updownData.get(j).equals("0")) {
+                                        if (trainState.get(j).equals("0")) {
+                                            items.get(i).setline1(R.drawable.line_three_1);
+                                            items.get(i).setDestination_top_1(destinationData.get(j));
+                                        } else if (trainState.get(j).equals("1")) {
+                                            items.get(i).setline1(R.drawable.line_three_2);
+                                            items.get(i).setDestination_top_2(destinationData.get(j));
+                                        } else {
+                                            items.get(i).setline1(R.drawable.line_three_3);
+                                            items.get(i).setDestination_top_3(destinationData.get(j));
+                                        }
+                                        lineRecyclerAdapter.notifyDataSetChanged();
+                                    }else {
+                                        if(trainState.get(j).equals("0")){
+                                            items.get(i).setline2(R.drawable.line_three_1);
+                                            items.get(i).setDestination_bottom_1(destinationData.get(j));
+                                        }else if(trainState.get(j).equals("1")){
+                                            items.get(i).setline2(R.drawable.line_three_2);
+                                            items.get(i).setDestination_bottom_2(destinationData.get(j));
+                                        }else{
+                                            items.get(i).setline2(R.drawable.line_three_3);
+                                            items.get(i).setDestination_bottom_3(destinationData.get(j));
+                                        }
+                                        lineRecyclerAdapter.notifyDataSetChanged();
+                                    }
+                                }
+                                break;
+                            case "5호선":
+                                if(items.get(i).getStation().equals(trainPosition.get(j))) {
+                                    if (updownData.get(j).equals("0")) {
+                                        if (trainState.get(j).equals("0")) {
+                                            items.get(i).setline1(R.drawable.line_five_1);
+                                            items.get(i).setDestination_top_1(destinationData.get(j));
+                                        } else if (trainState.get(j).equals("1")) {
+                                            items.get(i).setline1(R.drawable.line_five_2);
+                                            items.get(i).setDestination_top_2(destinationData.get(j));
+                                        } else {
+                                            items.get(i).setline1(R.drawable.line_five_3);
+                                            items.get(i).setDestination_top_3(destinationData.get(j));
+                                        }
+                                        lineRecyclerAdapter.notifyDataSetChanged();
+                                    }else {
+                                        if(trainState.get(j).equals("0")){
+                                            items.get(i).setline2(R.drawable.line_five_1);
+                                            items.get(i).setDestination_bottom_1(destinationData.get(j));
+                                        }else if(trainState.get(j).equals("1")){
+                                            items.get(i).setline2(R.drawable.line_five_2);
+                                            items.get(i).setDestination_bottom_2(destinationData.get(j));
+                                        }else{
+                                            items.get(i).setline2(R.drawable.line_five_3);
+                                            items.get(i).setDestination_bottom_3(destinationData.get(j));
+                                        }
+                                        lineRecyclerAdapter.notifyDataSetChanged();
+                                    }
+                                }
+                                break;
+                            case "6호선":
+                                if(items.get(i).getStation().equals(trainPosition.get(j))) {
+                                    if (updownData.get(j).equals("0")) {
+                                        if (trainState.get(j).equals("0")) {
+                                            items.get(i).setline1(R.drawable.line_six_1);
+                                            items.get(i).setDestination_top_1(destinationData.get(j));
+                                        } else if (trainState.get(j).equals("1")) {
+                                            items.get(i).setline1(R.drawable.line_six_2);
+                                            items.get(i).setDestination_top_2(destinationData.get(j));
+                                        } else {
+                                            items.get(i).setline1(R.drawable.line_six_3);
+                                            items.get(i).setDestination_top_3(destinationData.get(j));
+                                        }
+                                        lineRecyclerAdapter.notifyDataSetChanged();
+                                    }else {
+                                        if(trainState.get(j).equals("0")){
+                                            items.get(i).setline2(R.drawable.line_six_1);
+                                            items.get(i).setDestination_bottom_1(destinationData.get(j));
+                                        }else if(trainState.get(j).equals("1")){
+                                            items.get(i).setline2(R.drawable.line_six_2);
+                                            items.get(i).setDestination_bottom_2(destinationData.get(j));
+                                        }else{
+                                            items.get(i).setline2(R.drawable.line_six_3);
+                                            items.get(i).setDestination_bottom_3(destinationData.get(j));
+                                        }
+                                        lineRecyclerAdapter.notifyDataSetChanged();
+                                    }
+                                }
+                                break;
+                            case "7호선":
+                                if(items.get(i).getStation().equals(trainPosition.get(j))) {
+                                    if (updownData.get(j).equals("0")) {
+                                        if (trainState.get(j).equals("0")) {
+                                            items.get(i).setline1(R.drawable.line_seven_1);
+                                            items.get(i).setDestination_top_1(destinationData.get(j));
+                                        } else if (trainState.get(j).equals("1")) {
+                                            items.get(i).setline1(R.drawable.line_seven_2);
+                                            items.get(i).setDestination_top_2(destinationData.get(j));
+                                        } else {
+                                            items.get(i).setline1(R.drawable.line_seven_3);
+                                            items.get(i).setDestination_top_3(destinationData.get(j));
+                                        }
+                                        lineRecyclerAdapter.notifyDataSetChanged();
+
+                                    }else {
+                                        if(trainState.get(j).equals("0")){
+                                            items.get(i).setline2(R.drawable.line_seven_1);
+                                            items.get(i).setDestination_bottom_1(destinationData.get(j));
+                                        }else if(trainState.get(j).equals("1")){
+                                            items.get(i).setline2(R.drawable.line_seven_2);
+                                            items.get(i).setDestination_bottom_2(destinationData.get(j));
+                                        }else{
+                                            items.get(i).setline2(R.drawable.line_seven_3);
+                                            items.get(i).setDestination_bottom_3(destinationData.get(j));
+                                        }
+                                        lineRecyclerAdapter.notifyDataSetChanged();
+                                    }
+                                }
+                                break;
+                            case "8호선":
+                                if(items.get(i).getStation().equals(trainPosition.get(j))) {
+                                    if (updownData.get(j).equals("0")) {
+                                        if (trainState.get(j).equals("0")) {
+                                            items.get(i).setline1(R.drawable.line_eight_1);
+                                            items.get(i).setDestination_top_1(destinationData.get(j));
+                                        } else if (trainState.get(j).equals("1")) {
+                                            items.get(i).setline1(R.drawable.line_eight_2);
+                                            items.get(i).setDestination_top_2(destinationData.get(j));
+                                        } else {
+                                            items.get(i).setline1(R.drawable.line_eight_3);
+                                            items.get(i).setDestination_top_3(destinationData.get(j));
+                                        }
+                                        lineRecyclerAdapter.notifyDataSetChanged();
+                                    }else {
+                                        if(trainState.get(j).equals("0")){
+                                            items.get(i).setline2(R.drawable.line_eight_1);
+                                            items.get(i).setDestination_bottom_1(destinationData.get(j));
+                                        }else if(trainState.get(j).equals("1")){
+                                            items.get(i).setline2(R.drawable.line_eight_2);
+                                            items.get(i).setDestination_bottom_2(destinationData.get(j));
+                                        }else{
+                                            items.get(i).setline2(R.drawable.line_eight_3);
+                                            items.get(i).setDestination_bottom_3(destinationData.get(j));
+                                        }
+                                        lineRecyclerAdapter.notifyDataSetChanged();
+                                    }
+                                }
+                                break;
+                            case "신분당선":
+                                if(items.get(i).getStation().equals(trainPosition.get(j))) {
+                                    if (updownData.get(j).equals("0")) {
+                                        if (trainState.get(j).equals("0")) {
+                                            items.get(i).setline1(R.drawable.line_newbundang_1);
+                                            items.get(i).setDestination_top_1(destinationData.get(j));
+                                        } else if (trainState.get(j).equals("1")) {
+                                            items.get(i).setline1(R.drawable.line_newbundang_2);
+                                            items.get(i).setDestination_top_2(destinationData.get(j));
+                                        } else {
+                                            items.get(i).setline1(R.drawable.line_newbundang_3);
+                                            items.get(i).setDestination_top_3(destinationData.get(j));
+                                        }
+                                        lineRecyclerAdapter.notifyDataSetChanged();
+                                    }else {
+                                        if(trainState.get(j).equals("0")){
+                                            items.get(i).setline2(R.drawable.line_newbundang_1);
+                                            items.get(i).setDestination_bottom_1(destinationData.get(j));
+                                        }else if(trainState.get(j).equals("1")){
+                                            items.get(i).setline2(R.drawable.line_newbundang_2);
+                                            items.get(i).setDestination_bottom_2(destinationData.get(j));
+                                        }else{
+                                            items.get(i).setline2(R.drawable.line_newbundang_3);
+                                            items.get(i).setDestination_bottom_3(destinationData.get(j));
+                                        }
+                                        lineRecyclerAdapter.notifyDataSetChanged();
+                                    }
+                                }
+                                break;
+                            case "공항철도":
+                                if(items.get(i).getStation().equals(trainPosition.get(j))) {
+                                    if (updownData.get(j).equals("0")) {
+                                        if (trainState.get(j).equals("0")) {
+                                            items.get(i).setline1(R.drawable.line_airport_1);
+                                            items.get(i).setDestination_top_1(destinationData.get(j));
+                                        } else if (trainState.get(j).equals("1")) {
+                                            items.get(i).setline1(R.drawable.line_airport_2);
+                                            items.get(i).setDestination_top_2(destinationData.get(j));
+                                        } else {
+                                            items.get(i).setline1(R.drawable.line_airport_3);
+                                            items.get(i).setDestination_top_3(destinationData.get(j));
+                                        }
+                                        lineRecyclerAdapter.notifyDataSetChanged();
+                                    }else {
+                                        if(trainState.get(j).equals("0")){
+                                            items.get(i).setline2(R.drawable.line_airport_1);
+                                            items.get(i).setDestination_bottom_1(destinationData.get(j));
+                                        }else if(trainState.get(j).equals("1")){
+                                            items.get(i).setline2(R.drawable.line_airport_2);
+                                            items.get(i).setDestination_bottom_2(destinationData.get(j));
+                                        }else{
+                                            items.get(i).setline2(R.drawable.line_airport_3);
+                                            items.get(i).setDestination_bottom_3(destinationData.get(j));
+                                        }
+                                        lineRecyclerAdapter.notifyDataSetChanged();
+                                    }
+                                }
+                                break;
+                            default:
+                                return;
                         }
-                        lineRecyclerAdapter.notifyDataSetChanged();;
-
-                    }else{
-                        Log.d("하행",items.get(i).getStation());
-
-                        if(trainState.get(j).equals("0")){
-                            items.get(i).setBottom_img_1(R.drawable.train);
-                            items.get(i).setDestination_bottom_1(destinationData.get(j));
-                        }else if(trainState.get(j).equals("1")){
-                            items.get(i).setBottom_img_2(R.drawable.train);
-                            items.get(i).setDestination_bottom_2(destinationData.get(j));
-                        }else{
-                            items.get(i).setBottom_img_3(R.drawable.train);
-                            items.get(i).setDestination_bottom_3(destinationData.get(j));
-                        }
-                        lineRecyclerAdapter.notifyDataSetChanged();
-                    }
-                }
             }
         }
 
     }
-    public void refreshData(){
-        for(int i=0; i<items.size(); i++){
-            items.get(i).setTop_img_1(R.drawable.blank_img);
-            items.get(i).setTop_img_2(R.drawable.blank_img);
-            items.get(i).setTop_img_3(R.drawable.blank_img);
-            items.get(i).setBottom_img_1(R.drawable.blank_img);
-            items.get(i).setBottom_img_2(R.drawable.blank_img);
-            items.get(i).setBottom_img_3(R.drawable.blank_img);
-            items.get(i).setDestination_top_1("");
-            items.get(i).setDestination_top_2("");
-            items.get(i).setDestination_top_3("");
-            items.get(i).setDestination_bottom_1("");
-            items.get(i).setDestination_bottom_2("");
-            items.get(i).setDestination_bottom_3("");
+    public void refreshData(String lineName){
+
+        switch (lineName){
+            case "2호선":
+                for(int i=0; i<items.size(); i++){
+                    Log.d("refresh_line", "2호선");
+                    items.get(i).setline1(R.drawable.line_img_2);
+                    items.get(i).setline2(R.drawable.line_img_2);
+                    items.get(i).setDestination_top_1("");
+                    items.get(i).setDestination_top_2("");
+                    items.get(i).setDestination_top_3("");
+                    items.get(i).setDestination_bottom_1("");
+                    items.get(i).setDestination_bottom_2("");
+                    items.get(i).setDestination_bottom_3("");
+                }
+                break;
+            case "3호선":
+                for(int i=0; i<items.size(); i++){
+                    items.get(i).setline1(R.drawable.line_img_3);
+                    items.get(i).setline2(R.drawable.line_img_3);
+                    items.get(i).setDestination_top_1("");
+                    items.get(i).setDestination_top_2("");
+                    items.get(i).setDestination_top_3("");
+                    items.get(i).setDestination_bottom_1("");
+                    items.get(i).setDestination_bottom_2("");
+                    items.get(i).setDestination_bottom_3("");
+                }
+                break;
+            case "5호선":
+                for(int i=0; i<items.size(); i++){
+                    items.get(i).setline1(R.drawable.line_img_5);
+                    items.get(i).setline2(R.drawable.line_img_5);
+                    items.get(i).setDestination_top_1("");
+                    items.get(i).setDestination_top_2("");
+                    items.get(i).setDestination_top_3("");
+                    items.get(i).setDestination_bottom_1("");
+                    items.get(i).setDestination_bottom_2("");
+                    items.get(i).setDestination_bottom_3("");
+                }
+                break;
+            case "6호선":
+                for(int i=0; i<items.size(); i++){
+                    items.get(i).setline1(R.drawable.line_img_6);
+                    items.get(i).setline2(R.drawable.line_img_6);
+                    items.get(i).setDestination_top_1("");
+                    items.get(i).setDestination_top_2("");
+                    items.get(i).setDestination_top_3("");
+                    items.get(i).setDestination_bottom_1("");
+                    items.get(i).setDestination_bottom_2("");
+                    items.get(i).setDestination_bottom_3("");
+                }
+                break;
+            case "7호선":
+                for(int i=0; i<items.size(); i++){
+                    items.get(i).setline1(R.drawable.line_img_7);
+                    items.get(i).setline2(R.drawable.line_img_7);
+                    items.get(i).setDestination_top_1("");
+                    items.get(i).setDestination_top_2("");
+                    items.get(i).setDestination_top_3("");
+                    items.get(i).setDestination_bottom_1("");
+                    items.get(i).setDestination_bottom_2("");
+                    items.get(i).setDestination_bottom_3("");
+                }
+                break;
+            case "8호선":
+                for(int i=0; i<items.size(); i++){
+                    items.get(i).setline1(R.drawable.line_img_8);
+                    items.get(i).setline2(R.drawable.line_img_8);
+                    items.get(i).setDestination_top_1("");
+                    items.get(i).setDestination_top_2("");
+                    items.get(i).setDestination_top_3("");
+                    items.get(i).setDestination_bottom_1("");
+                    items.get(i).setDestination_bottom_2("");
+                    items.get(i).setDestination_bottom_3("");
+                }
+                break;
+            case "신분당선":
+                for(int i=0; i<items.size(); i++){
+                    items.get(i).setline1(R.drawable.line_img_newbundang);
+                    items.get(i).setline2(R.drawable.line_img_newbundang);
+                    items.get(i).setDestination_top_1("");
+                    items.get(i).setDestination_top_2("");
+                    items.get(i).setDestination_top_3("");
+                    items.get(i).setDestination_bottom_1("");
+                    items.get(i).setDestination_bottom_2("");
+                    items.get(i).setDestination_bottom_3("");
+                }
+                break;
+            case "공항철도":
+                for(int i=0; i<items.size(); i++){
+                    items.get(i).setline1(R.drawable.line_img_airrail);
+                    items.get(i).setline2(R.drawable.line_img_airrail);
+                    items.get(i).setDestination_top_1("");
+                    items.get(i).setDestination_top_2("");
+                    items.get(i).setDestination_top_3("");
+                    items.get(i).setDestination_bottom_1("");
+                    items.get(i).setDestination_bottom_2("");
+                    items.get(i).setDestination_bottom_3("");
+                }
+                break;
+            default:
+                return;
+
         }
+
+
     }
 }
