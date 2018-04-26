@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -41,6 +42,7 @@ public class LineActivity extends AppCompatActivity {
     private ArrayList<String> destinationData = new ArrayList<>();
     private ArrayList<String> updownData = new ArrayList<>();
     private ArrayList<String> trainState = new ArrayList<>();
+    private ArrayList<String> trainNums = new ArrayList<>();
     private List<LineCardItem> items = new ArrayList<>();
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -437,6 +439,8 @@ public class LineActivity extends AppCompatActivity {
                 destinationData = new ArrayList<>();
                 updownData = new ArrayList<>();
                 trainState = new ArrayList<>();
+                trainNums = new ArrayList<>();
+
                 Log.d("dataLength", Integer.toString(dataLength));
                 for(int i=0; i < dataLength; i ++){
                     JSONObject result = (JSONObject) rows.get(i);
@@ -445,6 +449,10 @@ public class LineActivity extends AppCompatActivity {
                     String currentPosition = result.getString("statnNm");
                     Log.d("currentPosition", currentPosition);
                     trainPosition.add(currentPosition);
+
+                    //열차번호 저장
+                    String trainNum = result.getString("trainNo");
+                    trainNums.add(trainNum);
 
                     //종착역 저장
                     String destination = result.getString("statnTnm");
@@ -497,8 +505,13 @@ public class LineActivity extends AppCompatActivity {
                             case "2호선":
                                 Log.d("2호선입니다", "2호선입니다");
                                 if(items.get(i).getStation().equals(trainPosition.get(j))) {
+
                                     if (updownData.get(j).equals("0")) {
                                         Log.d("상행입니다", items.get(i).getStation());
+
+                                        // /해당 열차가 있을 시 열차번호와 flag값 입력
+                                        items.get(i).setUpTrainNum(trainNums.get(j), true);
+
                                         if (trainState.get(j).equals("0")) {
                                             items.get(i).setline1(R.drawable.line_two_1);
                                             items.get(i).setDestination_top_1(destinationData.get(j));
@@ -512,6 +525,8 @@ public class LineActivity extends AppCompatActivity {
                                         lineRecyclerAdapter.notifyDataSetChanged();
 
                                     } else {
+                                        // /해당 열차가 있을 시 열차번호와 flag값 입력
+                                        items.get(i).setDownTrainNum(trainNums.get(j), true);
                                         Log.d("하행", items.get(i).getStation());
                                         if (trainState.get(j).equals("0")) {
                                             items.get(i).setline2(R.drawable.line_two_1);
@@ -752,6 +767,8 @@ public class LineActivity extends AppCompatActivity {
                     items.get(i).setDestination_bottom_1("");
                     items.get(i).setDestination_bottom_2("");
                     items.get(i).setDestination_bottom_3("");
+                    items.get(i).setUpTrainNum("0000", false);
+                    items.get(i).setDownTrainNum("0000", false);
                 }
                 break;
             case "3호선":
@@ -845,4 +862,5 @@ public class LineActivity extends AppCompatActivity {
 
 
     }
+
 }

@@ -4,19 +4,34 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
+import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.letsseatinmetro.CardItem.LineCardItem;
 import com.example.letsseatinmetro.R;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -26,6 +41,8 @@ import java.util.List;
 public class LineRecyclerAdapter  extends BaseAdapter{
 
     private List<LineCardItem> listViewItemList = new ArrayList<LineCardItem>() ;
+    private List<String> congestions = new ArrayList<>();
+    private List<Integer> vacancies = new ArrayList<>();
     private ImageView line1;
     private ImageView line2;
     private TextView station;
@@ -35,6 +52,8 @@ public class LineRecyclerAdapter  extends BaseAdapter{
     private TextView destination_bottom_1;
     private TextView destination_bottom_2;
     private TextView destination_bottom_3;
+    private Context context;
+    private static String LOG_TAG = "LineRecyclerAdapter";
     // ListViewAdapter의 생성자
     public LineRecyclerAdapter(List<LineCardItem> listItem) {
         listViewItemList = listItem;
@@ -50,7 +69,7 @@ public class LineRecyclerAdapter  extends BaseAdapter{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final int pos = position;
-        final Context context = parent.getContext();
+        context = parent.getContext();
 
         // "listview_item" Layout을 inflate하여 convertView 참조 획득.
         if (convertView == null) {
@@ -68,7 +87,43 @@ public class LineRecyclerAdapter  extends BaseAdapter{
         destination_bottom_3 = (TextView) convertView.findViewById(R.id.bottom_destination_3);
 
         // Data Set(listViewItemList)에서 position에 위치한 데이터 참조 획득
-        LineCardItem listViewItem = listViewItemList.get(position);
+        final LineCardItem listViewItem = listViewItemList.get(position);
+
+        if(listViewItem.getUpTrainFlag()==true){
+            line1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //new MakeNetworkCall().execute("http://eatcoder.iptime.org/"+listViewItem.getUpTrainNum(), "Get");
+                    new MakeNetworkCall().execute("http://eatcoder.iptime.org/"+"2132", "Get");
+
+                }
+            });
+        }else{
+            line1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.d("상행 잘못된 클릭", "열차 정보가 없습니다");
+                }
+            });
+        }
+
+        if(listViewItem.getDownTrainFlag()==true){
+            line2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.d("하행 클릭", "http통신을 시작하세요");
+                    //new MakeNetworkCall().execute("http://eatcoder.iptime.org/"+listViewItem.getDownTrainNum(), "Get");
+                    new MakeNetworkCall().execute("http://eatcoder.iptime.org/"+"2132", "Get");
+                }
+            });
+        }else{
+            line2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.d("하행 잘못된 클릭", "열차 정보가 없습니다");
+                }
+            });
+        }
 
         // 아이템 내 각 위젯에 데이터 반영
         line1.setImageResource(listViewItem.getLine1());
@@ -95,6 +150,150 @@ public class LineRecyclerAdapter  extends BaseAdapter{
     @Override
     public Object getItem(int position) {
         return listViewItemList.get(position) ;
+    }
+
+    InputStream ByGetMethod(String ServerURL) {
+
+        InputStream DataInputStream = null;
+        try {
+
+            URL url = new URL(ServerURL);
+            HttpURLConnection cc = (HttpURLConnection)
+                    url.openConnection();
+            //set timeout for reading InputStream
+            cc.setReadTimeout(5000);
+            // set timeout for connection
+            cc.setConnectTimeout(5000);
+            //set HTTP method to GET
+            cc.setRequestMethod("GET");
+            //set it to true as we are connecting for input
+            cc.setDoInput(true);
+
+            //reading HTTP response code
+            int response = cc.getResponseCode();
+
+            //if response code is 200 / OK then read Inputstream
+            if (response == HttpURLConnection.HTTP_OK) {
+                DataInputStream = cc.getInputStream();
+            }
+
+        } catch (Exception e) {
+            Log.e(LOG_TAG, "Error in GetData", e);
+        }
+        return DataInputStream;
+
+    }
+
+    String ConvertStreamToString(InputStream stream) {
+
+        InputStreamReader isr = new InputStreamReader(stream);
+        BufferedReader reader = new BufferedReader(isr);
+        StringBuilder response = new StringBuilder();
+
+        String line = null;
+        try {
+
+            while ((line = reader.readLine()) != null) {
+                response.append(line);
+            }
+            String data = response.toString();
+
+            JSONArray jarray = new JSONObject(data).getJSONArray("list");
+
+            Log.d("jarray", Integer.toString(jarray.length()));
+
+            for(int i=0; i<jarray.length(); i++){
+                HashMap<String, String> map = new HashMap<>();
+                JSONObject jObject = jarray.getJSONObject(i);
+
+                String congestion= Integer.toString(jObject.optInt("CONGESTION"));
+                congestions.add(i, congestion);
+
+                int vacancy = jObject.optInt("VACANCY");
+                vacancies.add(i, vacancy);
+
+
+                Log.d("congestion", congestion);
+                Log.d("vacancy", Integer.toString(vacancy));
+            }
+
+            Handler mHandler = new Handler(Looper.getMainLooper());
+
+            mHandler.postDelayed(new Runnable() {
+
+
+                @Override
+
+                public void run() {
+                    Toast.makeText(context, "혼잡도: " + congestions.get(0) + "   좌석 여유: "+ vacancies.get(0) + "\n"+
+                                    "혼잡도: " + congestions.get(1) + "   좌석 여유: "+ vacancies.get(1) + "\n"+
+                                    "혼잡도: " + congestions.get(2) + "   좌석 여유: "+ vacancies.get(2) + "\n"+
+                                    "혼잡도: " + congestions.get(3) + "   좌석 여유: "+ vacancies.get(3) + "\n"+
+                                    "혼잡도: " + congestions.get(4) + "   좌석 여유: "+ vacancies.get(4) + "\n"+
+                                    "혼잡도: " + congestions.get(5) + "   좌석 여유: "+ vacancies.get(5) + "\n"+
+                                    "혼잡도: " + congestions.get(6) + "   좌석 여유: "+ vacancies.get(6) + "\n"+
+                                    "혼잡도: " + congestions.get(7) + "   좌석 여유: "+ vacancies.get(7) + "\n"+
+                                    "혼잡도: " + congestions.get(8) + "   좌석 여유: "+ vacancies.get(8) + "\n"+
+                                    "혼잡도: " + congestions.get(9) + "   좌석 여유: "+ vacancies.get(9) + "\n"
+                            , Toast.LENGTH_LONG).show();
+                }
+
+            }, 0);
+
+
+
+        } catch (IOException e) {
+            Log.e(LOG_TAG, "Error in ConvertStreamToString", e);
+        } catch (Exception e) {
+            Log.e(LOG_TAG, "Error in ConvertStreamToString", e);
+        } finally {
+
+            try {
+                stream.close();
+
+            } catch (IOException e) {
+                Log.e(LOG_TAG, "Error in ConvertStreamToString", e);
+
+            } catch (Exception e) {
+                Log.e(LOG_TAG, "Error in ConvertStreamToString", e);
+            }
+        }
+        return response.toString();
+
+
+    }
+    private class MakeNetworkCall extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            //DisplayMessage("Please Wait ...");
+        }
+
+        @Override
+        protected String doInBackground(String... arg) {
+
+            InputStream is = null;
+            String URL = arg[0];
+            Log.d(LOG_TAG, "URL: " + URL);
+            String res = "";
+
+                is = ByGetMethod(URL);
+
+            if (is != null) {
+                res = ConvertStreamToString(is);
+            } else {
+                res = "Something went wrong";
+            }
+            return res;
+        }
+
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+            // DisplayMessage(result);
+            Log.d(LOG_TAG, "Result: " + result);
+        }
     }
 
 }

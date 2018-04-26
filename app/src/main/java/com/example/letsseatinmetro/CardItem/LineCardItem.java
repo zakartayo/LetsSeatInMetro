@@ -16,6 +16,10 @@ public class LineCardItem {
     private String destination_bottom_1;
     private String destination_bottom_2;
     private String destination_bottom_3;
+    private String upTrainNum;
+    private boolean upFlag;
+    private String downTrainNum;
+    private boolean downFlag;
 
 
     public LineCardItem(int line1, int line2, String station, String destination_top, String destination_bottom) {
@@ -41,6 +45,10 @@ public class LineCardItem {
         this.destination_top_1 = null;
         this.destination_top_2 = null;
         this.destination_top_3 = null;
+        this.upTrainNum = "0000";
+        this.downTrainNum = "0000";
+        this.upFlag = false;
+        this.downFlag = false;
     }
     public void setline1(int line1){
         this.line1 = line1;
@@ -69,6 +77,14 @@ public class LineCardItem {
     public void setDestination_bottom_3(String destination_bottom){
         this.destination_bottom_3 = destination_bottom;
     }
+    public void setUpTrainNum(String trainNum, boolean trainFlag){
+        this.upTrainNum = trainNum;
+        this.upFlag = trainFlag;
+    }
+    public void setDownTrainNum(String trainNum, boolean trainFlag){
+        this.downTrainNum = trainNum;
+        this.downFlag = trainFlag;
+    }
     public int getLine1(){
         return this.line1;
     }
@@ -95,6 +111,18 @@ public class LineCardItem {
     }
     public String getDestination_bottom_3(){
         return this.destination_bottom_3;
+    }
+    public String getUpTrainNum(){
+        return this.upTrainNum;
+    }
+    public boolean getUpTrainFlag(){
+        return this.upFlag;
+    }
+    public String getDownTrainNum(){
+        return this.downTrainNum;
+    }
+    public boolean getDownTrainFlag(){
+        return this.downFlag;
     }
 
 }
