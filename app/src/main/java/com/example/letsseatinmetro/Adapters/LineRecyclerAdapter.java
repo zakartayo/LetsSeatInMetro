@@ -1,24 +1,31 @@
 package com.example.letsseatinmetro.Adapters;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Looper;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.letsseatinmetro.CardItem.LineCardItem;
+import com.example.letsseatinmetro.DialogItem.Congestion;
 import com.example.letsseatinmetro.R;
 
 import org.json.JSONArray;
@@ -43,6 +50,7 @@ public class LineRecyclerAdapter  extends BaseAdapter{
     private List<LineCardItem> listViewItemList = new ArrayList<LineCardItem>() ;
     private List<String> congestions = new ArrayList<>();
     private List<Integer> vacancies = new ArrayList<>();
+    private ListView listView;
     private ImageView line1;
     private ImageView line2;
     private TextView station;
@@ -86,6 +94,8 @@ public class LineRecyclerAdapter  extends BaseAdapter{
         destination_bottom_2 = (TextView) convertView.findViewById(R.id.bottom_destination_2);
         destination_bottom_3 = (TextView) convertView.findViewById(R.id.bottom_destination_3);
 
+        listView = new ListView(context);
+
         // Data Set(listViewItemList)에서 position에 위치한 데이터 참조 획득
         final LineCardItem listViewItem = listViewItemList.get(position);
 
@@ -94,7 +104,7 @@ public class LineRecyclerAdapter  extends BaseAdapter{
                 @Override
                 public void onClick(View v) {
                     //new MakeNetworkCall().execute("http://eatcoder.iptime.org/"+listViewItem.getUpTrainNum(), "Get");
-                    new MakeNetworkCall().execute("http://eatcoder.iptime.org/"+"2132", "Get");
+                    new MakeNetworkCall().execute("http://eatcoder.iptime.org/"+"002" + "&2132", "Get");
 
                 }
             });
@@ -103,6 +113,19 @@ public class LineRecyclerAdapter  extends BaseAdapter{
                 @Override
                 public void onClick(View v) {
                     Log.d("상행 잘못된 클릭", "열차 정보가 없습니다");
+                    Handler mHandler = new Handler(Looper.getMainLooper());
+
+                    mHandler.postDelayed(new Runnable() {
+
+
+                        @Override
+
+                        public void run() {
+                            Toast.makeText(context, "열차 정보가 없습니다"
+                                    , Toast.LENGTH_LONG).show();
+                        }
+
+                    }, 0);
                 }
             });
         }
@@ -113,14 +136,26 @@ public class LineRecyclerAdapter  extends BaseAdapter{
                 public void onClick(View v) {
                     Log.d("하행 클릭", "http통신을 시작하세요");
                     //new MakeNetworkCall().execute("http://eatcoder.iptime.org/"+listViewItem.getDownTrainNum(), "Get");
-                    new MakeNetworkCall().execute("http://eatcoder.iptime.org/"+"2132", "Get");
+                    new MakeNetworkCall().execute("http://eatcoder.iptime.org/"+"002" + "&2132", "Get");
                 }
             });
         }else{
             line2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.d("하행 잘못된 클릭", "열차 정보가 없습니다");
+                    Handler mHandler = new Handler(Looper.getMainLooper());
+
+                    mHandler.postDelayed(new Runnable() {
+
+
+                        @Override
+
+                        public void run() {
+                            Toast.makeText(context, "열차 정보가 없습니다"
+                                    , Toast.LENGTH_LONG).show();
+                        }
+
+                    }, 0);
                 }
             });
         }
@@ -189,6 +224,7 @@ public class LineRecyclerAdapter  extends BaseAdapter{
         InputStreamReader isr = new InputStreamReader(stream);
         BufferedReader reader = new BufferedReader(isr);
         StringBuilder response = new StringBuilder();
+        refreshJSON();
 
         String line = null;
         try {
@@ -220,28 +256,12 @@ public class LineRecyclerAdapter  extends BaseAdapter{
             Handler mHandler = new Handler(Looper.getMainLooper());
 
             mHandler.postDelayed(new Runnable() {
-
-
                 @Override
-
                 public void run() {
-                    Toast.makeText(context, "혼잡도: " + congestions.get(0) + "   좌석 여유: "+ vacancies.get(0) + "\n"+
-                                    "혼잡도: " + congestions.get(1) + "   좌석 여유: "+ vacancies.get(1) + "\n"+
-                                    "혼잡도: " + congestions.get(2) + "   좌석 여유: "+ vacancies.get(2) + "\n"+
-                                    "혼잡도: " + congestions.get(3) + "   좌석 여유: "+ vacancies.get(3) + "\n"+
-                                    "혼잡도: " + congestions.get(4) + "   좌석 여유: "+ vacancies.get(4) + "\n"+
-                                    "혼잡도: " + congestions.get(5) + "   좌석 여유: "+ vacancies.get(5) + "\n"+
-                                    "혼잡도: " + congestions.get(6) + "   좌석 여유: "+ vacancies.get(6) + "\n"+
-                                    "혼잡도: " + congestions.get(7) + "   좌석 여유: "+ vacancies.get(7) + "\n"+
-                                    "혼잡도: " + congestions.get(8) + "   좌석 여유: "+ vacancies.get(8) + "\n"+
-                                    "혼잡도: " + congestions.get(9) + "   좌석 여유: "+ vacancies.get(9) + "\n"
-                            , Toast.LENGTH_LONG).show();
+                    dialogInItOpen();
                 }
 
             }, 0);
-
-
-
         } catch (IOException e) {
             Log.e(LOG_TAG, "Error in ConvertStreamToString", e);
         } catch (Exception e) {
@@ -295,5 +315,73 @@ public class LineRecyclerAdapter  extends BaseAdapter{
             Log.d(LOG_TAG, "Result: " + result);
         }
     }
+    public void dialogInItOpen(){
+        final List<Congestion> dialogItems = new ArrayList<Congestion>();
 
+        for(int i=0; i<congestions.size(); i++){
+
+            Congestion congestion = new Congestion();
+
+            congestion.setCongestionTitle(Integer.toString(i+1)+"번 칸");
+            switch (congestions.get(i)){
+                case "1":
+                    congestion.setCongestionCode(i);
+                    congestion.setCongestionDesc("매우 여유");
+                    congestion.setVacancyTitle("좌석 수:");
+                    congestion.setVacancyCount(Integer.toString(vacancies.get(i)));
+                    break;
+                case "2":
+                    congestion.setCongestionCode(i);
+                    congestion.setCongestionDesc("여유");
+                    congestion.setVacancyTitle("좌석 수:");
+                    congestion.setVacancyCount(Integer.toString(vacancies.get(i)));
+                    break;
+                case "3":
+                    congestion.setCongestionCode(i);
+                    congestion.setCongestionDesc("보통");
+                    break;
+                case "4":
+                    congestion.setCongestionCode(i);
+                    congestion.setCongestionDesc("조금 혼잡");
+                    break;
+                case "5":
+                    congestion.setCongestionCode(i);
+                    congestion.setCongestionDesc("매우 혼잡");
+                    break;
+                default:
+                    return;
+            }
+            dialogItems.add(congestion);
+        }
+
+        final DialogListAdapter adapter = new DialogListAdapter(context, dialogItems);
+        AlertDialog.Builder builder = new AlertDialog.Builder(context)
+                .setAdapter(adapter, null)
+                .setTitle("\t\t\t\t\t\t\t\t왼쪽부터~ 1번 칸 입니다.")
+                .setPositiveButton("닫기", new DialogInterface.OnClickListener() { // 버튼은 테마에 따라서 모양이 다르게 모임
+                    public void onClick(DialogInterface dialog, int whichButton) {
+
+                    }
+                });
+
+        final AlertDialog alertDialog = builder.create();
+        final ListView listView = alertDialog.getListView();
+        listView.setAdapter(adapter);
+        //listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE); // 여러 상품 선택을 위해 - 이 형태에서는 필요 없다
+        listView.setDivider(new ColorDrawable(Color.LTGRAY));
+        listView.setDividerHeight(1);
+        listView.setFocusable(false); // false를 해줘야 row touch event 가능
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                alertDialog.dismiss();
+            }
+        });
+
+        alertDialog.show();
+    }
+    public void refreshJSON(){
+        congestions.clear();
+        vacancies.clear();
+    }
 }

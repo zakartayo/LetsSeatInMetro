@@ -14,12 +14,8 @@ import com.example.letsseatinmetro.Activities.LineActivity;
 import com.example.letsseatinmetro.CardItem.MainCardItem;
 import com.example.letsseatinmetro.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Yong on 2018-03-03.
- */
 
 public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapter.ViewHolder> {
     Context context;
