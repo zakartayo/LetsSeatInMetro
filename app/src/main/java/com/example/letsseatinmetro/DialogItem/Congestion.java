@@ -21,12 +21,12 @@ public class Congestion {
     public Congestion() {
         congestionCode = 0;
         congestionTitle = "";
-        congestionDesc = "";
+        congestionDesc = "혼잡도";
         congestionPrice = 0;
         vacancyTitle="";
         vacancyCount="";
         isSelected = false;
-        congestionImageResource = R.drawable.product_1;
+        congestionImageResource = 0;
     }
 
     public Congestion(int congestionCode, String congestionTitle, String congestionDesc, int congestionPrice) {

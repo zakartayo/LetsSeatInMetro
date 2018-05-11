@@ -326,27 +326,27 @@ public class LineRecyclerAdapter  extends BaseAdapter{
             switch (congestions.get(i)){
                 case "1":
                     congestion.setCongestionCode(i);
-                    congestion.setCongestionDesc("매우 여유");
                     congestion.setVacancyTitle("좌석 수:");
                     congestion.setVacancyCount(Integer.toString(vacancies.get(i)));
+                    congestion.setCongestionImageResource(R.drawable.level1);
                     break;
                 case "2":
                     congestion.setCongestionCode(i);
-                    congestion.setCongestionDesc("여유");
                     congestion.setVacancyTitle("좌석 수:");
                     congestion.setVacancyCount(Integer.toString(vacancies.get(i)));
+                    congestion.setCongestionImageResource(R.drawable.level2);
                     break;
                 case "3":
                     congestion.setCongestionCode(i);
-                    congestion.setCongestionDesc("보통");
+                    congestion.setCongestionImageResource(R.drawable.level3);
                     break;
                 case "4":
                     congestion.setCongestionCode(i);
-                    congestion.setCongestionDesc("조금 혼잡");
+                    congestion.setCongestionImageResource(R.drawable.level4);
                     break;
                 case "5":
                     congestion.setCongestionCode(i);
-                    congestion.setCongestionDesc("매우 혼잡");
+                    congestion.setCongestionImageResource(R.drawable.level5);
                     break;
                 default:
                     return;
@@ -357,7 +357,7 @@ public class LineRecyclerAdapter  extends BaseAdapter{
         final DialogListAdapter adapter = new DialogListAdapter(context, dialogItems);
         AlertDialog.Builder builder = new AlertDialog.Builder(context)
                 .setAdapter(adapter, null)
-                .setTitle("\t\t\t\t\t\t\t\t왼쪽부터~ 1번 칸 입니다.")
+                .setTitle("")
                 .setPositiveButton("닫기", new DialogInterface.OnClickListener() { // 버튼은 테마에 따라서 모양이 다르게 모임
                     public void onClick(DialogInterface dialog, int whichButton) {
 
@@ -366,6 +366,10 @@ public class LineRecyclerAdapter  extends BaseAdapter{
 
         final AlertDialog alertDialog = builder.create();
         final ListView listView = alertDialog.getListView();
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final View header = inflater.inflate(R.layout.dialog_listview_header, null, false);
+
+        listView.addHeaderView(header);
         listView.setAdapter(adapter);
         //listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE); // 여러 상품 선택을 위해 - 이 형태에서는 필요 없다
         listView.setDivider(new ColorDrawable(Color.LTGRAY));

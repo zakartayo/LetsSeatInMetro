@@ -98,6 +98,9 @@ public class LineActivity extends AppCompatActivity {
             setContentView(R.layout.activity_line);
             refresh = (ImageView) findViewById(R.id.refresh_btn);
             listview = (ListView) findViewById(R.id.mList);
+            final View header = getLayoutInflater().inflate(R.layout.line_listview_header, null, false);
+            listview.addHeaderView(header);
+
             items = DataHouse.line2;
             lineRecyclerAdapter = new LineRecyclerAdapter(items);
             listview.setAdapter(lineRecyclerAdapter);
