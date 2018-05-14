@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -65,6 +66,7 @@ public class LineActivity extends AppCompatActivity {
             tabLayout.addTab(tabLayout.newTab().setText("일반"));
             tabLayout.addTab(tabLayout.newTab().setText("급행"));
             tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
 
             // Initializing ViewPager
             viewPager = (ViewPager) findViewById(R.id.pager);
