@@ -46,6 +46,8 @@ public class KyungeiExtreamFragment extends Fragment {
         ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
         View v = inflater.inflate(R.layout.extream_tab, container, false);
         listview = (ListView) v.findViewById(R.id.extreamList);
+        final View header = getLayoutInflater().inflate(R.layout.line_listview_header, null, false);
+        listview.addHeaderView(header);
         refresh = (ImageView)v.findViewById(R.id.refresh_extream_btn);
         items = DataHouse.kyungei;
         lineRecyclerAdapter = new LineRecyclerAdapter(items);

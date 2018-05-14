@@ -118,6 +118,8 @@ public class LineActivity extends AppCompatActivity {
             setContentView(R.layout.activity_line);
             refresh = (ImageView) findViewById(R.id.refresh_btn);
             listview = (ListView) findViewById(R.id.mList);
+            final View header = getLayoutInflater().inflate(R.layout.line_listview_header, null, false);
+            listview.addHeaderView(header);
             items = DataHouse.line3;
             lineRecyclerAdapter = new LineRecyclerAdapter(items);
             listview.setAdapter(lineRecyclerAdapter);
@@ -170,6 +172,8 @@ public class LineActivity extends AppCompatActivity {
             setContentView(R.layout.activity_line);
             refresh = (ImageView) findViewById(R.id.refresh_btn);
             listview = (ListView) findViewById(R.id.mList);
+            final View header = getLayoutInflater().inflate(R.layout.line_listview_header, null, false);
+            listview.addHeaderView(header);
             items = DataHouse.line5;
             lineRecyclerAdapter = new LineRecyclerAdapter(items);
             listview.setAdapter(lineRecyclerAdapter);
@@ -187,6 +191,8 @@ public class LineActivity extends AppCompatActivity {
             setContentView(R.layout.activity_line);
             refresh = (ImageView) findViewById(R.id.refresh_btn);
             listview = (ListView) findViewById(R.id.mList);
+            final View header = getLayoutInflater().inflate(R.layout.line_listview_header, null, false);
+            listview.addHeaderView(header);
             items = DataHouse.line6;
             lineRecyclerAdapter = new LineRecyclerAdapter(items);
             listview.setAdapter(lineRecyclerAdapter);
@@ -202,6 +208,8 @@ public class LineActivity extends AppCompatActivity {
             setContentView(R.layout.activity_line);
             refresh = (ImageView) findViewById(R.id.refresh_btn);
             listview = (ListView) findViewById(R.id.mList);
+            final View header = getLayoutInflater().inflate(R.layout.line_listview_header, null, false);
+            listview.addHeaderView(header);
             items = DataHouse.line7;
             lineRecyclerAdapter = new LineRecyclerAdapter(items);
             listview.setAdapter(lineRecyclerAdapter);
@@ -217,6 +225,8 @@ public class LineActivity extends AppCompatActivity {
             setContentView(R.layout.activity_line);
             refresh = (ImageView) findViewById(R.id.refresh_btn);
             listview = (ListView) findViewById(R.id.mList);
+            final View header = getLayoutInflater().inflate(R.layout.line_listview_header, null, false);
+            listview.addHeaderView(header);
             items = DataHouse.line8;
             lineRecyclerAdapter = new LineRecyclerAdapter(items);
             listview.setAdapter(lineRecyclerAdapter);
@@ -401,6 +411,8 @@ public class LineActivity extends AppCompatActivity {
             setContentView(R.layout.activity_line);
             refresh = (ImageView) findViewById(R.id.refresh_btn);
             listview = (ListView) findViewById(R.id.mList);
+            final View header = getLayoutInflater().inflate(R.layout.line_listview_header, null, false);
+            listview.addHeaderView(header);
             items = DataHouse.arirail;
             lineRecyclerAdapter = new LineRecyclerAdapter(items);
             listview.setAdapter(lineRecyclerAdapter);

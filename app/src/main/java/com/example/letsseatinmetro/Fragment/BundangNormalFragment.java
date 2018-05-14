@@ -46,6 +46,8 @@ public class BundangNormalFragment extends Fragment {
         ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
         View v = inflater.inflate(R.layout.normal_tab, container, false);
         listview = (ListView) v.findViewById(R.id.normalList);
+        final View header = getLayoutInflater().inflate(R.layout.line_listview_header, null, false);
+        listview.addHeaderView(header);
         refresh = (ImageView)v.findViewById(R.id.refresh_normal_btn);
         items = DataHouse.bundang;
         lineRecyclerAdapter = new LineRecyclerAdapter(items);

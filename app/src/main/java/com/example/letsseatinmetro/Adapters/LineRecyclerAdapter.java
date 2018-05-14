@@ -104,7 +104,7 @@ public class LineRecyclerAdapter  extends BaseAdapter{
                 @Override
                 public void onClick(View v) {
                     //new MakeNetworkCall().execute("http://eatcoder.iptime.org/"+listViewItem.getUpTrainNum(), "Get");
-                    new MakeNetworkCall().execute("http://eatcoder.iptime.org/"+"002" + "&2132", "Get");
+                    new MakeNetworkCall().execute("http://113.198.84.121/"+"002" + "&2132", "Get");
 
                 }
             });
@@ -136,7 +136,7 @@ public class LineRecyclerAdapter  extends BaseAdapter{
                 public void onClick(View v) {
                     Log.d("하행 클릭", "http통신을 시작하세요");
                     //new MakeNetworkCall().execute("http://eatcoder.iptime.org/"+listViewItem.getDownTrainNum(), "Get");
-                    new MakeNetworkCall().execute("http://eatcoder.iptime.org/"+"002" + "&2132", "Get");
+                    new MakeNetworkCall().execute("http://113.198.84.121/"+"002" + "&2132", "Get");
                 }
             });
         }else{
