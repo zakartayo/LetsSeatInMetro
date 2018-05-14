@@ -33,10 +33,11 @@ public class ExtreamFragment extends Fragment{
     private LineRecyclerAdapter lineRecyclerAdapter;
     private List<LineCardItem> items = new ArrayList<>();
     private ImageView refresh;
-    private ArrayList<String> trainPosition = new ArrayList<>();
-    private ArrayList<String> destinationData = new ArrayList<>();
-    private ArrayList<String> updownData = new ArrayList<>();
-    private ArrayList<String> trainState = new ArrayList<>();
+    private ArrayList<String> trainPosition;
+    private ArrayList<String> destinationData;
+    private ArrayList<String> updownData;
+    private ArrayList<String> trainState;
+    private ArrayList<String> trainNums;
     private int dataLength;
 
     @Override
@@ -85,6 +86,7 @@ public class ExtreamFragment extends Fragment{
                 destinationData = new ArrayList<>();
                 updownData = new ArrayList<>();
                 trainState = new ArrayList<>();
+                trainNums = new ArrayList<>();
 
                 Log.d("dataLength", Integer.toString(dataLength));
                 int extreamCount=0;
@@ -97,6 +99,8 @@ public class ExtreamFragment extends Fragment{
                     String currentPosition = result.getString("statnNm");
                     //종착역 저장
                     String destination = result.getString("statnTnm");
+                    //열차번호 저장
+                    String trainNum = result.getString("trainNo");
                     //상하행 저장
                     String updown = result.getString("updnLine");
                     //열차 상태 저장
@@ -109,6 +113,7 @@ public class ExtreamFragment extends Fragment{
                         Log.d("direction", destination);
                         Log.d("state", state);
                         System.out.println("=======================");
+                        trainNums.add(trainNum);
                         trainPosition.add(currentPosition);
                         destinationData.add(destination);
                         updownData.add(updown);
@@ -161,6 +166,11 @@ public class ExtreamFragment extends Fragment{
                     if (updownData.get(j).equals("0")) {
                         Log.d("상행", items.get(i).getStation());
 
+                        Log.d("상행입니다", items.get(i).getStation());
+
+                        // 해당 열차가 있을 시 열차번호와 flag값 입력
+                        items.get(i).setUpTrainNum(trainNums.get(j), true);
+
                         if (trainState.get(j).equals("0")) {
                             items.get(i).setline1(R.drawable.line_one_1);
                             items.get(i).setDestination_top_1(destinationData.get(j));
@@ -176,7 +186,7 @@ public class ExtreamFragment extends Fragment{
 
                     } else {
                         Log.d("하행", items.get(i).getStation());
-
+                        items.get(i).setDownTrainNum(trainNums.get(j), true);
                         if (trainState.get(j).equals("0")) {
                             items.get(i).setline2(R.drawable.line_one_1);
                             items.get(i).setDestination_bottom_1(destinationData.get(j));
@@ -191,7 +201,6 @@ public class ExtreamFragment extends Fragment{
                         Log.d("downAdapterNoti", "downAdapterNoti");
                     }
                 }
-
             }
             System.out.println("end");
         }

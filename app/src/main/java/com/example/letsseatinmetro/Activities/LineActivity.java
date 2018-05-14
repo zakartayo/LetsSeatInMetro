@@ -508,7 +508,6 @@ public class LineActivity extends AppCompatActivity {
                             case "2호선":
                                 Log.d("2호선입니다", "2호선입니다");
                                 if(items.get(i).getStation().equals(trainPosition.get(j))) {
-
                                     if (updownData.get(j).equals("0")) {
                                         Log.d("상행입니다", items.get(i).getStation());
 
@@ -548,6 +547,11 @@ public class LineActivity extends AppCompatActivity {
                             case "3호선":
                                 if(items.get(i).getStation().equals(trainPosition.get(j))) {
                                     if (updownData.get(j).equals("0")) {
+                                        Log.d("상행입니다", items.get(i).getStation());
+
+                                        // /해당 열차가 있을 시 열차번호와 flag값 입력
+                                        items.get(i).setUpTrainNum(trainNums.get(j), true);
+
                                         if (trainState.get(j).equals("0")) {
                                             items.get(i).setline1(R.drawable.line_three_1);
                                             items.get(i).setDestination_top_1(destinationData.get(j));
@@ -560,6 +564,10 @@ public class LineActivity extends AppCompatActivity {
                                         }
                                         lineRecyclerAdapter.notifyDataSetChanged();
                                     }else {
+                                        // 하행 열차번호와 flag값 입력
+                                        items.get(i).setDownTrainNum(trainNums.get(j), true);
+                                        Log.d("하행", items.get(i).getStation());
+
                                         if(trainState.get(j).equals("0")){
                                             items.get(i).setline2(R.drawable.line_three_1);
                                             items.get(i).setDestination_bottom_1(destinationData.get(j));
@@ -577,6 +585,12 @@ public class LineActivity extends AppCompatActivity {
                             case "5호선":
                                 if(items.get(i).getStation().equals(trainPosition.get(j))) {
                                     if (updownData.get(j).equals("0")) {
+
+                                        Log.d("상행입니다", items.get(i).getStation());
+
+                                        // 해당 열차가 있을 시 열차번호와 flag값 입력
+                                        items.get(i).setUpTrainNum(trainNums.get(j), true);
+
                                         if (trainState.get(j).equals("0")) {
                                             items.get(i).setline1(R.drawable.line_five_1);
                                             items.get(i).setDestination_top_1(destinationData.get(j));
@@ -589,6 +603,8 @@ public class LineActivity extends AppCompatActivity {
                                         }
                                         lineRecyclerAdapter.notifyDataSetChanged();
                                     }else {
+                                        items.get(i).setDownTrainNum(trainNums.get(j), true);
+                                        Log.d("하행", items.get(i).getStation());
                                         if(trainState.get(j).equals("0")){
                                             items.get(i).setline2(R.drawable.line_five_1);
                                             items.get(i).setDestination_bottom_1(destinationData.get(j));
@@ -606,6 +622,10 @@ public class LineActivity extends AppCompatActivity {
                             case "6호선":
                                 if(items.get(i).getStation().equals(trainPosition.get(j))) {
                                     if (updownData.get(j).equals("0")) {
+                                        Log.d("상행입니다", items.get(i).getStation());
+
+                                        // 해당 열차가 있을 시 열차번호와 flag값 입력
+                                        items.get(i).setUpTrainNum(trainNums.get(j), true);
                                         if (trainState.get(j).equals("0")) {
                                             items.get(i).setline1(R.drawable.line_six_1);
                                             items.get(i).setDestination_top_1(destinationData.get(j));
@@ -618,6 +638,8 @@ public class LineActivity extends AppCompatActivity {
                                         }
                                         lineRecyclerAdapter.notifyDataSetChanged();
                                     }else {
+                                        items.get(i).setDownTrainNum(trainNums.get(j), true);
+                                        Log.d("하행", items.get(i).getStation());
                                         if(trainState.get(j).equals("0")){
                                             items.get(i).setline2(R.drawable.line_six_1);
                                             items.get(i).setDestination_bottom_1(destinationData.get(j));
@@ -635,6 +657,10 @@ public class LineActivity extends AppCompatActivity {
                             case "7호선":
                                 if(items.get(i).getStation().equals(trainPosition.get(j))) {
                                     if (updownData.get(j).equals("0")) {
+                                        Log.d("상행입니다", items.get(i).getStation());
+
+                                        // 해당 열차가 있을 시 열차번호와 flag값 입력
+                                        items.get(i).setUpTrainNum(trainNums.get(j), true);
                                         if (trainState.get(j).equals("0")) {
                                             items.get(i).setline1(R.drawable.line_seven_1);
                                             items.get(i).setDestination_top_1(destinationData.get(j));
@@ -648,6 +674,8 @@ public class LineActivity extends AppCompatActivity {
                                         lineRecyclerAdapter.notifyDataSetChanged();
 
                                     }else {
+                                        items.get(i).setDownTrainNum(trainNums.get(j), true);
+                                        Log.d("하행", items.get(i).getStation());
                                         if(trainState.get(j).equals("0")){
                                             items.get(i).setline2(R.drawable.line_seven_1);
                                             items.get(i).setDestination_bottom_1(destinationData.get(j));
@@ -665,6 +693,10 @@ public class LineActivity extends AppCompatActivity {
                             case "8호선":
                                 if(items.get(i).getStation().equals(trainPosition.get(j))) {
                                     if (updownData.get(j).equals("0")) {
+
+                                        Log.d("상행입니다", items.get(i).getStation());
+                                        // 해당 열차가 있을 시 열차번호와 flag값 입력
+                                        items.get(i).setUpTrainNum(trainNums.get(j), true);
                                         if (trainState.get(j).equals("0")) {
                                             items.get(i).setline1(R.drawable.line_eight_1);
                                             items.get(i).setDestination_top_1(destinationData.get(j));
@@ -677,6 +709,9 @@ public class LineActivity extends AppCompatActivity {
                                         }
                                         lineRecyclerAdapter.notifyDataSetChanged();
                                     }else {
+                                        // /해당 열차가 있을 시 열차번호와 flag값 입력
+                                        items.get(i).setDownTrainNum(trainNums.get(j), true);
+                                        Log.d("하행", items.get(i).getStation());
                                         if(trainState.get(j).equals("0")){
                                             items.get(i).setline2(R.drawable.line_eight_1);
                                             items.get(i).setDestination_bottom_1(destinationData.get(j));
@@ -694,6 +729,11 @@ public class LineActivity extends AppCompatActivity {
                             case "신분당선":
                                 if(items.get(i).getStation().equals(trainPosition.get(j))) {
                                     if (updownData.get(j).equals("0")) {
+                                        Log.d("상행입니다", items.get(i).getStation());
+
+                                        // /해당 열차가 있을 시 열차번호와 flag값 입력
+                                        items.get(i).setUpTrainNum(trainNums.get(j), true);
+
                                         if (trainState.get(j).equals("0")) {
                                             items.get(i).setline1(R.drawable.line_newbundang_1);
                                             items.get(i).setDestination_top_1(destinationData.get(j));
@@ -706,6 +746,9 @@ public class LineActivity extends AppCompatActivity {
                                         }
                                         lineRecyclerAdapter.notifyDataSetChanged();
                                     }else {
+                                        // /해당 열차가 있을 시 열차번호와 flag값 입력
+                                        items.get(i).setDownTrainNum(trainNums.get(j), true);
+                                        Log.d("하행", items.get(i).getStation());
                                         if(trainState.get(j).equals("0")){
                                             items.get(i).setline2(R.drawable.line_newbundang_1);
                                             items.get(i).setDestination_bottom_1(destinationData.get(j));
@@ -723,6 +766,11 @@ public class LineActivity extends AppCompatActivity {
                             case "공항철도":
                                 if(items.get(i).getStation().equals(trainPosition.get(j))) {
                                     if (updownData.get(j).equals("0")) {
+                                        Log.d("상행입니다", items.get(i).getStation());
+
+                                        // /해당 열차가 있을 시 열차번호와 flag값 입력
+                                        items.get(i).setUpTrainNum(trainNums.get(j), true);
+
                                         if (trainState.get(j).equals("0")) {
                                             items.get(i).setline1(R.drawable.line_airport_1);
                                             items.get(i).setDestination_top_1(destinationData.get(j));
@@ -735,6 +783,9 @@ public class LineActivity extends AppCompatActivity {
                                         }
                                         lineRecyclerAdapter.notifyDataSetChanged();
                                     }else {
+                                        // /해당 열차가 있을 시 열차번호와 flag값 입력
+                                        items.get(i).setDownTrainNum(trainNums.get(j), true);
+                                        Log.d("하행", items.get(i).getStation());
                                         if(trainState.get(j).equals("0")){
                                             items.get(i).setline2(R.drawable.line_airport_1);
                                             items.get(i).setDestination_bottom_1(destinationData.get(j));

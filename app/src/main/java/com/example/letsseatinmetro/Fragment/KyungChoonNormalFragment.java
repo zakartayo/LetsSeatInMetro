@@ -33,10 +33,11 @@ public class KyungChoonNormalFragment extends Fragment {
     private LineRecyclerAdapter lineRecyclerAdapter;
     private List<LineCardItem> items = new ArrayList<>();
     private ImageView refresh;
-    private ArrayList<String> trainPosition = new ArrayList<>();
-    private ArrayList<String> destinationData = new ArrayList<>();
-    private ArrayList<String> updownData = new ArrayList<>();
-    private ArrayList<String> trainState = new ArrayList<>();
+    private ArrayList<String> trainPosition;
+    private ArrayList<String> destinationData;
+    private ArrayList<String> updownData;
+    private ArrayList<String> trainState;
+    private ArrayList<String> trainNums;
     private int dataLength;
 
     @Override
@@ -86,6 +87,7 @@ public class KyungChoonNormalFragment extends Fragment {
                 destinationData = new ArrayList<>();
                 updownData = new ArrayList<>();
                 trainState = new ArrayList<>();
+                trainNums = new ArrayList<>();
 
                 Log.d("dataLength", Integer.toString(dataLength));
                 int normalCount=0;
@@ -96,6 +98,8 @@ public class KyungChoonNormalFragment extends Fragment {
                     String directAt = result.getString("directAt");
                     //현재 지하철역명 저장
                     String currentPosition = result.getString("statnNm");
+                    //열차번호 저장
+                    String trainNum = result.getString("trainNo");
                     //종착역 저장
                     String destination = result.getString("statnTnm");
                     //상하행 저장
@@ -114,6 +118,7 @@ public class KyungChoonNormalFragment extends Fragment {
                         destinationData.add(destination);
                         updownData.add(updown);
                         trainState.add(state);
+                        trainNums.add(trainNum);
                         normalCount++;
                     }else if(directAt.equals("1")){
                         System.out.println("급행입니다");
@@ -158,7 +163,8 @@ public class KyungChoonNormalFragment extends Fragment {
                     System.out.println("일치");
                     if (updownData.get(j).equals("0")) {
                         Log.d("상행", items.get(i).getStation());
-
+                        // 해당 열차가 있을 시 열차번호와 flag값 입력
+                        items.get(i).setUpTrainNum(trainNums.get(j), true);
                         if (trainState.get(j).equals("0")) {
                             items.get(i).setline1(R.drawable.line_kyungchoon_1);
                             items.get(i).setDestination_top_1(destinationData.get(j));
@@ -174,7 +180,7 @@ public class KyungChoonNormalFragment extends Fragment {
 
                     } else {
                         Log.d("하행", items.get(i).getStation());
-
+                        items.get(i).setDownTrainNum(trainNums.get(j), true);
                         if (trainState.get(j).equals("0")) {
                             items.get(i).setline2(R.drawable.line_kyungchoon_1);
                             items.get(i).setDestination_bottom_1(destinationData.get(j));

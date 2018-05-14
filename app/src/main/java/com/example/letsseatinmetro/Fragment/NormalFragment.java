@@ -34,10 +34,11 @@ public class NormalFragment extends Fragment {
     private LineRecyclerAdapter lineRecyclerAdapter;
     private List<LineCardItem> items = new ArrayList<>();
     private ImageView refresh;
-    private ArrayList<String> trainPosition = new ArrayList<>();
-    private ArrayList<String> destinationData = new ArrayList<>();
-    private ArrayList<String> updownData = new ArrayList<>();
-    private ArrayList<String> trainState = new ArrayList<>();
+    private ArrayList<String> trainPosition;
+    private ArrayList<String> destinationData;
+    private ArrayList<String> updownData;
+    private ArrayList<String> trainState;
+    private ArrayList<String> trainNums;
     private int dataLength;
 
     @Override
@@ -87,6 +88,7 @@ public class NormalFragment extends Fragment {
                 destinationData = new ArrayList<>();
                 updownData = new ArrayList<>();
                 trainState = new ArrayList<>();
+                trainNums = new ArrayList<>();
 
                 Log.d("dataLength", Integer.toString(dataLength));
                 int normalCount=0;
@@ -97,6 +99,8 @@ public class NormalFragment extends Fragment {
                     String directAt = result.getString("directAt");
                     //현재 지하철역명 저장
                     String currentPosition = result.getString("statnNm");
+                    //열차번호 저장
+                    String trainNum = result.getString("trainNo");
                     //종착역 저장
                     String destination = result.getString("statnTnm");
                     //상하행 저장
@@ -112,6 +116,7 @@ public class NormalFragment extends Fragment {
                         Log.d("state", state);
                         System.out.println("=======================");
                         trainPosition.add(currentPosition);
+                        trainNums.add(trainNum);
                         destinationData.add(destination);
                         updownData.add(updown);
                         trainState.add(state);
@@ -158,7 +163,10 @@ public class NormalFragment extends Fragment {
                 if (items.get(i).getStation().equals(trainPosition.get(j))) {
                     System.out.println("일치");
                     if (updownData.get(j).equals("0")) {
-                        Log.d("상행", items.get(i).getStation());
+                        Log.d("상행입니다", items.get(i).getStation());
+
+                        // 해당 열차가 있을 시 열차번호와 flag값 입력
+                        items.get(i).setUpTrainNum(trainNums.get(j), true);
 
                         if (trainState.get(j).equals("0")) {
                             items.get(i).setline1(R.drawable.line_one_1);
@@ -175,7 +183,7 @@ public class NormalFragment extends Fragment {
 
                     } else {
                         Log.d("하행", items.get(i).getStation());
-
+                        items.get(i).setDownTrainNum(trainNums.get(j), true);
                         if (trainState.get(j).equals("0")) {
                             items.get(i).setline2(R.drawable.line_one_1);
                             items.get(i).setDestination_bottom_1(destinationData.get(j));

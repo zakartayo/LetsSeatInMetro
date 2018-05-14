@@ -57,14 +57,12 @@ public class DialogListAdapter extends BaseAdapter{
 
         ImageView congestionImage = (ImageView)view.findViewById(R.id.congestionImage);
         TextView congestionTitle = (TextView)view.findViewById(R.id.congestionTitle);
-        TextView congestionDesc = (TextView)view.findViewById(R.id.congestionDesc);
         TextView vacancyTitle = (TextView)view.findViewById(R.id.vacancyTitle);
         TextView vacancyCount = (TextView)view.findViewById(R.id.vacancyCount);
 
 
         congestionImage.setImageDrawable(context.getResources().getDrawable(data.getCongestionImageResource()));
         congestionTitle.setText(data.getCongestionTitle());
-        congestionDesc.setText(data.getCongestionDesc());
         vacancyTitle.setText(data.getVacancyTitle());
         vacancyCount.setText(data.getVacancyCount());
 

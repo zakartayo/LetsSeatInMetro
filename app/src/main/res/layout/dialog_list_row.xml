@@ -17,26 +17,18 @@
         android:textSize="15sp"
         android:textStyle="bold"/>
 
-    <TextView
-        android:id="@+id/congestionDesc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#252525"
-        android:textSize="15sp"
-        android:layout_marginRight="10dp"
-        android:text="혼잡도"/>
-
     <ImageView
         android:id="@+id/congestionImage"
         android:layout_width="25dp"
         android:layout_height="25dp"
+        android:layout_marginLeft="80dp"
         android:layout_marginRight="15dp" />
 
     <TextView
         android:id="@+id/vacancyTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="60dp"
         android:textColor="#252525"
         android:textSize="15sp"
         android:textStyle="bold"/>
@@ -45,6 +37,7 @@
         android:id="@+id/vacancyCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
         android:textColor="#252525"
         android:textSize="13sp"/>
 </LinearLayout>

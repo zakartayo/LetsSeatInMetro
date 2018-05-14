@@ -322,7 +322,11 @@ public class LineRecyclerAdapter  extends BaseAdapter{
 
             Congestion congestion = new Congestion();
 
-            congestion.setCongestionTitle(Integer.toString(i+1)+"번 칸");
+            if(i<9){
+                congestion.setCongestionTitle("0"+Integer.toString(i+1)+"번 칸");
+            }else{
+                congestion.setCongestionTitle(Integer.toString(i+1)+"번 칸");
+            }
             switch (congestions.get(i)){
                 case "1":
                     congestion.setCongestionCode(i);
@@ -338,14 +342,20 @@ public class LineRecyclerAdapter  extends BaseAdapter{
                     break;
                 case "3":
                     congestion.setCongestionCode(i);
+                    congestion.setVacancyTitle("좌석 수:");
+                    congestion.setVacancyCount(Integer.toString(vacancies.get(i)));
                     congestion.setCongestionImageResource(R.drawable.level3);
                     break;
                 case "4":
                     congestion.setCongestionCode(i);
+                    congestion.setVacancyTitle("좌석 수:");
+                    congestion.setVacancyCount(Integer.toString(vacancies.get(i)));
                     congestion.setCongestionImageResource(R.drawable.level4);
                     break;
                 case "5":
                     congestion.setCongestionCode(i);
+                    congestion.setVacancyTitle("좌석 수:");
+                    congestion.setVacancyCount(Integer.toString(vacancies.get(i)));
                     congestion.setCongestionImageResource(R.drawable.level5);
                     break;
                 default:
