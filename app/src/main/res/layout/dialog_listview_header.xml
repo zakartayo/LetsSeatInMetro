@@ -8,52 +8,57 @@
     <ImageView
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:src="@drawable/level1"/>
+        android:src="@drawable/level1_horizon"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:gravity="center_vertical"
         android:textSize="12sp"
+        android:layout_marginRight="8dp"
         android:text="매우 여유"/>
     <ImageView
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:src="@drawable/level2"/>
+        android:src="@drawable/level2_horizon"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:gravity="center_vertical"
         android:textSize="12sp"
+        android:layout_marginRight="8dp"
         android:text="여유"/>
     <ImageView
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:src="@drawable/level3"/>
+        android:src="@drawable/level3_horizon"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:gravity="center_vertical"
         android:textSize="12sp"
+        android:layout_marginRight="8dp"
         android:text="보통"/>
     <ImageView
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:src="@drawable/level4"/>
+        android:src="@drawable/level4_horizon"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:gravity="center_vertical"
         android:textSize="12sp"
+        android:layout_marginRight="8dp"
         android:text="조금 혼잡"/>
     <ImageView
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:src="@drawable/level5"/>
+        android:src="@drawable/level5_horizon"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:gravity="center_vertical"
         android:textSize="12sp"
+        android:layout_marginRight="8dp"
         android:text="매우 혼잡"/>
 
 

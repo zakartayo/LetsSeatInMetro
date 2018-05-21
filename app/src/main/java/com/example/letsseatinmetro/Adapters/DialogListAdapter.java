@@ -1,6 +1,7 @@
 package com.example.letsseatinmetro.Adapters;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,14 +56,21 @@ public class DialogListAdapter extends BaseAdapter{
 
         final Congestion data = dataList.get(position);
 
+
+
+
         ImageView congestionImage = (ImageView)view.findViewById(R.id.congestionImage);
         TextView congestionTitle = (TextView)view.findViewById(R.id.congestionTitle);
+        TextView congetsionLevel = (TextView)view.findViewById(R.id.congestionLevel);
         TextView vacancyTitle = (TextView)view.findViewById(R.id.vacancyTitle);
         TextView vacancyCount = (TextView)view.findViewById(R.id.vacancyCount);
 
+        Typeface typeface = Typeface.createFromAsset(context.getAssets(), "fonts/bmjua.ttf");
 
         congestionImage.setImageDrawable(context.getResources().getDrawable(data.getCongestionImageResource()));
         congestionTitle.setText(data.getCongestionTitle());
+        congetsionLevel.setText(data.getCongestionLevel());
+        congetsionLevel.setTypeface(typeface);
         vacancyTitle.setText(data.getVacancyTitle());
         vacancyCount.setText(data.getVacancyCount());
 

@@ -330,33 +330,38 @@ public class LineRecyclerAdapter  extends BaseAdapter{
             switch (congestions.get(i)){
                 case "1":
                     congestion.setCongestionCode(i);
+                    congestion.setCongestionLevel("매우 여유");
                     congestion.setVacancyTitle("좌석 수:");
                     congestion.setVacancyCount(Integer.toString(vacancies.get(i)));
-                    congestion.setCongestionImageResource(R.drawable.level1);
+                    congestion.setCongestionImageResource(R.drawable.level1_horizon);
                     break;
                 case "2":
                     congestion.setCongestionCode(i);
+                    congestion.setCongestionLevel("여유");
                     congestion.setVacancyTitle("좌석 수:");
                     congestion.setVacancyCount(Integer.toString(vacancies.get(i)));
-                    congestion.setCongestionImageResource(R.drawable.level2);
+                    congestion.setCongestionImageResource(R.drawable.level2_horizon);
                     break;
                 case "3":
                     congestion.setCongestionCode(i);
+                    congestion.setCongestionLevel("보통");
                     congestion.setVacancyTitle("좌석 수:");
                     congestion.setVacancyCount(Integer.toString(vacancies.get(i)));
-                    congestion.setCongestionImageResource(R.drawable.level3);
+                    congestion.setCongestionImageResource(R.drawable.level3_horizon);
                     break;
                 case "4":
                     congestion.setCongestionCode(i);
+                    congestion.setCongestionLevel("조금 혼잡");
                     congestion.setVacancyTitle("좌석 수:");
                     congestion.setVacancyCount(Integer.toString(vacancies.get(i)));
-                    congestion.setCongestionImageResource(R.drawable.level4);
+                    congestion.setCongestionImageResource(R.drawable.level4_horizon);
                     break;
                 case "5":
                     congestion.setCongestionCode(i);
+                    congestion.setCongestionLevel("매우 혼잡");
                     congestion.setVacancyTitle("좌석 수:");
                     congestion.setVacancyCount(Integer.toString(vacancies.get(i)));
-                    congestion.setCongestionImageResource(R.drawable.level5);
+                    congestion.setCongestionImageResource(R.drawable.level5_horizon);
                     break;
                 default:
                     return;
@@ -377,9 +382,6 @@ public class LineRecyclerAdapter  extends BaseAdapter{
         final AlertDialog alertDialog = builder.create();
         final ListView listView = alertDialog.getListView();
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        final View header = inflater.inflate(R.layout.dialog_listview_header, null, false);
-
-        listView.addHeaderView(header);
         listView.setAdapter(adapter);
         //listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE); // 여러 상품 선택을 위해 - 이 형태에서는 필요 없다
         listView.setDivider(new ColorDrawable(Color.LTGRAY));

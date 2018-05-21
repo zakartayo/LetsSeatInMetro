@@ -14,9 +14,11 @@ public class Congestion {
     public String congestionDesc;
     public String vacancyTitle;
     public String vacancyCount;
+    public String congestionLevel;
     public int congestionPrice;
     public int congestionImageResource;
     public boolean isSelected;
+
 
     public Congestion() {
         congestionCode = 0;
@@ -25,6 +27,7 @@ public class Congestion {
         congestionPrice = 0;
         vacancyTitle="";
         vacancyCount="";
+        congestionLevel="";
         isSelected = false;
         congestionImageResource = 0;
     }
