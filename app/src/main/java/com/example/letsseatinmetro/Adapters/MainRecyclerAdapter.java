@@ -2,11 +2,14 @@ package com.example.letsseatinmetro.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,10 +20,11 @@ import com.example.letsseatinmetro.R;
 import java.util.List;
 
 
-public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapter.ViewHolder> {
-    Context context;
+public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapter.ViewHolder>{
+    static Context context;
     List<MainCardItem> items;
     int item_layout;
+    int lastPosition = -1;
 
     public MainRecyclerAdapter(Context context, List<MainCardItem> items, int item_layout) {
         this.context = context;
@@ -50,6 +54,11 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
                 context.startActivity(intent);
             }
         });
+        if(position > lastPosition){
+            Animation animation = AnimationUtils.loadAnimation(context, R.anim.up_from_bottom);
+            holder.cardview.startAnimation(animation);
+            lastPosition = position;
+        }
     }
 
     @Override
@@ -57,7 +66,7 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
         return this.items.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView lineColor;
         TextView lineName;
         TextView lineRange;
@@ -65,9 +74,12 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
 
         public ViewHolder(View itemView) {
             super(itemView);
+            Typeface typeface2 = Typeface.createFromAsset(context.getAssets(), "fonts/yaregular.ttf");
             lineColor = (ImageView) itemView.findViewById(R.id.lineColor);
             lineName = (TextView) itemView.findViewById(R.id.lineName);
+            lineName.setTypeface(typeface2);
             lineRange = (TextView) itemView.findViewById(R.id.lineRange);
+            lineRange.setTypeface(typeface2);
             cardview = (CardView) itemView.findViewById(R.id.cardview);
         }
     }

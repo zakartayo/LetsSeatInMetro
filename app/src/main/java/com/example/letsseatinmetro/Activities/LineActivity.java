@@ -5,6 +5,7 @@ package com.example.letsseatinmetro.Activities;
  */
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -17,6 +18,7 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.letsseatinmetro.Adapters.LineRecyclerAdapter;
@@ -101,6 +103,15 @@ public class LineActivity extends AppCompatActivity {
             refresh = (ImageView) findViewById(R.id.refresh_btn);
             listview = (ListView) findViewById(R.id.mList);
             final View header = getLayoutInflater().inflate(R.layout.line_listview_header, null, false);
+
+            TextView up = header.findViewById(R.id.up);
+            TextView down = header.findViewById(R.id.down);
+
+            Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/yabold.ttf");
+
+            up.setTypeface(typeface);
+            down.setTypeface(typeface);
+
             listview.addHeaderView(header);
 
             items = DataHouse.line2;
@@ -119,6 +130,15 @@ public class LineActivity extends AppCompatActivity {
             refresh = (ImageView) findViewById(R.id.refresh_btn);
             listview = (ListView) findViewById(R.id.mList);
             final View header = getLayoutInflater().inflate(R.layout.line_listview_header, null, false);
+
+            TextView up = header.findViewById(R.id.up);
+            TextView down = header.findViewById(R.id.down);
+
+            Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/yabold.ttf");
+
+            up.setTypeface(typeface);
+            down.setTypeface(typeface);
+
             listview.addHeaderView(header);
             items = DataHouse.line3;
             lineRecyclerAdapter = new LineRecyclerAdapter(items);
@@ -173,6 +193,15 @@ public class LineActivity extends AppCompatActivity {
             refresh = (ImageView) findViewById(R.id.refresh_btn);
             listview = (ListView) findViewById(R.id.mList);
             final View header = getLayoutInflater().inflate(R.layout.line_listview_header, null, false);
+
+            TextView up = header.findViewById(R.id.up);
+            TextView down = header.findViewById(R.id.down);
+
+            Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/yabold.ttf");
+
+            up.setTypeface(typeface);
+            down.setTypeface(typeface);
+
             listview.addHeaderView(header);
             items = DataHouse.line5;
             lineRecyclerAdapter = new LineRecyclerAdapter(items);
@@ -192,6 +221,16 @@ public class LineActivity extends AppCompatActivity {
             refresh = (ImageView) findViewById(R.id.refresh_btn);
             listview = (ListView) findViewById(R.id.mList);
             final View header = getLayoutInflater().inflate(R.layout.line_listview_header, null, false);
+
+            TextView up = header.findViewById(R.id.up);
+            TextView down = header.findViewById(R.id.down);
+
+            Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/yabold.ttf");
+
+            up.setTypeface(typeface);
+            down.setTypeface(typeface);
+
+
             listview.addHeaderView(header);
             items = DataHouse.line6;
             lineRecyclerAdapter = new LineRecyclerAdapter(items);
@@ -209,6 +248,15 @@ public class LineActivity extends AppCompatActivity {
             refresh = (ImageView) findViewById(R.id.refresh_btn);
             listview = (ListView) findViewById(R.id.mList);
             final View header = getLayoutInflater().inflate(R.layout.line_listview_header, null, false);
+
+            TextView up = header.findViewById(R.id.up);
+            TextView down = header.findViewById(R.id.down);
+
+            Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/yabold.ttf");
+
+            up.setTypeface(typeface);
+            down.setTypeface(typeface);
+
             listview.addHeaderView(header);
             items = DataHouse.line7;
             lineRecyclerAdapter = new LineRecyclerAdapter(items);
@@ -226,6 +274,15 @@ public class LineActivity extends AppCompatActivity {
             refresh = (ImageView) findViewById(R.id.refresh_btn);
             listview = (ListView) findViewById(R.id.mList);
             final View header = getLayoutInflater().inflate(R.layout.line_listview_header, null, false);
+
+            TextView up = header.findViewById(R.id.up);
+            TextView down = header.findViewById(R.id.down);
+
+            Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/yabold.ttf");
+
+            up.setTypeface(typeface);
+            down.setTypeface(typeface);
+
             listview.addHeaderView(header);
             items = DataHouse.line8;
             lineRecyclerAdapter = new LineRecyclerAdapter(items);
@@ -359,6 +416,19 @@ public class LineActivity extends AppCompatActivity {
             listview = (ListView) findViewById(R.id.mList);
             items = DataHouse.newbundang;
             lineRecyclerAdapter = new LineRecyclerAdapter(items);
+
+            final View header = getLayoutInflater().inflate(R.layout.line_listview_header, null, false);
+
+            TextView up = header.findViewById(R.id.up);
+            TextView down = header.findViewById(R.id.down);
+
+            Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/yabold.ttf");
+
+            up.setTypeface(typeface);
+            down.setTypeface(typeface);
+
+            listview.addHeaderView(header);
+
             listview.setAdapter(lineRecyclerAdapter);
             getApi();
 
@@ -412,6 +482,15 @@ public class LineActivity extends AppCompatActivity {
             refresh = (ImageView) findViewById(R.id.refresh_btn);
             listview = (ListView) findViewById(R.id.mList);
             final View header = getLayoutInflater().inflate(R.layout.line_listview_header, null, false);
+
+            TextView up = header.findViewById(R.id.up);
+            TextView down = header.findViewById(R.id.down);
+
+            Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/yabold.ttf");
+
+            up.setTypeface(typeface);
+            down.setTypeface(typeface);
+
             listview.addHeaderView(header);
             items = DataHouse.arirail;
             lineRecyclerAdapter = new LineRecyclerAdapter(items);

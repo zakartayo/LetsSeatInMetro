@@ -1,6 +1,7 @@
 package com.example.letsseatinmetro.Fragment;
 
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.letsseatinmetro.Adapters.LineRecyclerAdapter;
 import com.example.letsseatinmetro.CardItem.LineCardItem;
@@ -47,6 +49,15 @@ public class FourNormalFragment extends Fragment {
         View v = inflater.inflate(R.layout.normal_tab, container, false);
         listview = (ListView) v.findViewById(R.id.normalList);
         final View header = getLayoutInflater().inflate(R.layout.line_listview_header, null, false);
+
+        TextView up = header.findViewById(R.id.up);
+        TextView down = header.findViewById(R.id.down);
+
+        Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/yabold.ttf");
+
+        up.setTypeface(typeface);
+        down.setTypeface(typeface);
+
         listview.addHeaderView(header);
         refresh = (ImageView)v.findViewById(R.id.refresh_normal_btn);
         items = DataHouse.line4;
