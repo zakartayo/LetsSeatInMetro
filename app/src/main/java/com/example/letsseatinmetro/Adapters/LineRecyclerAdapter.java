@@ -24,6 +24,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.letsseatinmetro.Activities.ShowImageActivity;
 import com.example.letsseatinmetro.CardItem.LineCardItem;
 import com.example.letsseatinmetro.DialogItem.Congestion;
 import com.example.letsseatinmetro.R;
@@ -62,6 +63,7 @@ public class LineRecyclerAdapter  extends BaseAdapter{
     private TextView destination_bottom_3;
     private Context context;
     private static String LOG_TAG = "LineRecyclerAdapter";
+    private static final String requestAddress = "http://113.198.84.121/002&2301";
     // ListViewAdapter의 생성자
     public LineRecyclerAdapter(List<LineCardItem> listItem) {
         listViewItemList = listItem;
@@ -104,7 +106,7 @@ public class LineRecyclerAdapter  extends BaseAdapter{
                 @Override
                 public void onClick(View v) {
                     //new MakeNetworkCall().execute("http://eatcoder.iptime.org/"+listViewItem.getUpTrainNum(), "Get");
-                    new MakeNetworkCall().execute("http://113.198.84.121/"+"002" + "&2132", "Get");
+                    new MakeNetworkCall().execute(requestAddress, "Get");
 
                 }
             });
@@ -136,7 +138,7 @@ public class LineRecyclerAdapter  extends BaseAdapter{
                 public void onClick(View v) {
                     Log.d("하행 클릭", "http통신을 시작하세요");
                     //new MakeNetworkCall().execute("http://eatcoder.iptime.org/"+listViewItem.getDownTrainNum(), "Get");
-                    new MakeNetworkCall().execute("http://113.198.84.121/"+"002" + "&2132", "Get");
+                    new MakeNetworkCall().execute(requestAddress, "Get");
                 }
             });
         }else{
@@ -390,7 +392,10 @@ public class LineRecyclerAdapter  extends BaseAdapter{
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                alertDialog.dismiss();
+                Intent intent = new Intent(context, ShowImageActivity.class);
+                intent.putExtra("position", "00"+Integer.toString(position+1));
+                context.startActivity(intent);
+                //alertDialog.dismiss();
             }
         });
 
