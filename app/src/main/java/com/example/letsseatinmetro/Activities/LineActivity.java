@@ -25,7 +25,11 @@ import com.example.letsseatinmetro.Adapters.LineRecyclerAdapter;
 import com.example.letsseatinmetro.Adapters.TabPagerAdapter;
 import com.example.letsseatinmetro.CardItem.LineCardItem;
 import com.example.letsseatinmetro.Datahouse.DataHouse;
+import com.example.letsseatinmetro.Network.LineList;
 import com.example.letsseatinmetro.Network.Remote;
+import com.example.letsseatinmetro.Network.ServiceGenerator;
+import com.example.letsseatinmetro.Network.Station;
+import com.example.letsseatinmetro.Network.SubwayApiService;
 import com.example.letsseatinmetro.R;
 
 import org.json.JSONArray;
@@ -35,6 +39,10 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LineActivity extends AppCompatActivity {
     private ImageView refresh;
@@ -50,6 +58,8 @@ public class LineActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private String lineName;
+    private ArrayList<LineList> stationList; //데이터를 담을 리스트
+    private static final String API_KEY = "574a706754646c673936684d555778";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,12 +127,12 @@ public class LineActivity extends AppCompatActivity {
             items = DataHouse.line2;
             lineRecyclerAdapter = new LineRecyclerAdapter(items);
             listview.setAdapter(lineRecyclerAdapter);
-            getApi();
+            setStnListAPI(API_KEY, "2호선");
 
             refresh.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    getApi();
+                    setStnListAPI(API_KEY, "2호선");
                 }
             });
         } else if (lineName.equals("3호선")) {
@@ -143,12 +153,12 @@ public class LineActivity extends AppCompatActivity {
             items = DataHouse.line3;
             lineRecyclerAdapter = new LineRecyclerAdapter(items);
             listview.setAdapter(lineRecyclerAdapter);
-            getApi();
+            setStnListAPI(API_KEY, "3호선");
 
             refresh.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    getApi();
+                    setStnListAPI(API_KEY, "3호선");
                 }
             });
         } else if (lineName.equals("4호선")) {
@@ -207,13 +217,13 @@ public class LineActivity extends AppCompatActivity {
             lineRecyclerAdapter = new LineRecyclerAdapter(items);
             listview.setAdapter(lineRecyclerAdapter);
 
-            getApi();
+            setStnListAPI(API_KEY, "5호선");
 
             refresh.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Log.d("called", "called");
-                    getApi();
+                    setStnListAPI(API_KEY, "5호선");
                 }
             });
         } else if (lineName.equals("6호선")) {
@@ -235,12 +245,12 @@ public class LineActivity extends AppCompatActivity {
             items = DataHouse.line6;
             lineRecyclerAdapter = new LineRecyclerAdapter(items);
             listview.setAdapter(lineRecyclerAdapter);
-            getApi();
+            setStnListAPI(API_KEY, "6호선");
 
             refresh.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    getApi();
+                    setStnListAPI(API_KEY, "6호선");
                 }
             });
         } else if (lineName.equals("7호선")) {
@@ -261,12 +271,12 @@ public class LineActivity extends AppCompatActivity {
             items = DataHouse.line7;
             lineRecyclerAdapter = new LineRecyclerAdapter(items);
             listview.setAdapter(lineRecyclerAdapter);
-            getApi();
+            setStnListAPI(API_KEY, "7호선");
 
             refresh.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    getApi();
+                    setStnListAPI(API_KEY, "7호선");
                 }
             });
         } else if (lineName.equals("8호선")) {
@@ -287,12 +297,12 @@ public class LineActivity extends AppCompatActivity {
             items = DataHouse.line8;
             lineRecyclerAdapter = new LineRecyclerAdapter(items);
             listview.setAdapter(lineRecyclerAdapter);
-            getApi();
+            setStnListAPI(API_KEY, "8호선");
 
             refresh.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    getApi();
+                    setStnListAPI(API_KEY, "8호선");
                 }
             });
         } else if (lineName.equals("9호선")) {
@@ -430,12 +440,12 @@ public class LineActivity extends AppCompatActivity {
             listview.addHeaderView(header);
 
             listview.setAdapter(lineRecyclerAdapter);
-            getApi();
+            setStnListAPI(API_KEY, "신분당선");
 
             refresh.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    getApi();
+                    setStnListAPI(API_KEY, "신분당선");
                 }
             });
         } else if (lineName.equals("경춘선")) {
@@ -495,17 +505,17 @@ public class LineActivity extends AppCompatActivity {
             items = DataHouse.arirail;
             lineRecyclerAdapter = new LineRecyclerAdapter(items);
             listview.setAdapter(lineRecyclerAdapter);
-            getApi();
+            setStnListAPI(API_KEY, "공항철도");
 
             refresh.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    getApi();
+                    setStnListAPI(API_KEY, "공항철도");
                 }
             });
         }
     }
-    public void getApi(){
+   /* public void getApi(){
         Log.d("api called", "api called");
         new MyTask(this).execute();
     }
@@ -574,13 +584,13 @@ public class LineActivity extends AppCompatActivity {
             String result = "";
             try {
                 //서울시 오픈 API 제공(샘플 주소 json으로 작업)
-                result = Remote.getData("http://swopenapi.seoul.go.kr/api/subway/574a706754646c673936684d555778/json/realtimePosition/1/1000/"+lineName);
+                result = Remote.getData("http://swopenapi.seoul.go.kr/api/subway/574a706754646c673936684d555778/json/realtimePosition/1/200/"+lineName);
             } catch (Exception e) {
                 e.printStackTrace();
             }
             return result;
         }
-    }
+    }*/
     /*public void dataTrim(String data){
         StringBuffer bf = new StringBuffer();
         bf.append(data.charAt(0));
@@ -597,307 +607,362 @@ public class LineActivity extends AppCompatActivity {
             for(int j=0; j<dataLength; j++){
                 Log.d("datalength2", Integer.toString(dataLength));
                 Log.d("j입니다", Integer.toString(j));
-                        switch (lineName){
-                            case "2호선":
-                                Log.d("2호선입니다", "2호선입니다");
-                                if(items.get(i).getStation().equals(trainPosition.get(j))) {
-                                    if (updownData.get(j).equals("0")) {
-                                        Log.d("상행입니다", items.get(i).getStation());
+                switch (lineName){
+                    case "2호선":
+                        Log.d("2호선입니다", "2호선입니다");
+                        if(items.get(i).getStation().equals(trainPosition.get(j))) {
+                            if (updownData.get(j).equals("0")) {
+                                Log.d("상행입니다", items.get(i).getStation());
 
-                                        // /해당 열차가 있을 시 열차번호와 flag값 입력
-                                        items.get(i).setUpTrainNum(trainNums.get(j), true);
+                                // /해당 열차가 있을 시 열차번호와 flag값 입력
+                                items.get(i).setUpTrainNum(trainNums.get(j), true);
 
-                                        if (trainState.get(j).equals("0")) {
-                                            items.get(i).setline1(R.drawable.line_two_1);
-                                            items.get(i).setDestination_top_1(destinationData.get(j));
-                                        } else if (trainState.get(j).equals("1")) {
-                                            items.get(i).setline1(R.drawable.line_two_2);
-                                            items.get(i).setDestination_top_2(destinationData.get(j));
-                                        } else {
-                                            items.get(i).setline1(R.drawable.line_two_3);
-                                            items.get(i).setDestination_top_3(destinationData.get(j));
-                                        }
-                                        lineRecyclerAdapter.notifyDataSetChanged();
-
-                                    } else {
-                                        // /해당 열차가 있을 시 열차번호와 flag값 입력
-                                        items.get(i).setDownTrainNum(trainNums.get(j), true);
-                                        Log.d("하행", items.get(i).getStation());
-                                        if (trainState.get(j).equals("0")) {
-                                            items.get(i).setline2(R.drawable.line_two_1);
-                                            items.get(i).setDestination_bottom_1(destinationData.get(j));
-                                        } else if (trainState.get(j).equals("1")) {
-                                            items.get(i).setline2(R.drawable.line_two_2);
-                                            items.get(i).setDestination_bottom_2(destinationData.get(j));
-                                        } else {
-                                            items.get(i).setline2(R.drawable.line_two_3);
-                                            items.get(i).setDestination_bottom_3(destinationData.get(j));
-                                        }
-                                        lineRecyclerAdapter.notifyDataSetChanged();
-                                    }
+                                if (trainState.get(j).equals("0")) {
+                                    items.get(i).setline1(R.drawable.line_two_1);
+                                    items.get(i).setDestination_top_1(destinationData.get(j));
+                                } else if (trainState.get(j).equals("1")) {
+                                    items.get(i).setline1(R.drawable.line_two_2);
+                                    items.get(i).setDestination_top_2(destinationData.get(j));
+                                } else {
+                                    items.get(i).setline1(R.drawable.line_two_3);
+                                    items.get(i).setDestination_top_3(destinationData.get(j));
                                 }
-                                break;
-                            case "3호선":
-                                if(items.get(i).getStation().equals(trainPosition.get(j))) {
-                                    if (updownData.get(j).equals("0")) {
-                                        Log.d("상행입니다", items.get(i).getStation());
+                                lineRecyclerAdapter.notifyDataSetChanged();
 
-                                        // /해당 열차가 있을 시 열차번호와 flag값 입력
-                                        items.get(i).setUpTrainNum(trainNums.get(j), true);
-
-                                        if (trainState.get(j).equals("0")) {
-                                            items.get(i).setline1(R.drawable.line_three_1);
-                                            items.get(i).setDestination_top_1(destinationData.get(j));
-                                        } else if (trainState.get(j).equals("1")) {
-                                            items.get(i).setline1(R.drawable.line_three_2);
-                                            items.get(i).setDestination_top_2(destinationData.get(j));
-                                        } else {
-                                            items.get(i).setline1(R.drawable.line_three_3);
-                                            items.get(i).setDestination_top_3(destinationData.get(j));
-                                        }
-                                        lineRecyclerAdapter.notifyDataSetChanged();
-                                    }else {
-                                        // 하행 열차번호와 flag값 입력
-                                        items.get(i).setDownTrainNum(trainNums.get(j), true);
-                                        Log.d("하행", items.get(i).getStation());
-
-                                        if(trainState.get(j).equals("0")){
-                                            items.get(i).setline2(R.drawable.line_three_1);
-                                            items.get(i).setDestination_bottom_1(destinationData.get(j));
-                                        }else if(trainState.get(j).equals("1")){
-                                            items.get(i).setline2(R.drawable.line_three_2);
-                                            items.get(i).setDestination_bottom_2(destinationData.get(j));
-                                        }else{
-                                            items.get(i).setline2(R.drawable.line_three_3);
-                                            items.get(i).setDestination_bottom_3(destinationData.get(j));
-                                        }
-                                        lineRecyclerAdapter.notifyDataSetChanged();
-                                    }
+                            } else {
+                                // /해당 열차가 있을 시 열차번호와 flag값 입력
+                                items.get(i).setDownTrainNum(trainNums.get(j), true);
+                                Log.d("하행", items.get(i).getStation());
+                                if (trainState.get(j).equals("0")) {
+                                    items.get(i).setline2(R.drawable.line_two_1);
+                                    items.get(i).setDestination_bottom_1(destinationData.get(j));
+                                } else if (trainState.get(j).equals("1")) {
+                                    items.get(i).setline2(R.drawable.line_two_2);
+                                    items.get(i).setDestination_bottom_2(destinationData.get(j));
+                                } else {
+                                    items.get(i).setline2(R.drawable.line_two_3);
+                                    items.get(i).setDestination_bottom_3(destinationData.get(j));
                                 }
-                                break;
-                            case "5호선":
-                                if(items.get(i).getStation().equals(trainPosition.get(j))) {
-                                    if (updownData.get(j).equals("0")) {
-
-                                        Log.d("상행입니다", items.get(i).getStation());
-
-                                        // 해당 열차가 있을 시 열차번호와 flag값 입력
-                                        items.get(i).setUpTrainNum(trainNums.get(j), true);
-
-                                        if (trainState.get(j).equals("0")) {
-                                            items.get(i).setline1(R.drawable.line_five_1);
-                                            items.get(i).setDestination_top_1(destinationData.get(j));
-                                        } else if (trainState.get(j).equals("1")) {
-                                            items.get(i).setline1(R.drawable.line_five_2);
-                                            items.get(i).setDestination_top_2(destinationData.get(j));
-                                        } else {
-                                            items.get(i).setline1(R.drawable.line_five_3);
-                                            items.get(i).setDestination_top_3(destinationData.get(j));
-                                        }
-                                        lineRecyclerAdapter.notifyDataSetChanged();
-                                    }else {
-                                        items.get(i).setDownTrainNum(trainNums.get(j), true);
-                                        Log.d("하행", items.get(i).getStation());
-                                        if(trainState.get(j).equals("0")){
-                                            items.get(i).setline2(R.drawable.line_five_1);
-                                            items.get(i).setDestination_bottom_1(destinationData.get(j));
-                                        }else if(trainState.get(j).equals("1")){
-                                            items.get(i).setline2(R.drawable.line_five_2);
-                                            items.get(i).setDestination_bottom_2(destinationData.get(j));
-                                        }else{
-                                            items.get(i).setline2(R.drawable.line_five_3);
-                                            items.get(i).setDestination_bottom_3(destinationData.get(j));
-                                        }
-                                        lineRecyclerAdapter.notifyDataSetChanged();
-                                    }
-                                }
-                                break;
-                            case "6호선":
-                                if(items.get(i).getStation().equals(trainPosition.get(j))) {
-                                    if (updownData.get(j).equals("0")) {
-                                        Log.d("상행입니다", items.get(i).getStation());
-
-                                        // 해당 열차가 있을 시 열차번호와 flag값 입력
-                                        items.get(i).setUpTrainNum(trainNums.get(j), true);
-                                        if (trainState.get(j).equals("0")) {
-                                            items.get(i).setline1(R.drawable.line_six_1);
-                                            items.get(i).setDestination_top_1(destinationData.get(j));
-                                        } else if (trainState.get(j).equals("1")) {
-                                            items.get(i).setline1(R.drawable.line_six_2);
-                                            items.get(i).setDestination_top_2(destinationData.get(j));
-                                        } else {
-                                            items.get(i).setline1(R.drawable.line_six_3);
-                                            items.get(i).setDestination_top_3(destinationData.get(j));
-                                        }
-                                        lineRecyclerAdapter.notifyDataSetChanged();
-                                    }else {
-                                        items.get(i).setDownTrainNum(trainNums.get(j), true);
-                                        Log.d("하행", items.get(i).getStation());
-                                        if(trainState.get(j).equals("0")){
-                                            items.get(i).setline2(R.drawable.line_six_1);
-                                            items.get(i).setDestination_bottom_1(destinationData.get(j));
-                                        }else if(trainState.get(j).equals("1")){
-                                            items.get(i).setline2(R.drawable.line_six_2);
-                                            items.get(i).setDestination_bottom_2(destinationData.get(j));
-                                        }else{
-                                            items.get(i).setline2(R.drawable.line_six_3);
-                                            items.get(i).setDestination_bottom_3(destinationData.get(j));
-                                        }
-                                        lineRecyclerAdapter.notifyDataSetChanged();
-                                    }
-                                }
-                                break;
-                            case "7호선":
-                                if(items.get(i).getStation().equals(trainPosition.get(j))) {
-                                    if (updownData.get(j).equals("0")) {
-                                        Log.d("상행입니다", items.get(i).getStation());
-
-                                        // 해당 열차가 있을 시 열차번호와 flag값 입력
-                                        items.get(i).setUpTrainNum(trainNums.get(j), true);
-                                        if (trainState.get(j).equals("0")) {
-                                            items.get(i).setline1(R.drawable.line_seven_1);
-                                            items.get(i).setDestination_top_1(destinationData.get(j));
-                                        } else if (trainState.get(j).equals("1")) {
-                                            items.get(i).setline1(R.drawable.line_seven_2);
-                                            items.get(i).setDestination_top_2(destinationData.get(j));
-                                        } else {
-                                            items.get(i).setline1(R.drawable.line_seven_3);
-                                            items.get(i).setDestination_top_3(destinationData.get(j));
-                                        }
-                                        lineRecyclerAdapter.notifyDataSetChanged();
-
-                                    }else {
-                                        items.get(i).setDownTrainNum(trainNums.get(j), true);
-                                        Log.d("하행", items.get(i).getStation());
-                                        if(trainState.get(j).equals("0")){
-                                            items.get(i).setline2(R.drawable.line_seven_1);
-                                            items.get(i).setDestination_bottom_1(destinationData.get(j));
-                                        }else if(trainState.get(j).equals("1")){
-                                            items.get(i).setline2(R.drawable.line_seven_2);
-                                            items.get(i).setDestination_bottom_2(destinationData.get(j));
-                                        }else{
-                                            items.get(i).setline2(R.drawable.line_seven_3);
-                                            items.get(i).setDestination_bottom_3(destinationData.get(j));
-                                        }
-                                        lineRecyclerAdapter.notifyDataSetChanged();
-                                    }
-                                }
-                                break;
-                            case "8호선":
-                                if(items.get(i).getStation().equals(trainPosition.get(j))) {
-                                    if (updownData.get(j).equals("0")) {
-
-                                        Log.d("상행입니다", items.get(i).getStation());
-                                        // 해당 열차가 있을 시 열차번호와 flag값 입력
-                                        items.get(i).setUpTrainNum(trainNums.get(j), true);
-                                        if (trainState.get(j).equals("0")) {
-                                            items.get(i).setline1(R.drawable.line_eight_1);
-                                            items.get(i).setDestination_top_1(destinationData.get(j));
-                                        } else if (trainState.get(j).equals("1")) {
-                                            items.get(i).setline1(R.drawable.line_eight_2);
-                                            items.get(i).setDestination_top_2(destinationData.get(j));
-                                        } else {
-                                            items.get(i).setline1(R.drawable.line_eight_3);
-                                            items.get(i).setDestination_top_3(destinationData.get(j));
-                                        }
-                                        lineRecyclerAdapter.notifyDataSetChanged();
-                                    }else {
-                                        // /해당 열차가 있을 시 열차번호와 flag값 입력
-                                        items.get(i).setDownTrainNum(trainNums.get(j), true);
-                                        Log.d("하행", items.get(i).getStation());
-                                        if(trainState.get(j).equals("0")){
-                                            items.get(i).setline2(R.drawable.line_eight_1);
-                                            items.get(i).setDestination_bottom_1(destinationData.get(j));
-                                        }else if(trainState.get(j).equals("1")){
-                                            items.get(i).setline2(R.drawable.line_eight_2);
-                                            items.get(i).setDestination_bottom_2(destinationData.get(j));
-                                        }else{
-                                            items.get(i).setline2(R.drawable.line_eight_3);
-                                            items.get(i).setDestination_bottom_3(destinationData.get(j));
-                                        }
-                                        lineRecyclerAdapter.notifyDataSetChanged();
-                                    }
-                                }
-                                break;
-                            case "신분당선":
-                                if(items.get(i).getStation().equals(trainPosition.get(j))) {
-                                    if (updownData.get(j).equals("0")) {
-                                        Log.d("상행입니다", items.get(i).getStation());
-
-                                        // /해당 열차가 있을 시 열차번호와 flag값 입력
-                                        items.get(i).setUpTrainNum(trainNums.get(j), true);
-
-                                        if (trainState.get(j).equals("0")) {
-                                            items.get(i).setline1(R.drawable.line_newbundang_1);
-                                            items.get(i).setDestination_top_1(destinationData.get(j));
-                                        } else if (trainState.get(j).equals("1")) {
-                                            items.get(i).setline1(R.drawable.line_newbundang_2);
-                                            items.get(i).setDestination_top_2(destinationData.get(j));
-                                        } else {
-                                            items.get(i).setline1(R.drawable.line_newbundang_3);
-                                            items.get(i).setDestination_top_3(destinationData.get(j));
-                                        }
-                                        lineRecyclerAdapter.notifyDataSetChanged();
-                                    }else {
-                                        // /해당 열차가 있을 시 열차번호와 flag값 입력
-                                        items.get(i).setDownTrainNum(trainNums.get(j), true);
-                                        Log.d("하행", items.get(i).getStation());
-                                        if(trainState.get(j).equals("0")){
-                                            items.get(i).setline2(R.drawable.line_newbundang_1);
-                                            items.get(i).setDestination_bottom_1(destinationData.get(j));
-                                        }else if(trainState.get(j).equals("1")){
-                                            items.get(i).setline2(R.drawable.line_newbundang_2);
-                                            items.get(i).setDestination_bottom_2(destinationData.get(j));
-                                        }else{
-                                            items.get(i).setline2(R.drawable.line_newbundang_3);
-                                            items.get(i).setDestination_bottom_3(destinationData.get(j));
-                                        }
-                                        lineRecyclerAdapter.notifyDataSetChanged();
-                                    }
-                                }
-                                break;
-                            case "공항철도":
-                                if(items.get(i).getStation().equals(trainPosition.get(j))) {
-                                    if (updownData.get(j).equals("0")) {
-                                        Log.d("상행입니다", items.get(i).getStation());
-
-                                        // /해당 열차가 있을 시 열차번호와 flag값 입력
-                                        items.get(i).setUpTrainNum(trainNums.get(j), true);
-
-                                        if (trainState.get(j).equals("0")) {
-                                            items.get(i).setline1(R.drawable.line_airport_1);
-                                            items.get(i).setDestination_top_1(destinationData.get(j));
-                                        } else if (trainState.get(j).equals("1")) {
-                                            items.get(i).setline1(R.drawable.line_airport_2);
-                                            items.get(i).setDestination_top_2(destinationData.get(j));
-                                        } else {
-                                            items.get(i).setline1(R.drawable.line_airport_3);
-                                            items.get(i).setDestination_top_3(destinationData.get(j));
-                                        }
-                                        lineRecyclerAdapter.notifyDataSetChanged();
-                                    }else {
-                                        // /해당 열차가 있을 시 열차번호와 flag값 입력
-                                        items.get(i).setDownTrainNum(trainNums.get(j), true);
-                                        Log.d("하행", items.get(i).getStation());
-                                        if(trainState.get(j).equals("0")){
-                                            items.get(i).setline2(R.drawable.line_airport_1);
-                                            items.get(i).setDestination_bottom_1(destinationData.get(j));
-                                        }else if(trainState.get(j).equals("1")){
-                                            items.get(i).setline2(R.drawable.line_airport_2);
-                                            items.get(i).setDestination_bottom_2(destinationData.get(j));
-                                        }else{
-                                            items.get(i).setline2(R.drawable.line_airport_3);
-                                            items.get(i).setDestination_bottom_3(destinationData.get(j));
-                                        }
-                                        lineRecyclerAdapter.notifyDataSetChanged();
-                                    }
-                                }
-                                break;
-                            default:
-                                return;
+                                lineRecyclerAdapter.notifyDataSetChanged();
+                            }
                         }
+                        break;
+                    case "3호선":
+                        if(items.get(i).getStation().equals(trainPosition.get(j))) {
+                            if (updownData.get(j).equals("0")) {
+                                Log.d("상행입니다", items.get(i).getStation());
+
+                                // /해당 열차가 있을 시 열차번호와 flag값 입력
+                                items.get(i).setUpTrainNum(trainNums.get(j), true);
+
+                                if (trainState.get(j).equals("0")) {
+                                    items.get(i).setline1(R.drawable.line_three_1);
+                                    items.get(i).setDestination_top_1(destinationData.get(j));
+                                } else if (trainState.get(j).equals("1")) {
+                                    items.get(i).setline1(R.drawable.line_three_2);
+                                    items.get(i).setDestination_top_2(destinationData.get(j));
+                                } else {
+                                    items.get(i).setline1(R.drawable.line_three_3);
+                                    items.get(i).setDestination_top_3(destinationData.get(j));
+                                }
+                                lineRecyclerAdapter.notifyDataSetChanged();
+                            }else {
+                                // 하행 열차번호와 flag값 입력
+                                items.get(i).setDownTrainNum(trainNums.get(j), true);
+                                Log.d("하행", items.get(i).getStation());
+
+                                if(trainState.get(j).equals("0")){
+                                    items.get(i).setline2(R.drawable.line_three_1);
+                                    items.get(i).setDestination_bottom_1(destinationData.get(j));
+                                }else if(trainState.get(j).equals("1")){
+                                    items.get(i).setline2(R.drawable.line_three_2);
+                                    items.get(i).setDestination_bottom_2(destinationData.get(j));
+                                }else{
+                                    items.get(i).setline2(R.drawable.line_three_3);
+                                    items.get(i).setDestination_bottom_3(destinationData.get(j));
+                                }
+                                lineRecyclerAdapter.notifyDataSetChanged();
+                            }
+                        }
+                        break;
+                    case "5호선":
+                        if(items.get(i).getStation().equals(trainPosition.get(j))) {
+                            if (updownData.get(j).equals("0")) {
+
+                                Log.d("상행입니다", items.get(i).getStation());
+
+                                // 해당 열차가 있을 시 열차번호와 flag값 입력
+                                items.get(i).setUpTrainNum(trainNums.get(j), true);
+
+                                if (trainState.get(j).equals("0")) {
+                                    items.get(i).setline1(R.drawable.line_five_1);
+                                    items.get(i).setDestination_top_1(destinationData.get(j));
+                                } else if (trainState.get(j).equals("1")) {
+                                    items.get(i).setline1(R.drawable.line_five_2);
+                                    items.get(i).setDestination_top_2(destinationData.get(j));
+                                } else {
+                                    items.get(i).setline1(R.drawable.line_five_3);
+                                    items.get(i).setDestination_top_3(destinationData.get(j));
+                                }
+                                lineRecyclerAdapter.notifyDataSetChanged();
+                            }else {
+                                items.get(i).setDownTrainNum(trainNums.get(j), true);
+                                Log.d("하행", items.get(i).getStation());
+                                if(trainState.get(j).equals("0")){
+                                    items.get(i).setline2(R.drawable.line_five_1);
+                                    items.get(i).setDestination_bottom_1(destinationData.get(j));
+                                }else if(trainState.get(j).equals("1")){
+                                    items.get(i).setline2(R.drawable.line_five_2);
+                                    items.get(i).setDestination_bottom_2(destinationData.get(j));
+                                }else{
+                                    items.get(i).setline2(R.drawable.line_five_3);
+                                    items.get(i).setDestination_bottom_3(destinationData.get(j));
+                                }
+                                lineRecyclerAdapter.notifyDataSetChanged();
+                            }
+                        }
+                        break;
+                    case "6호선":
+                        if(items.get(i).getStation().equals(trainPosition.get(j))) {
+                            if (updownData.get(j).equals("0")) {
+                                Log.d("상행입니다", items.get(i).getStation());
+
+                                // 해당 열차가 있을 시 열차번호와 flag값 입력
+                                items.get(i).setUpTrainNum(trainNums.get(j), true);
+                                if (trainState.get(j).equals("0")) {
+                                    items.get(i).setline1(R.drawable.line_six_1);
+                                    items.get(i).setDestination_top_1(destinationData.get(j));
+                                } else if (trainState.get(j).equals("1")) {
+                                    items.get(i).setline1(R.drawable.line_six_2);
+                                    items.get(i).setDestination_top_2(destinationData.get(j));
+                                } else {
+                                    items.get(i).setline1(R.drawable.line_six_3);
+                                    items.get(i).setDestination_top_3(destinationData.get(j));
+                                }
+                                lineRecyclerAdapter.notifyDataSetChanged();
+                            }else {
+                                items.get(i).setDownTrainNum(trainNums.get(j), true);
+                                Log.d("하행", items.get(i).getStation());
+                                if(trainState.get(j).equals("0")){
+                                    items.get(i).setline2(R.drawable.line_six_1);
+                                    items.get(i).setDestination_bottom_1(destinationData.get(j));
+                                }else if(trainState.get(j).equals("1")){
+                                    items.get(i).setline2(R.drawable.line_six_2);
+                                    items.get(i).setDestination_bottom_2(destinationData.get(j));
+                                }else{
+                                    items.get(i).setline2(R.drawable.line_six_3);
+                                    items.get(i).setDestination_bottom_3(destinationData.get(j));
+                                }
+                                lineRecyclerAdapter.notifyDataSetChanged();
+                            }
+                        }
+                        break;
+                    case "7호선":
+                        if(items.get(i).getStation().equals(trainPosition.get(j))) {
+                            if (updownData.get(j).equals("0")) {
+                                Log.d("상행입니다", items.get(i).getStation());
+
+                                // 해당 열차가 있을 시 열차번호와 flag값 입력
+                                items.get(i).setUpTrainNum(trainNums.get(j), true);
+                                if (trainState.get(j).equals("0")) {
+                                    items.get(i).setline1(R.drawable.line_seven_1);
+                                    items.get(i).setDestination_top_1(destinationData.get(j));
+                                } else if (trainState.get(j).equals("1")) {
+                                    items.get(i).setline1(R.drawable.line_seven_2);
+                                    items.get(i).setDestination_top_2(destinationData.get(j));
+                                } else {
+                                    items.get(i).setline1(R.drawable.line_seven_3);
+                                    items.get(i).setDestination_top_3(destinationData.get(j));
+                                }
+                                lineRecyclerAdapter.notifyDataSetChanged();
+
+                            }else {
+                                items.get(i).setDownTrainNum(trainNums.get(j), true);
+                                Log.d("하행", items.get(i).getStation());
+                                if(trainState.get(j).equals("0")){
+                                    items.get(i).setline2(R.drawable.line_seven_1);
+                                    items.get(i).setDestination_bottom_1(destinationData.get(j));
+                                }else if(trainState.get(j).equals("1")){
+                                    items.get(i).setline2(R.drawable.line_seven_2);
+                                    items.get(i).setDestination_bottom_2(destinationData.get(j));
+                                }else{
+                                    items.get(i).setline2(R.drawable.line_seven_3);
+                                    items.get(i).setDestination_bottom_3(destinationData.get(j));
+                                }
+                                lineRecyclerAdapter.notifyDataSetChanged();
+                            }
+                        }
+                        break;
+                    case "8호선":
+                        if(items.get(i).getStation().equals(trainPosition.get(j))) {
+                            if (updownData.get(j).equals("0")) {
+
+                                Log.d("상행입니다", items.get(i).getStation());
+                                // 해당 열차가 있을 시 열차번호와 flag값 입력
+                                items.get(i).setUpTrainNum(trainNums.get(j), true);
+                                if (trainState.get(j).equals("0")) {
+                                    items.get(i).setline1(R.drawable.line_eight_1);
+                                    items.get(i).setDestination_top_1(destinationData.get(j));
+                                } else if (trainState.get(j).equals("1")) {
+                                    items.get(i).setline1(R.drawable.line_eight_2);
+                                    items.get(i).setDestination_top_2(destinationData.get(j));
+                                } else {
+                                    items.get(i).setline1(R.drawable.line_eight_3);
+                                    items.get(i).setDestination_top_3(destinationData.get(j));
+                                }
+                                lineRecyclerAdapter.notifyDataSetChanged();
+                            }else {
+                                // /해당 열차가 있을 시 열차번호와 flag값 입력
+                                items.get(i).setDownTrainNum(trainNums.get(j), true);
+                                Log.d("하행", items.get(i).getStation());
+                                if(trainState.get(j).equals("0")){
+                                    items.get(i).setline2(R.drawable.line_eight_1);
+                                    items.get(i).setDestination_bottom_1(destinationData.get(j));
+                                }else if(trainState.get(j).equals("1")){
+                                    items.get(i).setline2(R.drawable.line_eight_2);
+                                    items.get(i).setDestination_bottom_2(destinationData.get(j));
+                                }else{
+                                    items.get(i).setline2(R.drawable.line_eight_3);
+                                    items.get(i).setDestination_bottom_3(destinationData.get(j));
+                                }
+                                lineRecyclerAdapter.notifyDataSetChanged();
+                            }
+                        }
+                        break;
+                    case "신분당선":
+                        if(items.get(i).getStation().equals(trainPosition.get(j))) {
+                            if (updownData.get(j).equals("0")) {
+                                Log.d("상행입니다", items.get(i).getStation());
+
+                                // /해당 열차가 있을 시 열차번호와 flag값 입력
+                                items.get(i).setUpTrainNum(trainNums.get(j), true);
+
+                                if (trainState.get(j).equals("0")) {
+                                    items.get(i).setline1(R.drawable.line_newbundang_1);
+                                    items.get(i).setDestination_top_1(destinationData.get(j));
+                                } else if (trainState.get(j).equals("1")) {
+                                    items.get(i).setline1(R.drawable.line_newbundang_2);
+                                    items.get(i).setDestination_top_2(destinationData.get(j));
+                                } else {
+                                    items.get(i).setline1(R.drawable.line_newbundang_3);
+                                    items.get(i).setDestination_top_3(destinationData.get(j));
+                                }
+                                lineRecyclerAdapter.notifyDataSetChanged();
+                            }else {
+                                // /해당 열차가 있을 시 열차번호와 flag값 입력
+                                items.get(i).setDownTrainNum(trainNums.get(j), true);
+                                Log.d("하행", items.get(i).getStation());
+                                if(trainState.get(j).equals("0")){
+                                    items.get(i).setline2(R.drawable.line_newbundang_1);
+                                    items.get(i).setDestination_bottom_1(destinationData.get(j));
+                                }else if(trainState.get(j).equals("1")){
+                                    items.get(i).setline2(R.drawable.line_newbundang_2);
+                                    items.get(i).setDestination_bottom_2(destinationData.get(j));
+                                }else{
+                                    items.get(i).setline2(R.drawable.line_newbundang_3);
+                                    items.get(i).setDestination_bottom_3(destinationData.get(j));
+                                }
+                                lineRecyclerAdapter.notifyDataSetChanged();
+                            }
+                        }
+                        break;
+                    case "공항철도":
+                        if(items.get(i).getStation().equals(trainPosition.get(j))) {
+                            if (updownData.get(j).equals("0")) {
+                                Log.d("상행입니다", items.get(i).getStation());
+
+                                // /해당 열차가 있을 시 열차번호와 flag값 입력
+                                items.get(i).setUpTrainNum(trainNums.get(j), true);
+
+                                if (trainState.get(j).equals("0")) {
+                                    items.get(i).setline1(R.drawable.line_airport_1);
+                                    items.get(i).setDestination_top_1(destinationData.get(j));
+                                } else if (trainState.get(j).equals("1")) {
+                                    items.get(i).setline1(R.drawable.line_airport_2);
+                                    items.get(i).setDestination_top_2(destinationData.get(j));
+                                } else {
+                                    items.get(i).setline1(R.drawable.line_airport_3);
+                                    items.get(i).setDestination_top_3(destinationData.get(j));
+                                }
+                                lineRecyclerAdapter.notifyDataSetChanged();
+                            }else {
+                                // /해당 열차가 있을 시 열차번호와 flag값 입력
+                                items.get(i).setDownTrainNum(trainNums.get(j), true);
+                                Log.d("하행", items.get(i).getStation());
+                                if(trainState.get(j).equals("0")){
+                                    items.get(i).setline2(R.drawable.line_airport_1);
+                                    items.get(i).setDestination_bottom_1(destinationData.get(j));
+                                }else if(trainState.get(j).equals("1")){
+                                    items.get(i).setline2(R.drawable.line_airport_2);
+                                    items.get(i).setDestination_bottom_2(destinationData.get(j));
+                                }else{
+                                    items.get(i).setline2(R.drawable.line_airport_3);
+                                    items.get(i).setDestination_bottom_3(destinationData.get(j));
+                                }
+                                lineRecyclerAdapter.notifyDataSetChanged();
+                            }
+                        }
+                        break;
+                    default:
+                        return;
+                }
             }
         }
+
+    }
+    private void setStnListAPI(String apikey, final String linenum){
+
+        SubwayApiService api = ServiceGenerator.getListApiService();
+        Call<Station> call = api.getStationList(apikey, linenum);
+
+        call.enqueue(new Callback<Station>() {
+            @Override
+            public void onResponse(Call<Station> call, Response<Station> response) {
+
+                if(response.isSuccessful()) {
+
+                    stationList = response.body().getLineList();
+                    dataLength = stationList.size();
+
+                    Log.d("dataLength", Integer.toString(dataLength));
+
+                    for(int i=0; i < dataLength; i ++){
+                        //현재 지하철역명 저장
+                        String currentPosition = stationList.get(i).getStatnNm();
+                        Log.d("currentPosition", currentPosition);
+                        trainPosition.add(currentPosition);
+
+                        //열차번호 저장
+                        String trainNum = stationList.get(i).getTrainNo();
+                        trainNums.add(trainNum);
+
+                        //종착역 저장
+                        String destination = stationList.get(i).getStatnTnm();
+                        destinationData.add(destination);
+                        Log.d("direction", destination);
+
+                        //상하행 저장
+                        String updown = stationList.get(i).getUpdnLine();
+                        updownData.add(updown);
+
+                        //열차 상태 저장
+                        String state = stationList.get(i).getTrainSttus();
+                        trainState.add(state);
+                        Log.d("state", state);
+                    }
+                    Log.d("trainpositionsize", Integer.toString(trainPosition.size()));
+                    compareData();
+                } else {
+                    Log.v("SearchActivity",linenum);
+                    Toast.makeText(getApplicationContext(),linenum+"respons fail",Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<Station> call, Throwable t) {
+                Log.v("SearchActivity","onFailure"+linenum);
+                Toast.makeText(getApplicationContext(),linenum+"onFailure",Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
     public void refreshData(String lineName){

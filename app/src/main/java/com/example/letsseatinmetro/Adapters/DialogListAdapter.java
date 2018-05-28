@@ -15,7 +15,7 @@ import com.example.letsseatinmetro.R;
 import java.util.List;
 
 /**
- * Created by multimedia on 2018-05-10.
+ * Created by 이승헌 on 2018-05-10.
  */
 
 public class DialogListAdapter extends BaseAdapter{

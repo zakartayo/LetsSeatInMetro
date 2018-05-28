@@ -71,7 +71,8 @@ public class BundangExtreamFragment extends Fragment {
             }
         });
         return v;
-    }public void getApi(){
+    }
+    public void getApi(){
         Log.d("extreamFragment api", "api called extreamFragment");
         new MyTask(getActivity()).execute();
     }

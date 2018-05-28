@@ -335,35 +335,35 @@ public class LineRecyclerAdapter  extends BaseAdapter{
                     congestion.setCongestionLevel("매우 여유");
                     congestion.setVacancyTitle("좌석 수:");
                     congestion.setVacancyCount(Integer.toString(vacancies.get(i)));
-                    congestion.setCongestionImageResource(R.drawable.level1_horizon);
+                    congestion.setCongestionImageResource(R.drawable.level1);
                     break;
                 case "2":
                     congestion.setCongestionCode(i);
                     congestion.setCongestionLevel("여유");
                     congestion.setVacancyTitle("좌석 수:");
                     congestion.setVacancyCount(Integer.toString(vacancies.get(i)));
-                    congestion.setCongestionImageResource(R.drawable.level2_horizon);
+                    congestion.setCongestionImageResource(R.drawable.level2);
                     break;
                 case "3":
                     congestion.setCongestionCode(i);
                     congestion.setCongestionLevel("보통");
                     congestion.setVacancyTitle("좌석 수:");
                     congestion.setVacancyCount(Integer.toString(vacancies.get(i)));
-                    congestion.setCongestionImageResource(R.drawable.level3_horizon);
+                    congestion.setCongestionImageResource(R.drawable.level3);
                     break;
                 case "4":
                     congestion.setCongestionCode(i);
                     congestion.setCongestionLevel("조금 혼잡");
                     congestion.setVacancyTitle("좌석 수:");
                     congestion.setVacancyCount(Integer.toString(vacancies.get(i)));
-                    congestion.setCongestionImageResource(R.drawable.level4_horizon);
+                    congestion.setCongestionImageResource(R.drawable.level4);
                     break;
                 case "5":
                     congestion.setCongestionCode(i);
                     congestion.setCongestionLevel("매우 혼잡");
                     congestion.setVacancyTitle("좌석 수:");
                     congestion.setVacancyCount(Integer.toString(vacancies.get(i)));
-                    congestion.setCongestionImageResource(R.drawable.level5_horizon);
+                    congestion.setCongestionImageResource(R.drawable.level5);
                     break;
                 default:
                     return;
@@ -375,11 +375,19 @@ public class LineRecyclerAdapter  extends BaseAdapter{
         AlertDialog.Builder builder = new AlertDialog.Builder(context)
                 .setAdapter(adapter, null)
                 .setTitle("")
+                .setNeutralButton("새로고침",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                new MakeNetworkCall().execute(requestAddress, "Get");
+                            }
+                        })
                 .setPositiveButton("닫기", new DialogInterface.OnClickListener() { // 버튼은 테마에 따라서 모양이 다르게 모임
                     public void onClick(DialogInterface dialog, int whichButton) {
 
                     }
                 });
+
 
         final AlertDialog alertDialog = builder.create();
         final ListView listView = alertDialog.getListView();
