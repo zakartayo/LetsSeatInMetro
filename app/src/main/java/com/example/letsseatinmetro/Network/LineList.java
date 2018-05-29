@@ -28,6 +28,10 @@ public class LineList {
     @Expose
     private String trainSttus;
 
+    @SerializedName("directAt")
+    @Expose
+    private String directAt;
+
 
     public String getStatnNm() {
         return statnNm;
@@ -69,4 +73,11 @@ public class LineList {
         this.trainSttus = trainSttus;
     }
 
+    public String getDirectAt() {
+        return directAt;
+    }
+
+    public void setDirectAt(String directAt) {
+        this.directAt = directAt;
+    }
 }

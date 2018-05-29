@@ -9,7 +9,7 @@ import retrofit2.http.Path;
  */
 
 public interface SubwayApiService {
-    @GET("api/subway/{apikey}/json/realtimePosition/1/1000/{linenum}")
+    @GET("api/subway/{apikey}/json/realtimePosition/1/150/{linenum}")
     Call<Station> getStationList(
             @Path("apikey") String apikey,
             @Path("linenum") String linenum

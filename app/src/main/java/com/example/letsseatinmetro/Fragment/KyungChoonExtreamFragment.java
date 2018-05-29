@@ -13,11 +13,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.letsseatinmetro.Adapters.LineRecyclerAdapter;
 import com.example.letsseatinmetro.CardItem.LineCardItem;
 import com.example.letsseatinmetro.Datahouse.DataHouse;
+import com.example.letsseatinmetro.Network.LineList;
 import com.example.letsseatinmetro.Network.Remote;
+import com.example.letsseatinmetro.Network.ServiceGenerator;
+import com.example.letsseatinmetro.Network.Station;
+import com.example.letsseatinmetro.Network.SubwayApiService;
 import com.example.letsseatinmetro.R;
 
 import org.json.JSONArray;
@@ -26,6 +31,10 @@ import org.json.JSONObject;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by 이승헌 on 2018-03-18.
@@ -42,6 +51,8 @@ public class KyungChoonExtreamFragment extends Fragment {
     private ArrayList<String> trainState;
     private ArrayList<String> trainNums;
     private int dataLength;
+    private ArrayList<LineList> stationList; //데이터를 담을 리스트
+    private static final String API_KEY = "574a706754646c673936684d555778";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -64,104 +75,85 @@ public class KyungChoonExtreamFragment extends Fragment {
         lineRecyclerAdapter = new LineRecyclerAdapter(items);
         listview.setAdapter(lineRecyclerAdapter);
 
-        getApi();
+        setStnListAPI(API_KEY, "경춘선");
 
         refresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getApi();
+                setStnListAPI(API_KEY, "경춘선");
             }
         });
         return v;
-    }public void getApi(){
-        Log.d("extreamFragment api", "api called extreamFragment");
-        new MyTask(getActivity()).execute();
     }
-    private class MyTask extends AsyncTask<Void, Void, String> {
-        private WeakReference<Activity> activityReference;
-        MyTask(Activity context){
-            activityReference = new WeakReference<>(context);
-        }
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
+    private void setStnListAPI(String apikey, final String linenum){
 
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-            StringBuffer sb = new  StringBuffer();
+        SubwayApiService api = ServiceGenerator.getListApiService();
+        Call<Station> call = api.getStationList(apikey, linenum);
 
-            try {
-                JSONObject json = new JSONObject(s);
-                JSONArray rows = json.getJSONArray("realtimePositionList");
-                Log.d("json called", "json called");
-                dataLength = rows.length();
+        call.enqueue(new Callback<Station>() {
+            @Override
+            public void onResponse(Call<Station> call, Response<Station> response) {
 
-                trainPosition = new ArrayList<>();
-                destinationData = new ArrayList<>();
-                updownData = new ArrayList<>();
-                trainState = new ArrayList<>();
-                trainNums = new ArrayList<>();
+                if(response.isSuccessful()) {
 
-                Log.d("dataLength", Integer.toString(dataLength));
-                int extreamCount=0;
-                for(int i=0; i < dataLength; i ++){
+                    stationList = response.body().getLineList();
+                    dataLength = stationList.size();
 
-                    JSONObject result = (JSONObject) rows.get(i);
-                    //급행 여부 0=일반, 1=급행
-                    String directAt = result.getString("directAt");
-                    //현재 지하철역명 저장
-                    String currentPosition = result.getString("statnNm");
-                    //열차번호 저장
-                    String trainNum = result.getString("trainNo");
-                    //종착역 저장
-                    String destination = result.getString("statnTnm");
-                    //상하행 저장
-                    String updown = result.getString("updnLine");
-                    //열차 상태 저장
-                    String state = result.getString("trainSttus");
+                    Log.d("dataLength", Integer.toString(dataLength));
 
-                    if(directAt.equals("1")) {
-                        Log.d("directAt", directAt);
-                        Log.d("destination", destination);
+                    trainPosition = new ArrayList<>();
+                    destinationData = new ArrayList<>();
+                    updownData = new ArrayList<>();
+                    trainState = new ArrayList<>();
+                    trainNums = new ArrayList<>();
+
+                    int extreamCount = 0;
+
+                    for(int i=0; i < dataLength; i++){
+                        //현재 지하철역명 저장
+                        String currentPosition = stationList.get(i).getStatnNm();
                         Log.d("currentPosition", currentPosition);
-                        Log.d("direction", destination);
-                        Log.d("state", state);
-                        System.out.println("=======================");
-                        trainPosition.add(currentPosition);
-                        destinationData.add(destination);
-                        updownData.add(updown);
-                        trainState.add(state);
-                        trainNums.add(trainNum);
-                        extreamCount++;
-                    }else if(directAt.equals("0")){
-                        System.out.println("일반입니다");
-                    }
-                }
-                compareData(extreamCount);
-            }catch (Exception e ){}
-        }
 
-        @Override
-        protected String doInBackground(Void... params) {
-            String result = "";
-            try {
-                //서울시 오픈 API 제공(샘플 주소 json으로 작업)
-                result = Remote.getData("http://swopenapi.seoul.go.kr/api/subway/574a706754646c673936684d555778/json/realtimePosition/1/1000/"+"경춘선");
-            } catch (Exception e) {
-                e.printStackTrace();
+                        //열차번호 저장
+                        String trainNum = stationList.get(i).getTrainNo();
+
+                        //종착역 저장
+                        String destination = stationList.get(i).getStatnTnm();
+
+                        //상하행 저장
+                        String updown = stationList.get(i).getUpdnLine();
+
+                        //열차 상태 저장
+                        String state = stationList.get(i).getTrainSttus();
+
+                        String directAt = stationList.get(i).getDirectAt();
+
+                        if(directAt.equals("1")){
+                            trainPosition.add(currentPosition);
+                            destinationData.add(destination);
+                            updownData.add(updown);
+                            trainState.add(state);
+                            trainNums.add(trainNum);
+                            extreamCount++;
+                        }else{
+                            System.out.println("일반입니다");
+                        }
+                    }
+                    Log.d("trainpositionsize", Integer.toString(trainPosition.size()));
+                    compareData(extreamCount);
+                } else {
+                    Log.v("SearchActivity",linenum);
+                    Toast.makeText(getActivity(),linenum+"respons fail",Toast.LENGTH_SHORT).show();
+                }
             }
-            return result;
-        }
+            @Override
+            public void onFailure(Call<Station> call, Throwable t) {
+                Log.v("SearchActivity","onFailure"+linenum);
+                Toast.makeText(getActivity(),linenum+"onFailure",Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
-    /*public void dataTrim(String data){
-        StringBuffer bf = new StringBuffer();
-        bf.append(data.charAt(0));
-        bf.append(data.charAt(1));
-        Log.d("dataTrim", bf.toString());
-        trainPosition.add(bf.toString());
-    }*/
     public void compareData(int extreamCount) {
         refreshData();
         if(extreamCount==0){
