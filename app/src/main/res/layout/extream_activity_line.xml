@@ -23,6 +23,9 @@
         android:theme="@style/AppTheme"
         android:background="@color/colorPrimaryDark"
         android:minHeight="?attr/actionBarSize"
+        app:tabMaxWidth="0dp"
+        app:tabGravity="fill"
+        app:tabMode="fixed"
         app:tabSelectedTextColor="@android:color/white"
         app:tabTextColor="@android:color/white"/>
 
