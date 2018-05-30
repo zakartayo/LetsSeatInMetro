@@ -142,13 +142,13 @@ public class NineExtreamFragment extends Fragment {
                     compareData(extreamCount);
                 } else {
                     Log.v("SearchActivity",linenum);
-                    Toast.makeText(getActivity(),"서울열린데이터 네트워크가 불안정",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"서울시 열린데이터 네트워크 불안정",Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
             public void onFailure(Call<Station> call, Throwable t) {
                 Log.v("SearchActivity","onFailure"+linenum);
-                Toast.makeText(getActivity(),linenum+"onFailure",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),"서울시 열린데이터 네트워크 불안정",Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -64,5 +64,9 @@ public class ShowImageActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+    @Override
+    public void onBackPressed(){
+        finish();
+    }
 
 }

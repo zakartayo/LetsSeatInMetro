@@ -515,89 +515,7 @@ public class LineActivity extends AppCompatActivity {
             });
         }
     }
-   /* public void getApi(){
-        Log.d("api called", "api called");
-        new MyTask(this).execute();
-    }
-    private class MyTask extends AsyncTask<Void, Void, String> {
-        private WeakReference<LineActivity> activityReference;
-        MyTask(LineActivity context){
-            activityReference = new WeakReference<>(context);
-        }
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
 
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-            StringBuffer sb = new  StringBuffer();
-
-            try {
-
-                JSONObject json = new JSONObject(s);
-                JSONArray rows = json.getJSONArray("realtimePositionList");
-                Log.d("json called", "json called");
-                dataLength = rows.length();
-
-                trainPosition = new ArrayList<>();
-                destinationData = new ArrayList<>();
-                updownData = new ArrayList<>();
-                trainState = new ArrayList<>();
-                trainNums = new ArrayList<>();
-
-                Log.d("dataLength", Integer.toString(dataLength));
-                for(int i=0; i < dataLength; i ++){
-                    JSONObject result = (JSONObject) rows.get(i);
-
-                    //현재 지하철역명 저장
-                    String currentPosition = result.getString("statnNm");
-                    Log.d("currentPosition", currentPosition);
-                    trainPosition.add(currentPosition);
-
-                    //열차번호 저장
-                    String trainNum = result.getString("trainNo");
-                    trainNums.add(trainNum);
-
-                    //종착역 저장
-                    String destination = result.getString("statnTnm");
-                    destinationData.add(destination);
-                    Log.d("direction", destination);
-
-                    //상하행 저장
-                    String updown = result.getString("updnLine");
-                    updownData.add(updown);
-
-                    //열차 상태 저장
-                    String state = result.getString("trainSttus");
-                    trainState.add(state);
-                    Log.d("state", state);
-                }
-                Log.d("trainpositionsize", Integer.toString(trainPosition.size()));
-                compareData();
-            }catch (Exception e ){}
-        }
-
-        @Override
-        protected String doInBackground(Void... params) {
-            String result = "";
-            try {
-                //서울시 오픈 API 제공(샘플 주소 json으로 작업)
-                result = Remote.getData("http://swopenapi.seoul.go.kr/api/subway/574a706754646c673936684d555778/json/realtimePosition/1/200/"+lineName);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return result;
-        }
-    }*/
-    /*public void dataTrim(String data){
-        StringBuffer bf = new StringBuffer();
-        bf.append(data.charAt(0));
-        bf.append(data.charAt(1));
-        Log.d("dataTrim", bf.toString());
-        trainPosition.add(bf.toString());
-    }*/
     public void compareData(){
         refreshData(lineName);
         for(int i=0; i<items.size(); i++){
@@ -954,13 +872,13 @@ public class LineActivity extends AppCompatActivity {
                     compareData();
                 } else {
                     Log.v("SearchActivity",linenum);
-                    Toast.makeText(getApplicationContext(),"서울열린데이터 네트워크가 불안정",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"서울시 열린데이터 네트워크 불안정",Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
             public void onFailure(Call<Station> call, Throwable t) {
                 Log.v("SearchActivity","onFailure"+linenum);
-                Toast.makeText(getApplicationContext(),linenum+"onFailure",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"서울시 열린데이터 네트워크 불안정",Toast.LENGTH_SHORT).show();
             }
         });
 

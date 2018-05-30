@@ -402,6 +402,7 @@ public class LineRecyclerAdapter  extends BaseAdapter{
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(context, ShowImageActivity.class);
                 intent.putExtra("position", "00"+Integer.toString(position+1));
+                intent.setFlags(intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 context.startActivity(intent);
                 //alertDialog.dismiss();
             }
