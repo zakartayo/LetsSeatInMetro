@@ -954,7 +954,7 @@ public class LineActivity extends AppCompatActivity {
                     compareData();
                 } else {
                     Log.v("SearchActivity",linenum);
-                    Toast.makeText(getApplicationContext(),linenum+"respons fail",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"서울열린데이터 네트워크가 불안정",Toast.LENGTH_SHORT).show();
                 }
             }
             @Override

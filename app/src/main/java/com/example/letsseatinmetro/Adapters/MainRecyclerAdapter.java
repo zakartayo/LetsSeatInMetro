@@ -54,11 +54,6 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
                 context.startActivity(intent);
             }
         });
-        if(position > lastPosition){
-            Animation animation = AnimationUtils.loadAnimation(context, R.anim.up_from_bottom);
-            holder.cardview.startAnimation(animation);
-            lastPosition = position;
-        }
     }
 
     @Override

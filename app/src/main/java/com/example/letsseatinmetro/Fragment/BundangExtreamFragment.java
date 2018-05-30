@@ -141,7 +141,7 @@ public class BundangExtreamFragment extends Fragment {
                     compareData(extreamCount);
                 } else {
                     Log.v("SearchActivity",linenum);
-                    Toast.makeText(getActivity(),linenum+"respons fail",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"서울열린데이터 네트워크가 불안정",Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
